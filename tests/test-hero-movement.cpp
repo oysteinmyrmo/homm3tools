@@ -7,6 +7,7 @@
 namespace  {
 namespace fs = std::filesystem;
 using h3::savefile::SaveFile;
+using h3::hero::Orientation;
 }
 
 // Orrin moved from [2,2,0] to [3,2,0] (1E).
@@ -17,21 +18,25 @@ void test_day1(const SaveFile &start, const SaveFile &day1)
     assert(orrin->x == 2);
     assert(orrin->y == 2);
     assert(orrin->z == 0);
+    assert(orrin->orientation == Orientation::E);
 
     const auto *valeska = &start.heroes[1];
     assert(valeska->x == 2);
     assert(valeska->y == 4);
     assert(valeska->z == 0);
+    assert(valeska->orientation == Orientation::E);
 
     orrin = &day1.heroes[0];
     assert(orrin->x == 3); // Moved 1E
     assert(orrin->y == 2);
     assert(orrin->z == 0);
+    assert(orrin->orientation == Orientation::E);
 
     valeska = &day1.heroes[1];
     assert(valeska->x == 1); // Moved 1W
     assert(valeska->y == 4);
     assert(valeska->z == 0);
+    assert(valeska->orientation == Orientation::W);
 }
 
 int main()
