@@ -39,6 +39,41 @@ void test_day1(const SaveFile &start, const SaveFile &day1)
     assert(valeska->orientation == Orientation::W);
 }
 
+// Orrin sets destination to [5,4,0].
+// Valeska sets destination to [2,3,0].
+void test_day2(const SaveFile &day1, const SaveFile &day2)
+{
+    const auto *orrin = &day1.heroes[0];
+    assert(orrin->x == 3);
+    assert(orrin->y == 2);
+    assert(orrin->z == 0);
+    assert(orrin->orientation == Orientation::E);
+
+    const auto *valeska = &day1.heroes[1];
+    assert(valeska->x == 1);
+    assert(valeska->y == 4);
+    assert(valeska->z == 0);
+    assert(valeska->orientation == Orientation::W);
+
+    orrin = &day2.heroes[0];
+    assert(orrin->x == 3);
+    assert(orrin->y == 2);
+    assert(orrin->z == 0);
+    assert(orrin->orientation == Orientation::E);
+    assert(orrin->dest_x == 5);
+    assert(orrin->dest_y == 4);
+    assert(orrin->dest_z == 0);
+
+    valeska = &day2.heroes[1];
+    assert(valeska->x == 1);
+    assert(valeska->y == 4);
+    assert(valeska->z == 0);
+    assert(valeska->orientation == Orientation::W);
+    assert(valeska->dest_x == 2);
+    assert(valeska->dest_y == 3);
+    assert(valeska->dest_z == 0);
+}
+
 int main()
 {
     // Test data is copied relative to executable in output/binary dir.
@@ -64,6 +99,7 @@ int main()
     assert(day7.valid());
 
     test_day1(start, day1);
+    test_day2(day1, day2);
 
     return 0;
 }

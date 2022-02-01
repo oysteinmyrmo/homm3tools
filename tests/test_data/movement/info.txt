@@ -25,12 +25,12 @@ start.GM2
 - Saved instantly on day 1 (red)
 
 [hotseat 111].GM2
-- Orrin moved to [3,2], facing E
-- Valeska moved to [1,4], facing W
+- Orrin moved to [3,2,0], facing E
+- Valeska moved to [1,4,0], facing W
 
 [hotseat 112].GM2
-- Orrin sets target position to [5,0]
-- Valeska sets target position to [0,1]
+- Orrin sets target position to [5,4,0]
+- Valeska sets target position to [2,3,0]
 
 [hotseat 113].GM2
 - Orrin now faces NW
