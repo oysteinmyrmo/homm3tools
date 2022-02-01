@@ -1,0 +1,53 @@
+- Red player:
+  - OrrinPlayer
+  - Only hero is Orrin
+  - Orrin:
+    - Position [2,2]
+    - Facing E
+    - Primary skills: [2,2,1,1]
+    - Secondary skills: Basic leadership, basic archery
+    - Experience: 64
+    - Units: 18 pikemen, 7 archers, 3 griffins
+    - Artifact: Demon's Horseshoe (on in misc slot 0, -1 enemy luck)
+- Blue player:
+  - ValeskaPlayer
+  - Only hero is Valeska
+  - Orrin:
+    - Position [2,2]
+    - Facing E
+    - Primary skills: [2,2,1,1] ([2,4,1,1] with artifact)
+    - Secondary skills: Basic leadership, basic archery
+    - Experience: 63
+    - Units: 6 archers, 7 archers, 5 archers
+    - Artifact: Shield of the Dwarven Lords (on shield slot, + 2 defense)
+
+start.GM2
+- Saved instantly on day 1 (red)
+
+[hotseat 111].GM2
+- Orrin moved to [3,2], facing E
+- Valeska moved to [1,4], facing W
+
+[hotseat 112].GM2
+- Orrin sets target position to [5,0]
+- Valeska sets target position to [0,1]
+
+[hotseat 113].GM2
+- Orrin now faces NW
+- Valeska now faces S
+
+[hotseat 114].GM2
+- Orrin spent all his movement, except 150 movement points
+- Valeska spent all her movement, except 630 movement points
+
+[hotseat 115].GM2
+- Orrin sets target to Valeska at [1,4]
+- Valeska sets target to Orrin at [3,2]
+
+[hotseat 116].GM2
+- Orrin now faces N
+- Valeska now faces SE
+
+[hotseat 117].GM2
+- Orrin now faces SW
+- OrrinPlayer loses because he has no town (Valeska cannot move).
