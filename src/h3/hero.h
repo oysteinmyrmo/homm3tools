@@ -43,6 +43,6 @@ struct Hero
     uint8_t _unused6[938];          // 13
 } __attribute__((__packed__));
 
-void readHero(const std::span<const char> data, size_t &idx, Hero &hero);
+void readHero(const std::span<const char> data, size_t idx, Hero &hero);
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> output);
 } // namespace h3::hero

@@ -1,0 +1,7 @@
+# Ignore temporary vim files.
+*.swp
+*.swo
+*.swn
+
+# *.decomp is used for temporary unzipped save files for testing.
+*.decomp

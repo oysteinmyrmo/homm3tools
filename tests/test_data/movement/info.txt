@@ -33,8 +33,8 @@ start.GM2
 - Valeska sets target position to [2,3,0]
 
 [hotseat 113].GM2
-- Orrin now faces NW
-- Valeska now faces S
+- Orrin sets destination to [5,0,0], facing NW.
+- Valeska sets destination to [0,1,0], facing S.
 
 [hotseat 114].GM2
 - Orrin spent all his movement, except 150 movement points

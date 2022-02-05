@@ -12,144 +12,145 @@ using h3::hero::Orientation;
 using h3::savefile::SaveFile;
 }
 
-// - Orrin starts at [2,2,0], facing E.
-// - Valeska starts at [2,4,0], facing E.
+// - Orrin starts at [245,246,0], facing E.
+// - Valeska starts at [249,250,0], facing E.
 void test_start(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 2);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 246);
     assert(orrin.z == 0);
     assert(orrin.orientation == Orientation::E);
 
+    // Note: For some reason, Valeska's position was not saved at this point.
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 2);
-    assert(valeska.y == 4);
-    assert(valeska.z == 0);
+    assert(valeska.x == 0x00FF);
+    assert(valeska.y == 0xFFFF);
+    assert(valeska.z == 0xFFFF);
     assert(valeska.orientation == Orientation::E);
 }
 
-// - Orrin moved to [3,2,0], facing E.
-// - Valeska moved to [1,4,0], facing W.
+// - Orrin moved to [245,247,0], facing S.
+// - Valeska moved to [248,249,0], facing NW.
 void test_day1(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3); // Moved 1E
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247); // Moved 1S
     assert(orrin.z == 0);
-    assert(orrin.orientation == Orientation::E);
+    assert(orrin.orientation == Orientation::S);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1); // Moved 1W
-    assert(valeska.y == 4);
+    assert(valeska.x == 248); // Moved 1NW
+    assert(valeska.y == 249); // Moved 1NW
     assert(valeska.z == 0);
-    assert(valeska.orientation == Orientation::W);
+    assert(valeska.orientation == Orientation::NW);
 }
 
-// - Orrin sets destination to [5,4,0].
-// - Valeska sets destination to [2,3,0].
+// - Orrin sets target position to [241,248,0].
+// - Valeska sets target position to [249,250,0].
 void test_day2(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247);
     assert(orrin.z == 0);
-    assert(orrin.orientation == Orientation::E);
-    assert(orrin.dest_x == 5);
-    assert(orrin.dest_y == 4);
+    assert(orrin.orientation == Orientation::S);
+    assert(orrin.dest_x == 241);
+    assert(orrin.dest_y == 248);
     assert(orrin.dest_z == 0);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1);
-    assert(valeska.y == 4);
+    assert(valeska.x == 248);
+    assert(valeska.y == 249);
     assert(valeska.z == 0);
-    assert(valeska.orientation == Orientation::W);
-    assert(valeska.dest_x == 2);
-    assert(valeska.dest_y == 3);
+    assert(valeska.orientation == Orientation::NW);
+    assert(valeska.dest_x == 249);
+    assert(valeska.dest_y == 250);
     assert(valeska.dest_z == 0);
 }
 
-// - Orrin sets destination to [5,0,0], facing NW.
-// - Valeska sets destination to [0,1,0], facing S.
+// - Orrin now faces W
+// - Valeska now faces SW
 void test_day3(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247);
     assert(orrin.z == 0);
-    assert(orrin.orientation == Orientation::NW);
-    assert(orrin.dest_x == 5);
-    assert(orrin.dest_y == 0);
+    assert(orrin.orientation == Orientation::W);
+    assert(orrin.dest_x == 241);
+    assert(orrin.dest_y == 248);
     assert(orrin.dest_z == 0);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1);
-    assert(valeska.y == 4);
+    assert(valeska.x == 248);
+    assert(valeska.y == 249);
     assert(valeska.z == 0);
-    assert(valeska.orientation == Orientation::S);
-    assert(valeska.dest_x == 0);
-    assert(valeska.dest_y == 1);
+    assert(valeska.orientation == Orientation::SW);
+    assert(valeska.dest_x == 249);
+    assert(valeska.dest_y == 250);
     assert(valeska.dest_z == 0);
 }
 
 // TODO: Movement points are not read into Hero struct!
-// - Orrin spent all his movement, except 150 movement points.
-// - Valeska spent all her movement, except 630 movement points.
+// - Orrin spent all his movement, except 160 movement points.
+// - Valeska spent all her movement, except 539 movement points.
 void test_day4(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247);
     assert(orrin.z == 0);
-    assert(orrin.orientation == Orientation::NW);
-    assert(orrin.dest_x == 5);
-    assert(orrin.dest_y == 0);
+    assert(orrin.orientation == Orientation::W);
+    assert(orrin.dest_x == 241);
+    assert(orrin.dest_y == 248);
     assert(orrin.dest_z == 0);
-//    assert(orrin.movement_points_remaining == 150);
+//    assert(orrin.movement_points_remaining == 160);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1);
-    assert(valeska.y == 4);
+    assert(valeska.x == 248);
+    assert(valeska.y == 249);
     assert(valeska.z == 0);
-    assert(valeska.orientation == Orientation::S);
-    assert(valeska.dest_x == 0);
-    assert(valeska.dest_y == 1);
+    assert(valeska.orientation == Orientation::SW);
+    assert(valeska.dest_x == 249);
+    assert(valeska.dest_y == 250);
     assert(valeska.dest_z == 0);
-//    assert(valeska.movement_points_remaining == 630);
+//    assert(valeska.movement_points_remaining == 539);
 }
 
-// - Orrin sets target to Valeska at [1,4,0].
-// - Valeska sets target to Orrin at [3,2,0].
+// - Orrin sets target to Valeska at [248,249,0].
+// - Valeska sets target to Orrin at [245,247,0].
 void test_day5(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247);
     assert(orrin.z == 0);
-    assert(orrin.orientation == Orientation::NW);
-    assert(orrin.dest_x == 1);
-    assert(orrin.dest_y == 4);
+    assert(orrin.orientation == Orientation::W);
+    assert(orrin.dest_x == 248);
+    assert(orrin.dest_y == 249);
     assert(orrin.dest_z == 0);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1);
-    assert(valeska.y == 4);
+    assert(valeska.x == 248);
+    assert(valeska.y == 249);
     assert(valeska.z == 0);
-    assert(valeska.orientation == Orientation::S);
-    assert(valeska.dest_x == 3);
-    assert(valeska.dest_y == 2);
+    assert(valeska.orientation == Orientation::SW);
+    assert(valeska.dest_x == 245);
+    assert(valeska.dest_y == 247);
     assert(valeska.dest_z == 0);
 }
 
@@ -160,54 +161,59 @@ void test_day6(const SaveFile &save)
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247);
     assert(orrin.z == 0);
     assert(orrin.orientation == Orientation::N);
-    assert(orrin.dest_x == 1);
-    assert(orrin.dest_y == 4);
+    assert(orrin.dest_x == 248);
+    assert(orrin.dest_y == 249);
     assert(orrin.dest_z == 0);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1);
-    assert(valeska.y == 4);
+    assert(valeska.x == 248);
+    assert(valeska.y == 249);
     assert(valeska.z == 0);
     assert(valeska.orientation == Orientation::SE);
-    assert(valeska.dest_x == 3);
-    assert(valeska.dest_y == 2);
+    assert(valeska.dest_x == 245);
+    assert(valeska.dest_y == 247);
     assert(valeska.dest_z == 0);
 }
 
-// - Orrin now faces SW.
+// - Orrin now faces E.
 // - OrrinPlayer loses because he has no town (Valeska cannot move).
 void test_day7(const SaveFile &save)
 {
     assert(save.valid());
 
     const Hero &orrin = save.heroes[0];
-    assert(orrin.x == 3);
-    assert(orrin.y == 2);
+    assert(orrin.x == 245);
+    assert(orrin.y == 247);
     assert(orrin.z == 0);
-    assert(orrin.orientation == Orientation::SW);
-    assert(orrin.dest_x == 1);
-    assert(orrin.dest_y == 4);
+    assert(orrin.orientation == Orientation::E);
+    assert(orrin.dest_x == 248);
+    assert(orrin.dest_y == 249);
     assert(orrin.dest_z == 0);
 
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 1);
-    assert(valeska.y == 4);
+    assert(valeska.x == 248);
+    assert(valeska.y == 249);
     assert(valeska.z == 0);
     assert(valeska.orientation == Orientation::SE);
-    assert(valeska.dest_x == 3);
-    assert(valeska.dest_y == 2);
+    assert(valeska.dest_x == 245);
+    assert(valeska.dest_y == 247);
     assert(valeska.dest_z == 0);
 }
 
 int main()
 {
+    constexpr size_t heroStructSize = sizeof(h3::hero::Hero);
+    constexpr size_t offsetToName = h3::hero::Hero::offsetFromNameToStart();
+    assert(heroStructSize == 1147);
+    assert(offsetToName == 196);
+
     // Test data is copied relative to executable in output/binary dir.
     fs::path testDataDir("../test_data");
-    fs::path movementDir(testDataDir / "movement");
+    fs::path movementDir(testDataDir / "movement_gigantic");
 
     h3::savefile::SaveFile start(movementDir / "start.GM2");
     h3::savefile::SaveFile day1(movementDir / "[hotseat] 111.GM2");

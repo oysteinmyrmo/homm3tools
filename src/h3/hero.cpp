@@ -6,7 +6,7 @@ namespace h3::hero
 static_assert(sizeof(Hero) == 1147, "sizeof(Hero) must be 1147.");
 static_assert(Hero::offsetFromNameToStart() == 196, "Offset to Hero::name must be 196.");
 
-void readHero(const std::span<const char> data, size_t &idx, Hero &hero)
+void readHero(const std::span<const char> data, size_t idx, Hero &hero)
 {
     values::readVal(data, idx, hero.x);
     values::readVal(data, idx, hero.y);
@@ -29,6 +29,7 @@ void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero>
     for (auto &hero : heroes)
     {
         readHero(data, idx, hero);
+        idx += sizeof(Hero);
     }
 }
 } // namespace h3::hero
