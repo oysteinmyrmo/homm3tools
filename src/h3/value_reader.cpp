@@ -10,7 +10,8 @@ void readVal(const std::span<const char> &data, size_t &idx, uint8_t &val)
 
 void readVal(const std::span<const char> &data, size_t &idx, uint16_t &val)
 {
-    val = (uint8_t(data[idx]) << 8) + uint8_t(data[idx + 1]);
+    val = (uint8_t(data[idx + 0]) << 0)
+        + (uint8_t(data[idx + 1]) << 8);
     idx += sizeof(val);
 }
 

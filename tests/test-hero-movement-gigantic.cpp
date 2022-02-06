@@ -26,7 +26,7 @@ void test_start(const SaveFile &save)
 
     // Note: For some reason, Valeska's position was not saved at this point.
     const Hero &valeska = save.heroes[1];
-    assert(valeska.x == 0x00FF);
+    assert(valeska.x == 0xFFFF);
     assert(valeska.y == 0xFFFF);
     assert(valeska.z == 0xFFFF);
     assert(valeska.orientation == Orientation::E);
@@ -206,11 +206,6 @@ void test_day7(const SaveFile &save)
 
 int main()
 {
-    constexpr size_t heroStructSize = sizeof(h3::hero::Hero);
-    constexpr size_t offsetToName = h3::hero::Hero::offsetFromNameToStart();
-    assert(heroStructSize == 1147);
-    assert(offsetToName == 196);
-
     // Test data is copied relative to executable in output/binary dir.
     fs::path testDataDir("../test_data");
     fs::path movementDir(testDataDir / "movement_gigantic");

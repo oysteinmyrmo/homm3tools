@@ -4,7 +4,7 @@
 namespace h3::hero
 {
 static_assert(sizeof(Hero) == 1147, "sizeof(Hero) must be 1147.");
-static_assert(Hero::offsetFromNameToStart() == 196, "Offset to Hero::name must be 196.");
+static_assert(Hero::offsetFromNameToStart() == 195, "Offset to Hero::name must be 195.");
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero)
 {
@@ -20,8 +20,10 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::skipVal(idx, hero._unused4);
     values::readVal(data, idx, hero.dest_z);
     values::skipVal(idx, hero._unused5);
-    values::readArr(data, idx, hero.name);
+    values::readVal(data, idx, hero.movement_remaining);
     values::skipVal(idx, hero._unused6);
+    values::readArr(data, idx, hero.name);
+    values::skipVal(idx, hero._unused7);
 }
 
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> heroes)
