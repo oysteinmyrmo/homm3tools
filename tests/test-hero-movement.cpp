@@ -23,12 +23,14 @@ void test_start(const SaveFile &save)
     assert(orrin.y == 2);
     assert(orrin.z == 0);
     assert(orrin.orientation == Orientation::E);
+    assert(orrin.movement_remaining == 1560);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 2);
     assert(valeska.y == 4);
     assert(valeska.z == 0);
     assert(valeska.orientation == Orientation::E);
+    assert(valeska.movement_remaining == 1630);
 }
 
 // - Orrin moved to [3,2,0], facing E.
@@ -42,12 +44,14 @@ void test_day1(const SaveFile &save)
     assert(orrin.y == 2);
     assert(orrin.z == 0);
     assert(orrin.orientation == Orientation::E);
+    assert(orrin.movement_remaining == 1460);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1); // Moved 1W
     assert(valeska.y == 4);
     assert(valeska.z == 0);
     assert(valeska.orientation == Orientation::W);
+    assert(valeska.movement_remaining == 1530);
 }
 
 // - Orrin sets destination to [5,4,0].
@@ -64,6 +68,7 @@ void test_day2(const SaveFile &save)
     assert(orrin.dest_x == 5);
     assert(orrin.dest_y == 4);
     assert(orrin.dest_z == 0);
+    assert(orrin.movement_remaining == 1560);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1);
@@ -73,6 +78,7 @@ void test_day2(const SaveFile &save)
     assert(valeska.dest_x == 2);
     assert(valeska.dest_y == 3);
     assert(valeska.dest_z == 0);
+    assert(valeska.movement_remaining == 1630);
 }
 
 // - Orrin sets destination to [5,0,0], facing NW.
@@ -89,6 +95,7 @@ void test_day3(const SaveFile &save)
     assert(orrin.dest_x == 5);
     assert(orrin.dest_y == 0);
     assert(orrin.dest_z == 0);
+    assert(orrin.movement_remaining == 1078);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1);
@@ -98,6 +105,7 @@ void test_day3(const SaveFile &save)
     assert(valeska.dest_x == 0);
     assert(valeska.dest_y == 1);
     assert(valeska.dest_z == 0);
+    assert(valeska.movement_remaining == 1430);
 }
 
 // TODO: Movement points are not read into Hero struct!
@@ -115,7 +123,7 @@ void test_day4(const SaveFile &save)
     assert(orrin.dest_x == 5);
     assert(orrin.dest_y == 0);
     assert(orrin.dest_z == 0);
-//    assert(orrin.movement_points_remaining == 150);
+    assert(orrin.movement_remaining == 150);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1);
@@ -125,7 +133,7 @@ void test_day4(const SaveFile &save)
     assert(valeska.dest_x == 0);
     assert(valeska.dest_y == 1);
     assert(valeska.dest_z == 0);
-//    assert(valeska.movement_points_remaining == 630);
+    assert(valeska.movement_remaining == 630);
 }
 
 // - Orrin sets target to Valeska at [1,4,0].
@@ -142,6 +150,7 @@ void test_day5(const SaveFile &save)
     assert(orrin.dest_x == 1);
     assert(orrin.dest_y == 4);
     assert(orrin.dest_z == 0);
+    assert(orrin.movement_remaining == 1560);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1);
@@ -151,6 +160,7 @@ void test_day5(const SaveFile &save)
     assert(valeska.dest_x == 3);
     assert(valeska.dest_y == 2);
     assert(valeska.dest_z == 0);
+    assert(valeska.movement_remaining == 1630);
 }
 
 // - Orrin now faces N.
@@ -167,6 +177,7 @@ void test_day6(const SaveFile &save)
     assert(orrin.dest_x == 1);
     assert(orrin.dest_y == 4);
     assert(orrin.dest_z == 0);
+    assert(orrin.movement_remaining == 1360);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1);
@@ -176,6 +187,7 @@ void test_day6(const SaveFile &save)
     assert(valeska.dest_x == 3);
     assert(valeska.dest_y == 2);
     assert(valeska.dest_z == 0);
+    assert(valeska.movement_remaining == 1348);
 }
 
 // - Orrin now faces SW.
@@ -192,6 +204,7 @@ void test_day7(const SaveFile &save)
     assert(orrin.dest_x == 1);
     assert(orrin.dest_y == 4);
     assert(orrin.dest_z == 0);
+    assert(orrin.movement_remaining == 1219);
 
     const Hero &valeska = save.heroes[1];
     assert(valeska.x == 1);
@@ -201,6 +214,7 @@ void test_day7(const SaveFile &save)
     assert(valeska.dest_x == 3);
     assert(valeska.dest_y == 2);
     assert(valeska.dest_z == 0);
+    assert(valeska.movement_remaining == 1348);
 }
 
 int main()
