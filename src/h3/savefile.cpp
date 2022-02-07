@@ -5,6 +5,7 @@
 
 #include <cstring>
 #include <fstream>
+#include <string>
 
 namespace h3::savefile
 {
@@ -86,5 +87,22 @@ SaveFile::SaveFile(const fs::path &path)
 bool SaveFile::valid() const
 {
     return memcmp(this->header, fileHeader, sizeof(fileHeader)) == 0;
+}
+
+const Hero SaveFile::findHero(const std::string &name) const
+{
+    // TODO: This is silly.
+    std::string nameHolder;
+    nameHolder.reserve(sizeof(Hero::name));
+
+    for (const auto &hero : heroes)
+    {
+        nameHolder = std::string(reinterpret_cast<const char*>(hero.name));
+        if (name == nameHolder)
+        {
+            return hero;
+        }
+    }
+    return {};
 }
 } // namespace h3::savefile

@@ -1,4 +1,5 @@
 set(homm3tools_files
+    creatures.h
     hero.cpp
     hero.h
     savefile.cpp

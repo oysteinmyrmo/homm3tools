@@ -5,6 +5,7 @@
 #include <array>
 #include <filesystem>
 #include <span>
+#include <string>
 #include <string_view>
 #include <vector>
 
@@ -27,6 +28,8 @@ struct SaveFile
 {
     explicit SaveFile(const fs::path &path);
     bool valid() const;
+
+    const Hero findHero(const std::string &name) const;
 
     uint8_t header[8];
     std::array<Hero, hero::heroCount> heroes;

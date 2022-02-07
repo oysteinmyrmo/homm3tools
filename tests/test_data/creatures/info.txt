@@ -1,0 +1,49 @@
+All players have:
+- Non-upgraded units on mighthero, count = level = [1,2,3,4,5,6,7].
+- Upgraded units on magic hero, count = level = [1,2,3,4,5,6,7].
+
+Red player (Castle):
+- Lord Haart (might)
+- Sanya (magic)
+
+Blue player (Rampart):
+- Kyrre (might)
+- Elleshar (magic)
+
+Tan player (Tower):
+- Piquedram (might)
+- Halon (magic)
+
+Green player (Inferno):
+- Pyre (might)
+- Calid (magic)
+
+Orange player (Necro):
+- Isra (might)
+- Vidomina (magic)
+
+Purple player (Dungeon):
+- Dace (might)
+- Deemer (magic)
+
+Teal player (Stronghold):
+- Yog (might)
+- Saurug (magic)
+- Gerwulf (fortress, might)
+- Merist (fortress, magic)
+
+Pink player (multiple):
+- Thunar (conflux, might)
+- Inteus (conflux, magic)
+- Jeremy (cove, might)
+- Astra (cove, magic)
+- Dargem (cove, magic, 1234 sea dogs)
+- Corkes (cove, magic, halfling, peasant, boar, rogue, leprechaun, mummy, nomad)
+- Zilare (cove, magic, sharpshooter, satyr, steel golem, gold golem, troll, fangarm, diamond golem)
+- Spint (cove, magic, 1 enchanter, 2 azure dragon, 3 crystal dragon, 4 faerie dragon, 5 rust dragon)
+
+[hotseat] 111.GM8
+- As above
+
+[hotseat] 112.GM8
+- Creature order reversed, otherwise as previous save (corsair stack of 1234 split into 617/617, slot 1 and 2)

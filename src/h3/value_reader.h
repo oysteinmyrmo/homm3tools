@@ -40,4 +40,12 @@ void readEnum(const std::span<const char> &data, size_t &idx, T &val)
     val = static_cast<T>(U_val);
 }
 
+template<typename T, size_t N>
+void readEnumArr(const std::span<const char> &data, size_t &idx, T (&val)[N])
+{
+    for (size_t i = 0; i < N; ++i)
+    {
+        readEnum(data, idx, val[i]);
+    }
+}
 } // namespace h3::values

@@ -22,6 +22,8 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::skipVal(idx, hero._unused5);
     values::readVal(data, idx, hero.movement_remaining);
     values::skipVal(idx, hero._unused6);
+    values::readEnumArr(data, idx, hero.creatures);
+    values::readArr(data, idx, hero.creature_count);
     values::readArr(data, idx, hero.name);
     values::skipVal(idx, hero._unused7);
 }

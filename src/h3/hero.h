@@ -1,5 +1,7 @@
 #pragma once
 
+#include "creatures.h"
+
 #include <array>
 #include <cstdint>
 #include <span>
@@ -9,6 +11,8 @@ namespace h3::hero
 // Total hero count as per https://heroes.thelazy.net/index.php/List_of_heroes_(HotA)
 // A save file always contains all heroes.
 static constexpr size_t heroCount = 179;
+
+using creatures::Creature;
 
 enum class Orientation : uint8_t
 {
@@ -40,7 +44,9 @@ struct Hero
     uint16_t dest_z = -1;                   // -143
     uint8_t _unused5[6];
     uint16_t movement_remaining = -1;       // -134
-    uint8_t _unused6[132];
+    uint8_t _unused6[76];
+    Creature creatures[7];                  // -56
+    uint32_t creature_count[7];             // -28
     uint8_t name[13];                       // 0
     uint8_t _unused7[939];                  // 13
 } __attribute__((__packed__));
