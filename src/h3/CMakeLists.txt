@@ -3,7 +3,6 @@ set(homm3tools_files
     hero.h
     savefile.cpp
     savefile.h
-    value_reader.cpp
     value_reader.h
 )
 

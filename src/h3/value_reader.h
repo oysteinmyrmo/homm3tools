@@ -21,11 +21,15 @@ void readArr(const std::span<const char> &data, size_t &idx, T (&val)[N])
 
 template<typename T>
 void readVal(const std::span<const char> &data, size_t &idx, T &val)
-{}
-
-void readVal(const std::span<const char> &data, size_t &idx, uint8_t &val);
-void readVal(const std::span<const char> &data, size_t &idx, uint16_t &val);
-void readVal(const std::span<const char> &data, size_t &idx, uint32_t &val);
+{
+    T res = 0;
+    for (size_t i = 0; i < sizeof(val); ++i)
+    {
+        res += (uint8_t(data[idx + i]) << (8 * i));
+    }
+    val = res;
+    idx += sizeof(val);
+}
 
 template<typename T>
 void readEnum(const std::span<const char> &data, size_t &idx, T &val)
