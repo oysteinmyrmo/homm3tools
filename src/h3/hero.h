@@ -42,11 +42,13 @@ struct Hero
     uint32_t dest_z = -1;                   // -143
     uint8_t _unused3[4];
     uint16_t movement_remaining = -1;       // -134
-    uint8_t _unused4[76];
+    uint8_t _unused4[10];
+    uint16_t spell_points;                  // -122
+    uint8_t _unused5[64];
     Creature creatures[7];                  // -56
     uint32_t creature_count[7];             // -28
     uint8_t name[13];                       // 0
-    uint8_t _unused5[939];                  // 13
+    uint8_t _unused6[939];                  // 13
 } __attribute__((__packed__));
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);

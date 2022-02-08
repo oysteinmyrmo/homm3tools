@@ -1,0 +1,6 @@
+- [hotseat] 111.GM2:
+  - Sephinroth has 360 spell points
+  - Sorsha has 10 spell points
+- [hotseat] 112.GM2:
+  - Sephinroth has 344 spell points
+  - Sorsha has 4 spell points

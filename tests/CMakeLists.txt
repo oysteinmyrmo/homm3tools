@@ -11,3 +11,7 @@ add_test(NAME test-hero-movement-gigantic COMMAND test-hero-movement-gigantic)
 add_executable(test-creatures test-creatures.cpp)
 target_link_libraries(test-creatures PRIVATE homm3tools)
 add_test(NAME test-creatures COMMAND test-creatures)
+
+add_executable(test-spell-points test-spell-points.cpp)
+target_link_libraries(test-spell-points PRIVATE homm3tools)
+add_test(NAME test-spell-points COMMAND test-spell-points)
