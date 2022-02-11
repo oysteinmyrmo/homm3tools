@@ -1,0 +1,15 @@
+- [hotseat] 111.GM2:
+Red Player:
+  - Clavius: [1,2,3,4]
+  - Nagash: [10,20,30,40]
+  - Erdamon: [99,99,99,99]
+Blue Player:
+  - Theodorus: [99,99,99]
+
+- [hotseat] 112.GM2:
+Red Player:
+  - Clavius: [1,2,12,4]
+  - Nagash: [10,20,30,49]
+  - Erdamon: [99,99,99,99] // Could not exceed 99
+Blue Player:
+  - Theodorus: [99,99,99,99] // Could not exceed 99

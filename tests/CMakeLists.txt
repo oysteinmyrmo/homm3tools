@@ -15,3 +15,7 @@ add_test(NAME test-creatures COMMAND test-creatures)
 add_executable(test-spell-points test-spell-points.cpp)
 target_link_libraries(test-spell-points PRIVATE homm3tools)
 add_test(NAME test-spell-points COMMAND test-spell-points)
+
+add_executable(test-primary-skills test-primary-skills.cpp)
+target_link_libraries(test-primary-skills PRIVATE homm3tools)
+add_test(NAME test-primary-skills COMMAND test-primary-skills)

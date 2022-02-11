@@ -2,6 +2,7 @@
 
 #include "creatures.h"
 
+#include <algorithm>
 #include <array>
 #include <cstdint>
 #include <span>
@@ -29,6 +30,13 @@ enum class Orientation : uint8_t
 struct Hero
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }
+    static constexpr uint8_t maxPrimarySkillValue = 99;
+
+    // In-game primary values are clamped. Note that these values can overflow in the save files.
+    uint8_t attackInGame() const { return std::min(attack, maxPrimarySkillValue); }
+    uint8_t defenseInGame() const { return std::min(defense, maxPrimarySkillValue); }
+    uint8_t powerInGame() const { return std::min(power, maxPrimarySkillValue); }
+    uint8_t knowledgeInGame() const { return std::min(knowledge, maxPrimarySkillValue); }
 
     // Offsets are relative to name.
     uint16_t x = -1;                        // -195
@@ -48,7 +56,12 @@ struct Hero
     Creature creatures[7];                  // -56
     uint32_t creature_count[7];             // -28
     uint8_t name[13];                       // 0
-    uint8_t _unused6[939];                  // 13
+    uint8_t _unused6[56];                   // +13
+    uint8_t attack;                         // +82
+    uint8_t defense;                        // +83
+    uint8_t power;                          // +84
+    uint8_t knowledge;                      // +85
+    uint8_t _unused7[879];                  // +86
 } __attribute__((__packed__));
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);

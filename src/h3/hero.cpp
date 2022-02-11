@@ -26,6 +26,11 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::readArr(data, idx, hero.creature_count);
     values::readArr(data, idx, hero.name);
     values::skipVal(idx, hero._unused6);
+    values::readVal(data, idx, hero.attack);
+    values::readVal(data, idx, hero.defense);
+    values::readVal(data, idx, hero.power);
+    values::readVal(data, idx, hero.knowledge);
+    values::skipVal(idx, hero._unused7);
 }
 
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> heroes)
