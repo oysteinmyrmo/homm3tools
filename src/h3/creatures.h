@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <unordered_map>
 
 namespace h3::creatures
 {
@@ -193,4 +194,6 @@ enum class Creature : uint32_t
     // Value for empty slot
     Empty               = uint32_t(-1)
 };
+
+extern const std::unordered_map<Creature, uint32_t> AIValues;
 } // namespace h3::creatures

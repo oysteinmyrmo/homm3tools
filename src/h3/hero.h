@@ -30,6 +30,7 @@ enum class Orientation : uint8_t
 struct Hero
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }
+    static constexpr size_t creatureCount = 7;
     static constexpr uint8_t maxPrimarySkillValue = 99;
 
     // In-game primary values are clamped. Note that these values can overflow in the save files.
@@ -53,8 +54,8 @@ struct Hero
     uint8_t _unused4[10];
     uint16_t spell_points;                  // -122
     uint8_t _unused5[64];
-    Creature creatures[7];                  // -56
-    uint32_t creature_count[7];             // -28
+    Creature creatures[creatureCount];      // -56
+    uint32_t creature_count[creatureCount]; // -28
     uint8_t name[13];                       // 0
     uint8_t _unused6[56];                   // +13
     uint8_t attack;                         // +82

@@ -1,9 +1,12 @@
 set(homm3tools_files
+    creatures.cpp
     creatures.h
     hero.cpp
     hero.h
     savefile.cpp
     savefile.h
+    stats.cpp
+    stats.h
     value_reader.h
 )
 
