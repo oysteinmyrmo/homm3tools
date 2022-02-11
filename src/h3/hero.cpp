@@ -12,25 +12,27 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::readVal(data, idx, hero.y);
     values::readVal(data, idx, hero.z);
     values::skipVal(idx, hero._unused1);
-    values::readEnum(data, idx, hero.orientation);
+    values::readVal(data, idx, hero.player);
     values::skipVal(idx, hero._unused2);
+    values::readEnum(data, idx, hero.orientation);
+    values::skipVal(idx, hero._unused3);
     values::readVal(data, idx, hero.dest_x);
     values::readVal(data, idx, hero.dest_y);
     values::readVal(data, idx, hero.dest_z);
-    values::skipVal(idx, hero._unused3);
-    values::readVal(data, idx, hero.movement_remaining);
     values::skipVal(idx, hero._unused4);
-    values::readVal(data, idx, hero.spell_points);
+    values::readVal(data, idx, hero.movement_remaining);
     values::skipVal(idx, hero._unused5);
+    values::readVal(data, idx, hero.spell_points);
+    values::skipVal(idx, hero._unused6);
     values::readEnumArr(data, idx, hero.creatures);
     values::readArr(data, idx, hero.creature_count);
     values::readArr(data, idx, hero.name);
-    values::skipVal(idx, hero._unused6);
+    values::skipVal(idx, hero._unused7);
     values::readVal(data, idx, hero.attack);
     values::readVal(data, idx, hero.defense);
     values::readVal(data, idx, hero.power);
     values::readVal(data, idx, hero.knowledge);
-    values::skipVal(idx, hero._unused7);
+    values::skipVal(idx, hero._unused8);
 }
 
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> heroes)

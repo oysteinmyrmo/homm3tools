@@ -1,0 +1,19 @@
+[hotseat] 111.01.GM8:
+- Orrin: Red
+- Valeska: Blue
+- Edric: Tan
+- Sylvia: Green
+- Lord Haart: Orange
+- Sorsha: Purple
+- Christian: Teal
+- Tyris: Pink
+
+[hotseat] 111.02.GM8:
+- Orrin: Pink
+- Valeska: Red
+- Edric: Blue
+- Sylvia: Tan
+- Lord Haart: Green
+- Sorsha: Orange
+- Christian: Purple
+- Tyris: Teal

@@ -43,26 +43,28 @@ struct Hero
     uint16_t x = -1;                        // -195
     uint16_t y = -1;                        // -193
     uint16_t z = -1;                        // -191
-    uint8_t _unused1[35];
+    uint8_t _unused1[20];
+    uint8_t player;                         // -169
+    uint8_t _unused2[14];
     Orientation orientation;                // -154
-    uint8_t _unused2[3];
+    uint8_t _unused3[3];
     uint32_t dest_x = -1;                   // -151
     uint32_t dest_y = -1;                   // -147
     uint32_t dest_z = -1;                   // -143
-    uint8_t _unused3[4];
+    uint8_t _unused4[4];
     uint16_t movement_remaining = -1;       // -134
-    uint8_t _unused4[10];
+    uint8_t _unused5[10];
     uint16_t spell_points;                  // -122
-    uint8_t _unused5[64];
+    uint8_t _unused6[64];
     Creature creatures[creatureCount];      // -56
     uint32_t creature_count[creatureCount]; // -28
     uint8_t name[13];                       // 0
-    uint8_t _unused6[56];                   // +13
+    uint8_t _unused7[56];                   // +13
     uint8_t attack;                         // +82
     uint8_t defense;                        // +83
     uint8_t power;                          // +84
     uint8_t knowledge;                      // +85
-    uint8_t _unused7[879];                  // +86
+    uint8_t _unused8[879];                  // +86
 } __attribute__((__packed__));
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);
