@@ -514,10 +514,10 @@ int main()
 {
     // Test data is copied relative to executable in output/binary dir.
     fs::path testDataDir("../test_data");
-    fs::path movementDir(testDataDir / "creatures");
+    fs::path dir(testDataDir / "creatures");
 
-    h3::savefile::SaveFile day1(movementDir / "[hotseat] 111.GM8");
-    h3::savefile::SaveFile day2(movementDir / "[hotseat] 112.GM8");
+    h3::savefile::SaveFile day1(dir / "[hotseat] 111.GM8");
+    h3::savefile::SaveFile day2(dir / "[hotseat] 112.GM8");
 
     test_day1(day1);
     test_day2(day2);
