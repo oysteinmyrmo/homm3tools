@@ -20,11 +20,12 @@ uint64_t ai_value(const hero::Hero &hero)
 }
 
 // Formula taken from https://heroes.thelazy.net/index.php/Army_strength
+// TODO: Test if army strength uses hero.attack/hero.defense or hero.attackInGame()/hero.defenseInGame().
+// TODO: Test if hero attack/defense while INSIDE town affects the army strength.
 uint64_t army_strength(const hero::Hero &hero)
 {
-    return 0;
-//    const auto aiValue = ai_value(hero);
-//    const auto heroFactor = std::sqrt((hero.attack * 0.05 + 1.0) * (hero.defense * 0.05 + 1.0));
-//    return uint64_t(aiValue * heroFactor);
+    const auto aiValue = ai_value(hero);
+    const auto heroFactor = std::sqrt((hero.attackInGame() * 0.05 + 1.0) * (hero.defenseInGame() * 0.05 + 1.0));
+    return uint64_t(aiValue * heroFactor);
 }
 } //namespace h3::stats
