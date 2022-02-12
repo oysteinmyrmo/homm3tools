@@ -23,3 +23,7 @@ add_test(NAME test-primary-skills COMMAND test-primary-skills)
 add_executable(test-hero-player test-hero-player.cpp)
 target_link_libraries(test-hero-player PRIVATE homm3tools)
 add_test(NAME test-hero-player COMMAND test-hero-player)
+
+add_executable(test-hero-town test-hero-town.cpp)
+target_link_libraries(test-hero-town PRIVATE homm3tools)
+add_test(NAME test-hero-town COMMAND test-hero-town)

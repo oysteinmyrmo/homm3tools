@@ -11,6 +11,7 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::readVal(data, idx, hero.x);
     values::readVal(data, idx, hero.y);
     values::readVal(data, idx, hero.z);
+    values::readVal(data, idx, hero.on_map);
     values::skipVal(idx, hero._unused1);
     values::readVal(data, idx, hero.player);
     values::skipVal(idx, hero._unused2);

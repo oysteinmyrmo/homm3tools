@@ -1,0 +1,60 @@
+[hotseat] 111.GM3:
+Red:
+  - Orrin: [9,12,0]
+  - Valeska: [12,12,0]
+  - Edric: [15,12,0]
+Green:
+  - Mephala: [18,12,0]
+  - Ufretin: [21,12,0]
+  - Jenova: [24,12,0]
+Tan:
+  - Piquedram: [27,12,0]
+  - Thane: [30,12,0]
+  - Josephine: [33,12,0]
+
+// - Second hero goes to town.
+[hotseat] 112.GM3:
+Red:
+  - Orrin: [9,12,0]
+  - Valeska: [9,9,0] (in town)
+  - Edric: [15,12,0]
+Green:
+  - Mephala: [18,12,0]
+  - Ufretin: [21,9,0] (in town)
+  - Jenova: [24,12,0]
+Tan:
+  - Piquedram: [27,12,0]
+  - Thane: [30,9,0] (in town)
+  - Josephine: [33,12,0]
+
+// - Hero in town swaps to visiting position.
+// - First hero goes to town.
+[hotseat] 113.GM3:
+Red:
+  - Orrin: [9,9,0] (in town)
+  - Valeska: [?,?,?] (visiting town)
+  - Edric: [15,12,0]
+Green:
+  - Mephala: [21,9,0] (in town)
+  - Ufretin: [?,?,?] (visiting town)
+  - Jenova: [24,12,0]
+Tan:
+  - Piquedram: [27,9,0] (in town)
+  - Thane: [?,?,?] (visiting town)
+  - Josephine: [33,12,0]
+
+// - Swap visiting hero and hero in town.
+[hotseat] 114.GM3:
+Red:
+  - Orrin: [?,?,?] (visiting town)
+  - Valeska: [9,9,0] (in town)
+  - Edric: [15,12,0]
+Green:
+  - Mephala: [?,?,?] (visiting town)
+  - Ufretin: [21,9,0] (in town)
+  - Jenova: [24,12,0]
+Tan:
+  - Piquedram: [?,?,?] (visiting town)
+  - Thane: [27,9,0] (in town)
+  - Josephine: [33,12,0]
+
