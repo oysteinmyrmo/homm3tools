@@ -1,0 +1,15 @@
+[hotseat] 111.GM2:
+Red:
+  - Spint: [14,13,1]
+Blue:
+  - Solmyr: [19,13,1]
+Prison:
+  - Sandro: [13,13,1]
+
+// - Spint opens prison for Sandro.
+[hotseat] 112.GM2:
+Red:
+  - Spint: [14,13,1]
+  - Sandro: [13,13,1] (not prison)
+Blue:
+  - Solmyr: [19,13,1]

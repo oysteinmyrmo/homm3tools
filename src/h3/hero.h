@@ -43,7 +43,7 @@ struct Hero
     uint16_t x = -1;                        // -195
     uint16_t y = -1;                        // -193
     uint16_t z = -1;                        // -191
-    uint8_t on_map;                         // -189
+    uint8_t on_map;                         // -189 (1 = on the map, 0 = visiting town or in prison. Position is set when in prison.)
     uint8_t _unused1[19];
     uint8_t player;                         // -169
     uint8_t _unused2[14];
