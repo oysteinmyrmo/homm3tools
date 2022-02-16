@@ -7,6 +7,8 @@ set(homm3tools_files
     savefile.h
     stats.cpp
     stats.h
+    town.cpp
+    town.h
     value_reader.h
 )
 

@@ -109,8 +109,8 @@ int main()
     fs::path testDataDir("../test_data");
     fs::path dir(testDataDir / "primary_skills");
 
-    h3::savefile::SaveFile day1(dir / "[hotseat] 111.GM2");
-    h3::savefile::SaveFile day2(dir / "[hotseat] 112.GM2");
+    h3::savefile::SaveFile day1({dir / "[hotseat] 111.GM2"});
+    h3::savefile::SaveFile day2({dir / "[hotseat] 112.GM2"});
 
     test_day1(day1);
     test_day2(day2);

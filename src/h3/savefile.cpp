@@ -57,21 +57,39 @@ void read_write_decompressed(const fs::path &path, const fs::path &outPath)
     }
 }
 
-// First hero is always Orrin, unless he is renamed. If so, the current code fails.
-size_t firstHeroPosition(const std::span<const char> data)
+// The name of the first town in the file is always the name of red player's start town.s
+size_t firstTownIndex(const std::span<const char> data, const std::string &firstTownName)
 {
-    const auto it = std::search(data.begin(), data.end(), std::begin(firstHeroName), std::end(firstHeroName));
-    if (it != data.end())
+    if (firstTownName.size())
     {
-        const size_t firstHeroNamePos = it - data.begin();
-        return firstHeroNamePos - Hero::offsetFromNameToStart();
+        const auto it = std::search(data.begin(), data.end(), std::begin(firstTownName), std::end(firstTownName));
+        if (it != data.end())
+        {
+            const size_t firstTownNameIdx = it - data.begin();
+            return firstTownNameIdx - Town::offsetFromNameToStart();
+        }
     }
     return 0;
 }
 
-SaveFile::SaveFile(const fs::path &path)
+// First hero is Orrin by default. If his name is changed, so must the name passed to this function
+size_t firstHeroIndex(const std::span<const char> data, const std::string &firstHeroName)
 {
-    const auto data = decompress(path);
+    if (firstHeroName.size())
+    {
+        const auto it = std::search(data.begin(), data.end(), std::begin(firstHeroName), std::end(firstHeroName));
+        if (it != data.end())
+        {
+            const size_t firstHeroNameIdx = it - data.begin();
+            return firstHeroNameIdx - Hero::offsetFromNameToStart();
+        }
+    }
+    return 0;
+}
+
+SaveFile::SaveFile(const Input &input)
+{
+    const auto data = decompress(input.path);
     if (data.empty())
     {
         return;
@@ -80,8 +98,20 @@ SaveFile::SaveFile(const fs::path &path)
     size_t idx = 0;
     values::readArr(data, idx, header);
 
-    idx = firstHeroPosition(data);
-    hero::readAllHeroes(data, idx, heroes);
+    idx = 63;
+    values::readEnum(data, idx, mapSize);
+
+    idx = firstTownIndex(data, input.firstTownName);
+    if (idx != 0)
+    {
+        town::readAllTowns(data, idx, towns);
+    }
+
+    idx = firstHeroIndex(data, input.firstHeroName);
+    if (idx != 0)
+    {
+        hero::readAllHeroes(data, idx, heroes);
+    }
 }
 
 bool SaveFile::valid() const

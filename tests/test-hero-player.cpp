@@ -77,8 +77,8 @@ int main()
     fs::path testDataDir("../test_data");
     fs::path dir(testDataDir / "hero_player");
 
-    h3::savefile::SaveFile save01(dir / "[hotseat] 111.01.GM8");
-    h3::savefile::SaveFile save02(dir / "[hotseat] 111.02.GM8");
+    h3::savefile::SaveFile save01({dir / "[hotseat] 111.01.GM8"});
+    h3::savefile::SaveFile save02({dir / "[hotseat] 111.02.GM8"});
 
     test_save01(save01);
     test_save02(save02);
