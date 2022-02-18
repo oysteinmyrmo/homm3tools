@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <span>
+#include <string>
 #include <type_traits>
 
 namespace h3::values
@@ -48,4 +49,6 @@ void readEnumArr(const std::span<const char> &data, size_t &idx, T (&val)[N])
         readEnum(data, idx, val[i]);
     }
 }
+
+void readStr(const std::span<const char> &data, size_t &idx, std::string &str, const size_t size);
 } // namespace h3::values

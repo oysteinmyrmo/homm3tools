@@ -9,6 +9,7 @@ set(homm3tools_files
     stats.h
     town.cpp
     town.h
+    value_reader.cpp
     value_reader.h
 )
 

@@ -31,3 +31,7 @@ add_test(NAME test-hero-town COMMAND test-hero-town)
 add_executable(test-prison test-prison.cpp)
 target_link_libraries(test-prison PRIVATE homm3tools)
 add_test(NAME test-prison COMMAND test-prison)
+
+add_executable(test-towns test-towns.cpp)
+target_link_libraries(test-towns PRIVATE homm3tools)
+add_test(NAME test-towns COMMAND test-towns)

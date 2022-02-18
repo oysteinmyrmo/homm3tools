@@ -104,7 +104,7 @@ SaveFile::SaveFile(const Input &input)
     idx = firstTownIndex(data, input.firstTownName);
     if (idx != 0)
     {
-        town::readAllTowns(data, idx, towns);
+        town::readAllTowns(data, idx, input.townCount, towns);
     }
 
     idx = firstHeroIndex(data, input.firstHeroName);

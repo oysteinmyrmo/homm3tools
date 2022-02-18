@@ -39,6 +39,10 @@ struct SaveFile
         // in a different location in the file because the entire map is saved earlier.
         std::string firstTownName;
 
+        // Number of towns is currently not known from the save file. Therefore it must
+        // be part of the input to read all towns.
+        size_t townCount = 0;
+
         // The name of the first hero is Orrin, if not changed in the map. This is
         // used to read all the heroes when opening the save file.
         std::string firstHeroName = defaultFirstHeroName;
