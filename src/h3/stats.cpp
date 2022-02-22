@@ -1,4 +1,5 @@
 #include "stats.h"
+#include "creatures.h"
 
 #include <cmath>
 
@@ -12,7 +13,7 @@ uint64_t ai_value(const creatures::Creature creature, const uint32_t count)
 uint64_t ai_value(const hero::Hero &hero)
 {
     uint64_t strength = 0;
-    for (size_t i = 0; i < hero::Hero::creatureCount; ++i)
+    for (size_t i = 0; i < creatures::maxStacks; ++i)
     {
         strength += ai_value(hero.creatures[i], hero.creature_count[i]);
     }

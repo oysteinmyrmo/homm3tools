@@ -5,6 +5,8 @@
 
 namespace h3::creatures
 {
+static constexpr size_t maxStacks = 7;
+
 enum class Creature : uint32_t
 {
     // Castle

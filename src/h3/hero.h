@@ -14,6 +14,7 @@ namespace h3::hero
 static constexpr size_t heroCount = 179;
 
 using creatures::Creature;
+using creatures::maxStacks;
 
 enum class Orientation : uint8_t
 {
@@ -30,7 +31,6 @@ enum class Orientation : uint8_t
 struct Hero
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }
-    static constexpr size_t creatureCount = 7;
     static constexpr uint8_t maxPrimarySkillValue = 99;
 
     // In-game primary values are clamped. Note that these values can overflow in the save files.
@@ -57,8 +57,8 @@ struct Hero
     uint8_t _unused5[10];
     uint16_t spell_points = 0;              // -122
     uint8_t _unused6[64];
-    Creature creatures[creatureCount];      // -56
-    uint32_t creature_count[creatureCount]; // -28
+    Creature creatures[maxStacks];          // -56
+    uint32_t creature_count[maxStacks];     // -28
     uint8_t name[13];                       // 0
     uint8_t _unused7[56];                   // +13
     uint8_t attack = 0;                     // +82
