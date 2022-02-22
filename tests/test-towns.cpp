@@ -3,6 +3,8 @@
 #include <h3/savefile.h>
 #include <h3/stats.h>
 
+#include <test_data.h>
+
 #include <cassert>
 #include <filesystem>
 
@@ -78,9 +80,7 @@ void test_day5(const SaveFile &save)
 
 int main()
 {
-    // Test data is copied relative to executable in output/binary dir.
-    fs::path testDataDir("../test_data");
-    fs::path dir(testDataDir / "towns");
+    fs::path dir(h3::test::testDataDir / "towns");
 
     h3::savefile::SaveFile day1({dir / "[hotseat] 111.GM2", "RedsTown", 4});
     h3::savefile::SaveFile day2({dir / "[hotseat] 112.GM2", "RedsTown", 4});
@@ -89,10 +89,10 @@ int main()
     h3::savefile::SaveFile day5({dir / "[hotseat] 115.GM2", "RedsTown", 4});
 
     test_day1(day1);
-    test_day1(day2);
-    test_day1(day3);
-    test_day1(day4);
-    test_day1(day5);
+    test_day2(day2);
+    test_day3(day3);
+    test_day4(day4);
+    test_day5(day5);
 
     return 0;
 }

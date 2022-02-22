@@ -1,4 +1,5 @@
-file(COPY test_data DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+configure_file(test_data.h.in "${CMAKE_BINARY_DIR}/test_data.h")
+include_directories("${CMAKE_BINARY_DIR}")
 
 add_executable(test-hero-movement test-hero-movement.cpp)
 target_link_libraries(test-hero-movement PRIVATE homm3tools)
