@@ -51,8 +51,8 @@ struct SaveFile
     explicit SaveFile(const Input &input);
     bool valid() const;
 
-    const Town findTown(const std::string &name) const;
-    const Hero findHero(const std::string &name) const;
+    Town findTown(const std::string &name) const;
+    Hero findHero(const std::string &name) const;
 
     uint8_t header[8];
     MapSize mapSize; // byte 63

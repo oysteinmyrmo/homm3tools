@@ -119,7 +119,19 @@ bool SaveFile::valid() const
     return memcmp(this->header, fileHeader, sizeof(fileHeader)) == 0;
 }
 
-const Hero SaveFile::findHero(const std::string &name) const
+Town SaveFile::findTown(const std::string &name) const
+{
+    for (const auto &town : towns)
+    {
+        if (town.name == name)
+        {
+            return town;
+        }
+    }
+    return {};
+}
+
+Hero SaveFile::findHero(const std::string &name) const
 {
     // TODO: This is silly.
     std::string nameHolder;

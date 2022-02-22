@@ -1,0 +1,41 @@
+Notes:
+- Town names seem to be char[14].
+
+Towns on map:
+- RedsTown [12,7,0]
+- BluesTown [18,7,0]
+- BUUUUUUURN [12,14,0]
+  - Garrison is [1, 0, 0, 0, 0, 0, 2] magogs
+- LOOKOUT [18,14,0]
+  - Garrison is [1,2,3,4,5,6,7] gremlins
+
+Heroes on map:
+- Edric (red)
+- Kyrre (blue)
+
+// - Both red and blue visit lookout tower.
+[hotseat] 111.GM2:
+
+// - Red takes BluesTown.
+// - Leaves [griffin, centaur, dwarf, empty, dwarf, centaur, griffin]/[1,1,1,0,1,1,1] in garrison.
+// - Edric stands in town with [pikeman, griffin,0,0,0,0]/[15,2,0,0,0,0,0]
+[hotseat] 112.GM2:
+
+// - Blue takes RedsTown.
+// - Leaves [centaur, empty, archer, dwarf, archer, dwarf, centaur]/[2,0,5,1,4,1,2] in garrison.
+// - Kyrre stands in town with [woodelf, centaur, 0, 0, 0, 0, woodelf]/[1,19,0,0,0,0,1].
+[hotseat] 113.GM2:
+
+// - Red takes BUUUUUUURN.
+// - Blue takes LOOKOUT.
+// - Edric stands in BUUUUUUURN with [pikeman, griffin,0,0,0,0]/[15,2,0,0,0,0,0]
+// - BUUUUUUURN has garrison [imp, imp, imp, gog, 0, gog, gog]/[2,2,2,2,0,1,1]
+// - Kyrre stands in LOOKOUT with [woodelf, centaur, 0, 0, centaur, 0, woodelf]/[1,8,0,0,8,0,1].
+// - LOOKOUT has garrison [gremlin, gremlin, 0, gremlin, gremlin, 0, stonegargoyle], [2,2,0,4,2,0,9].
+[hotseat] 114.GM2:
+
+// - Edric changes to visiting hero.
+// - Kyrre changes to visiting hero.
+[hotseat] 115.GM2:
+- Edric has [pikeman, griffin, 0, gog, imp, pikeman, 0]/[8,2,0,4,6,7]
+- Kyrre has [woodelf, centaur, gremlin, stonegargoyle, centaur, 0, woodelf]/[1,8,10,9,8,0,1]
