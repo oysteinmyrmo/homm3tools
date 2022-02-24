@@ -1,1 +1,2 @@
 add_subdirectory(homm3decompress)
+add_subdirectory(homm3viewer)
