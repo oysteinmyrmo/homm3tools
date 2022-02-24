@@ -28,6 +28,7 @@ enum class Orientation : uint8_t
     NW = 7
 };
 
+// See also http://heroescommunity.com/viewthread.php3?TID=18817&PID=1366926#focus
 struct Hero
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }

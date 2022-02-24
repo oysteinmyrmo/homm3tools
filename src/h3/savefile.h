@@ -27,7 +27,7 @@ void read_write_decompressed(const fs::path &path, const fs::path &outPath);
 size_t firstTownIndex(const std::span<const char> data, const std::string &firstTownName);
 size_t firstHeroIndex(const std::span<const char> data, const std::string &firstHeroName);
 
-// All map sizes are quadratic.
+// All map sizes are quadratic (and may have underground).
 enum class MapSize : uint8_t
 {
     S   =   36,
