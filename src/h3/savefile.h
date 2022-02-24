@@ -27,6 +27,18 @@ void read_write_decompressed(const fs::path &path, const fs::path &outPath);
 size_t firstTownIndex(const std::span<const char> data, const std::string &firstTownName);
 size_t firstHeroIndex(const std::span<const char> data, const std::string &firstHeroName);
 
+// All map sizes are quadratic.
+enum class MapSize : uint8_t
+{
+    S   =   36,
+    M   =   72,
+    L   =  108,
+    XL  =  144,
+    H   =  180,
+    XH  =  216,
+    G   =  252
+};
+
 struct SaveFile
 {
     struct Input
@@ -55,7 +67,14 @@ struct SaveFile
     Hero findHero(const std::string &name) const;
 
     uint8_t header[8];
-    MapSize mapSize; // byte 63
+    uint16_t heroCount;       // byte 56 <-- Has correct value, not sure if this is what it means.
+    MapSize mapSize;          // byte 63
+    uint8_t hasUnderground;   // byte 67
+    uint16_t mapNameSize;     // byte 68
+    std::string mapName;      // byte 70
+    uint16_t descriptionSize; // byte 70 + mapNameSize
+    std::string description;  // byte 72 + mapNameSize
+
     std::vector<Town> towns;
     std::array<Hero, hero::heroCount> heroes;
 };

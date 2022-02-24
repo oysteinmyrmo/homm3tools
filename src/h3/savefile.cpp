@@ -98,8 +98,26 @@ SaveFile::SaveFile(const Input &input)
     size_t idx = 0;
     values::readArr(data, idx, header);
 
+    idx = 56;
+    values::readVal(data, idx, heroCount);
+
     idx = 63;
     values::readEnum(data, idx, mapSize);
+
+    idx = 67;
+    values::readVal(data, idx, hasUnderground);
+
+    idx = 68;
+    values::readVal(data, idx, mapNameSize);
+
+    idx = 70;
+    values::readStr(data, idx, mapName, mapNameSize);
+
+    idx = 70 + mapNameSize;
+    values::readVal(data, idx, descriptionSize);
+
+    idx = 72 + mapNameSize;
+    values::readStr(data, idx, description, descriptionSize);
 
     idx = firstTownIndex(data, input.firstTownName);
     if (idx != 0)

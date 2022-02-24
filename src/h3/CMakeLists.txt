@@ -3,6 +3,8 @@ set(homm3tools_files
     creatures.h
     hero.cpp
     hero.h
+    player.cpp
+    player.h
     savefile.cpp
     savefile.h
     stats.cpp

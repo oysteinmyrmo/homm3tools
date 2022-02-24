@@ -1,0 +1,8 @@
+- Small map
+- No underground
+- Red player:
+  - RedsTown [2,3,0]
+  - Orrin [2,4,0]
+- Blue player:
+  - BluesTown [33,34,0]
+  - Mephala [33,35,0]

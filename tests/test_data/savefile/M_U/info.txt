@@ -1,0 +1,12 @@
+- Medium map
+- With underground
+- Red player:
+  - RedsTown [2,3,0]
+  - Orrin [2,4,0]
+  - RedsTown_U [69,3,1]
+  - Rion [69,4,1]
+- Blue player:
+  - BluesTown [69,70,0]
+  - Mephala [69,71,0]
+  - BluesTown_U [2,70,1]
+  - Coronius[2,71,1]
