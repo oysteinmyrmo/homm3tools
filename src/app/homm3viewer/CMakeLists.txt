@@ -32,13 +32,30 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glfw)
 set(GLFW_DIR "${glfw_SOURCE_DIR}")
 
+# ImGui developer suggests using ImPlot here: https://github.com/ocornut/imgui/issues/632#issuecomment-738946252
+FetchContent_Declare(
+    implot
+    GIT_REPOSITORY https://github.com/epezent/implot
+    GIT_TAG        b47c8bacdbc78bc521691f70666f13924bb522ab # v0.13
+)
+FetchContent_MakeAvailable(implot)
+set(IMPLOT_DIR "${implot_SOURCE_DIR}")
+
+set(IMPLOT_SOURCES
+    ${IMPLOT_DIR}/implot.cpp
+    ${IMPLOT_DIR}/implot_demo.cpp
+    ${IMPLOT_DIR}/implot_items.cpp
+)
+
 add_executable(homm3viewer
     ${IMGUI_SOURCES}
+    ${IMPLOT_SOURCES}
     main.mm)
 
 target_include_directories(homm3viewer PRIVATE
     ${IMGUI_DIR}
     ${IMGUI_DIR}/backends
+    ${IMPLOT_DIR}
     ${GLFW_DIR}/include
 )
 
@@ -50,4 +67,5 @@ target_link_libraries(homm3viewer PRIVATE
     "-framework CoreVideo"
     "-framework QuartzCore"
     glfw
+    homm3tools
 )
