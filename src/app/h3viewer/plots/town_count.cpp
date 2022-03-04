@@ -1,4 +1,4 @@
-#include "hero_count.h"
+#include "town_count.h"
 
 #include <imgui.h>
 #include <implot.h>
@@ -8,13 +8,15 @@
 
 namespace
 {
-h3viewer::hero_count::PlotData gPlotData;
+h3viewer::town_count::PlotData gPlotData;
 bool gWasReset = false;
 } // namespace
 
-namespace h3viewer::hero_count
+namespace h3viewer::town_count
 {
-PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
+PlotData::PlotData(const SaveFileSeries &series)
+    : players(series.players)
+    , max(series.numberOfTowns)
 {
     const auto size = series.files.size();
 
@@ -24,12 +26,7 @@ PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
         x_vals[i] = i; // The x-values are simply the day from 0 through N.
     }
 
-    for (auto &item : allHeroes)
-    {
-        item.resize(size, 0);
-    }
-
-    for (auto &item : heroesOnMap)
+    for (auto &item : towns)
     {
         item.resize(size, 0);
     }
@@ -39,13 +36,9 @@ PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
         const auto players{h3::player::players(series.files[i])};
         for (size_t j = 0; j < h3::player::maxPlayers; ++j)
         {
-            for (const auto &hero : players[j].heroes())
+            for (const auto &town : players[j].towns())
             {
-                ++allHeroes[j][i];
-                if (hero.on_map)
-                {
-                    ++heroesOnMap[j][i];
-                }
+                ++towns[j][i];
             }
         }
     }
@@ -61,13 +54,13 @@ void draw()
 {
     const auto &plotData = gPlotData;
 
-    if (ImPlot::BeginPlot("Number of Heroes"))
+    if (ImPlot::BeginPlot("Number of Towns"))
     {
-        ImPlot::SetupAxes("Day", "Number of Heroes");
+        ImPlot::SetupAxes("Day", "Number of Towns");
         if (gWasReset)
         {
             gWasReset = false;
-            ImPlot::SetupAxesLimits(0, plotData.x_vals.size(), 0, 8, ImPlotCond_Always);
+            ImPlot::SetupAxesLimits(0, plotData.x_vals.size(), 0, plotData.max, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
@@ -79,19 +72,10 @@ void draw()
                 const auto &color = player.color;
                 const auto &x_vals = plotData.x_vals.data();
                 const auto &size = plotData.x_vals.size();
+                const auto &y_vals = plotData.towns[i].data();
 
                 ImPlot::SetNextLineStyle(color);
-
-                if (true) // TODO: Add checkbox to toggle all/on_map
-                {
-                    const auto &y_vals = plotData.heroesOnMap[i].data();
-                    ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
-                }
-                else
-                {
-                    const auto &y_vals = plotData.allHeroes[i].data();
-                    ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
-                }
+                ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
             }
         }
 

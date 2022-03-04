@@ -34,7 +34,7 @@ namespace h3viewer::savefile_series
 {
 SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
 {
-    SaveFileSeries series{players};
+    SaveFileSeries series{players, input.townCount};
 
     // Use a set to ensure that savefiles are ordered by name (i.e. by in-game day).
     std::set<fs::path> savefiles;

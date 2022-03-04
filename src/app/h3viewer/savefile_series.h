@@ -17,6 +17,7 @@ namespace fs = std::filesystem;
 struct SaveFileSeries
 {
     Players players;
+    uint64_t numberOfTowns = 0;
     std::vector<h3::SaveFile> files;
 };
 

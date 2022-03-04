@@ -56,6 +56,8 @@ add_executable(h3viewer
     plots/hero_count.h
     plots/kingdom_army_strength.cpp
     plots/kingdom_army_strength.h
+    plots/town_count.cpp
+    plots/town_count.h
     savefile_series.cpp
     savefile_series.h
     thieves_guild.cpp
