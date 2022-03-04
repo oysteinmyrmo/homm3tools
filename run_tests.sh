@@ -12,9 +12,8 @@ if [[ "$OS" == "Windows_NT" ]]; then
     ctest -C Release --verbose --output-on-failure .
     exit_code=$?
 else
-    cmake -DCMAKE_BUILD_TYPE=Release ..
-    cmake --build .
-    ctest --verbose --output-on-failure .
+    cmake --build . --config Release
+    ctest -C Release --verbose --output-on-failure .
     exit_code=$?
 fi
 
