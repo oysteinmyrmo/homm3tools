@@ -50,10 +50,10 @@ set(IMPLOT_SOURCES
 add_executable(h3viewer
     ${IMGUI_SOURCES}
     ${IMPLOT_SOURCES}
-    kingdom_army_strength.cpp
-    kingdom_army_strength.h
     player.cpp
     player.h
+    plots/kingdom_army_strength.cpp
+    plots/kingdom_army_strength.h
     savefile_series.cpp
     savefile_series.h
     thieves_guild.cpp
@@ -61,6 +61,7 @@ add_executable(h3viewer
     main.mm)
 
 target_include_directories(h3viewer PRIVATE
+    ${HOMM3TOOLS_APP_DIR}
     ${IMGUI_DIR}
     ${IMGUI_DIR}/backends
     ${IMPLOT_DIR}

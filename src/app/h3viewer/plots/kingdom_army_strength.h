@@ -1,7 +1,7 @@
 #pragma once
 
-#include "savefile_series.h"
-#include "player.h"
+#include <h3viewer/savefile_series.h>
+#include <h3viewer/player.h>
 
 #include <h3/player.h>
 
