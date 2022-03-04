@@ -13,8 +13,6 @@
 namespace h3::savefile
 {
 namespace fs = std::filesystem;
-using hero::Hero;
-using town::Town;
 
 // Note: AppleClang does not have constexpr std::string at the time of writing.
 constexpr char defaultFirstHeroName[] = "Orrin";
@@ -79,3 +77,8 @@ struct SaveFile
     std::array<Hero, hero::heroCount> heroes;
 };
 } // namespace h3::savefile
+
+namespace h3
+{
+using SaveFile = savefile::SaveFile;
+}

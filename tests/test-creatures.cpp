@@ -11,10 +11,10 @@
 namespace  {
 namespace fs = std::filesystem;
 
-using h3::creatures::Creature;
-using h3::hero::Hero;
-using h3::hero::Orientation;
-using h3::savefile::SaveFile;
+using h3::Creature;
+using h3::Hero;
+using h3::Orientation;
+using h3::SaveFile;
 
 void test_creature(const Hero &hero, const uint8_t idx, const Creature creature, const uint32_t count)
 {
@@ -565,8 +565,8 @@ int main()
 {
     fs::path dir(h3::test::testDataDir / "creatures");
 
-    h3::savefile::SaveFile day1({dir / "[hotseat] 111.GM8"});
-    h3::savefile::SaveFile day2({dir / "[hotseat] 112.GM8"});
+    h3::SaveFile day1({dir / "[hotseat] 111.GM8"});
+    h3::SaveFile day2({dir / "[hotseat] 112.GM8"});
 
     test_day1(day1);
     test_day2(day2);

@@ -199,3 +199,8 @@ enum class Creature : uint32_t
 
 extern const std::unordered_map<Creature, uint32_t> AIValues;
 } // namespace h3::creatures
+
+namespace h3
+{
+using Creature = creatures::Creature;
+}

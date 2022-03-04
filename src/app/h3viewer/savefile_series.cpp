@@ -32,7 +32,7 @@ void HelpMarker(const char* desc)
 
 namespace h3viewer::savefile_series
 {
-SaveFileSeries read_savefiles(h3::savefile::SaveFile::Input input, const Players &players)
+SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
 {
     SaveFileSeries series{players};
 
@@ -51,7 +51,7 @@ SaveFileSeries read_savefiles(h3::savefile::SaveFile::Input input, const Players
     for (const auto &s : savefiles)
     {
         input.path = s;
-        auto savefile = h3::savefile::SaveFile(input);
+        auto savefile = h3::SaveFile(input);
         if (savefile.valid())
         {
             series.files.push_back(std::move(savefile));
@@ -123,7 +123,7 @@ void draw()
     if (ImGui::Button("Load"))
     {
         size_t count = std::stoull({townCount});
-        h3::savefile::SaveFile::Input input{path, firstTownName, count, firstHeroName};
+        h3::SaveFile::Input input{path, firstTownName, count, firstHeroName};
 
         Players players = defaultPlayers();
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)

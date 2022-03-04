@@ -10,7 +10,6 @@
 
 namespace h3::town
 {
-using creatures::Creature;
 using creatures::maxStacks;
 
 // Note: The size of the Town struct in the save file is variable due to the size
@@ -40,3 +39,8 @@ struct Town
 void readTown(const std::span<const char> data, size_t idx, Town &hero);
 void readAllTowns(const std::span<const char> data, size_t idx, size_t count, std::vector<Town> &towns);
 } // namespace h3::town
+
+namespace h3
+{
+using Town = town::Town;
+}

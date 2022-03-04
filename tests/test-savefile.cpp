@@ -11,10 +11,10 @@
 namespace  {
 namespace fs = std::filesystem;
 
-using h3::hero::Hero;
-using h3::player::Color;
-using h3::savefile::SaveFile;
-using h3::town::Town;
+using h3::Hero;
+using h3::Color;
+using h3::SaveFile;
+using h3::Town;
 } // namespace
 
 void test_S()

@@ -11,10 +11,10 @@
 namespace  {
 namespace fs = std::filesystem;
 
-using h3::creatures::Creature;
-using h3::hero::Hero;
-using h3::savefile::SaveFile;
-using h3::town::Town;
+using h3::Creature;
+using h3::Hero;
+using h3::SaveFile;
+using h3::Town;
 
 void test_creature(const auto &owner, const uint8_t idx, const Creature creature, const uint32_t count)
 {
@@ -400,11 +400,11 @@ int main()
 {
     fs::path dir(h3::test::testDataDir / "towns");
 
-    h3::savefile::SaveFile day1({dir / "[hotseat] 111.GM2", "RedsTown", 4});
-    h3::savefile::SaveFile day2({dir / "[hotseat] 112.GM2", "RedsTown", 4});
-    h3::savefile::SaveFile day3({dir / "[hotseat] 113.GM2", "RedsTown", 4});
-    h3::savefile::SaveFile day4({dir / "[hotseat] 114.GM2", "RedsTown", 4});
-    h3::savefile::SaveFile day5({dir / "[hotseat] 115.GM2", "RedsTown", 4});
+    h3::SaveFile day1({dir / "[hotseat] 111.GM2", "RedsTown", 4});
+    h3::SaveFile day2({dir / "[hotseat] 112.GM2", "RedsTown", 4});
+    h3::SaveFile day3({dir / "[hotseat] 113.GM2", "RedsTown", 4});
+    h3::SaveFile day4({dir / "[hotseat] 114.GM2", "RedsTown", 4});
+    h3::SaveFile day5({dir / "[hotseat] 115.GM2", "RedsTown", 4});
 
     test_day1(day1);
     test_day2(day2);

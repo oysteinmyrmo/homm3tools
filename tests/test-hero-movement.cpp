@@ -9,9 +9,9 @@
 namespace  {
 namespace fs = std::filesystem;
 
-using h3::hero::Hero;
-using h3::hero::Orientation;
-using h3::savefile::SaveFile;
+using h3::Hero;
+using h3::Orientation;
+using h3::SaveFile;
 }
 
 // - Orrin starts at [2,2,0], facing E.
@@ -223,14 +223,14 @@ int main()
 {
     fs::path dir(h3::test::testDataDir / "movement");
 
-    h3::savefile::SaveFile start({dir / "start.GM2"});
-    h3::savefile::SaveFile day1({dir / "[hotseat] 111.GM2"});
-    h3::savefile::SaveFile day2({dir / "[hotseat] 112.GM2"});
-    h3::savefile::SaveFile day3({dir / "[hotseat] 113.GM2"});
-    h3::savefile::SaveFile day4({dir / "[hotseat] 114.GM2"});
-    h3::savefile::SaveFile day5({dir / "[hotseat] 115.GM2"});
-    h3::savefile::SaveFile day6({dir / "[hotseat] 116.GM2"});
-    h3::savefile::SaveFile day7({dir / "[hotseat] 117.GM2"});
+    h3::SaveFile start({dir / "start.GM2"});
+    h3::SaveFile day1({dir / "[hotseat] 111.GM2"});
+    h3::SaveFile day2({dir / "[hotseat] 112.GM2"});
+    h3::SaveFile day3({dir / "[hotseat] 113.GM2"});
+    h3::SaveFile day4({dir / "[hotseat] 114.GM2"});
+    h3::SaveFile day5({dir / "[hotseat] 115.GM2"});
+    h3::SaveFile day6({dir / "[hotseat] 116.GM2"});
+    h3::SaveFile day7({dir / "[hotseat] 117.GM2"});
 
     test_start(start);
     test_day1(day1);

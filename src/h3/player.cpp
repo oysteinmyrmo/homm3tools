@@ -13,12 +13,12 @@ bool Player::alive() const
     return heroes_.size() || towns_.size();
 }
 
-void Player::addHero(const hero::Hero &hero)
+void Player::addHero(const Hero &hero)
 {
     heroes_.push_back(hero);
 }
 
-void Player::addTown(const town::Town &town)
+void Player::addTown(const Town &town)
 {
     towns_.push_back(town);
 }
@@ -42,7 +42,7 @@ uint64_t Player::kingdomArmyStrength() const
     return kas;
 }
 
-std::array<Player, maxPlayers> players(const savefile::SaveFile &save)
+std::array<Player, maxPlayers> players(const SaveFile &save)
 {
     std::array<Player, maxPlayers> players;
 

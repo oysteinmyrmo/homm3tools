@@ -128,7 +128,7 @@ SaveFile::SaveFile(const Input &input)
     idx = firstHeroIndex(data, input.firstHeroName);
     if (idx != 0)
     {
-        hero::readAllHeroes(data, idx, heroes);
+        readAllHeroes(data, idx, heroes);
     }
 }
 

@@ -13,7 +13,6 @@ namespace h3::hero
 // A save file always contains all heroes.
 static constexpr size_t heroCount = 179;
 
-using creatures::Creature;
 using creatures::maxStacks;
 
 enum class Orientation : uint8_t
@@ -72,3 +71,9 @@ struct Hero
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> output);
 } // namespace h3::hero
+
+namespace h3
+{
+using Hero = hero::Hero;
+using Orientation = hero::Orientation;
+}

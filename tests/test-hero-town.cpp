@@ -11,8 +11,8 @@
 namespace  {
 namespace fs = std::filesystem;
 
-using h3::hero::Hero;
-using h3::savefile::SaveFile;
+using h3::Hero;
+using h3::SaveFile;
 }
 
 void test_day1(const SaveFile &save)
@@ -295,9 +295,9 @@ int main()
 {
     fs::path dir(h3::test::testDataDir / "hero_town");
 
-    h3::savefile::SaveFile day1({dir / "[hotseat] 111.GM3"});
-    h3::savefile::SaveFile day2({dir / "[hotseat] 112.GM3"});
-    h3::savefile::SaveFile day3({dir / "[hotseat] 113.GM3"});
+    h3::SaveFile day1({dir / "[hotseat] 111.GM3"});
+    h3::SaveFile day2({dir / "[hotseat] 112.GM3"});
+    h3::SaveFile day3({dir / "[hotseat] 113.GM3"});
 
     test_day1(day1);
     test_day2(day2);

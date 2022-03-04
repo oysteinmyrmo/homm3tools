@@ -17,10 +17,10 @@ namespace fs = std::filesystem;
 struct SaveFileSeries
 {
     Players players;
-    std::vector<h3::savefile::SaveFile> files;
+    std::vector<h3::SaveFile> files;
 };
 
-SaveFileSeries read_savefiles(h3::savefile::SaveFile::Input input, const Players &players);
+SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players);
 void draw();
 } // namespace h3viewer::savefile_series
 
