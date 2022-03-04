@@ -19,6 +19,8 @@
 #import <Metal/Metal.h>
 #import <QuartzCore/QuartzCore.h>
 
+#include "savefile_series.h"
+
 static void glfw_error_callback(int error, const char* description)
 {
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
@@ -142,6 +144,7 @@ int main(int, char**)
                 ImGui::Text("counter = %d", counter);
 
                 ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
                 ImGui::End();
             }
 
@@ -154,6 +157,8 @@ int main(int, char**)
                     show_another_window = false;
                 ImGui::End();
             }
+
+            h3viewer::savefile_series::draw();
 
             // Rendering
             ImGui::Render();

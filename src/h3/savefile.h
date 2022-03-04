@@ -17,7 +17,7 @@ using hero::Hero;
 using town::Town;
 
 // Note: AppleClang does not have constexpr std::string at the time of writing.
-const std::string defaultFirstHeroName{"Orrin"};
+constexpr char defaultFirstHeroName[] = "Orrin";
 constexpr uint8_t fileHeader[] = "H3SVG";
 
 std::vector<char> decompress(const fs::path &path);

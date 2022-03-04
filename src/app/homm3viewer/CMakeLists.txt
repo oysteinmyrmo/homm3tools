@@ -50,6 +50,14 @@ set(IMPLOT_SOURCES
 add_executable(homm3viewer
     ${IMGUI_SOURCES}
     ${IMPLOT_SOURCES}
+    kingdom_army_strength.cpp
+    kingdom_army_strength.h
+    player.cpp
+    player.h
+    savefile_series.cpp
+    savefile_series.h
+    thieves_guild.cpp
+    thieves_guild.h
     main.mm)
 
 target_include_directories(homm3viewer PRIVATE
