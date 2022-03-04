@@ -52,6 +52,8 @@ add_executable(h3viewer
     ${IMPLOT_SOURCES}
     player.cpp
     player.h
+    plots/hero_count.cpp
+    plots/hero_count.h
     plots/kingdom_army_strength.cpp
     plots/kingdom_army_strength.h
     savefile_series.cpp
