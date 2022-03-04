@@ -23,3 +23,8 @@ struct SaveFileSeries
 SaveFileSeries read_savefiles(h3::savefile::SaveFile::Input input, const Players &players);
 void draw();
 } // namespace h3viewer::savefile_series
+
+namespace h3viewer
+{
+using SaveFileSeries = h3viewer::savefile_series::SaveFileSeries;
+} // namespace h3viewer

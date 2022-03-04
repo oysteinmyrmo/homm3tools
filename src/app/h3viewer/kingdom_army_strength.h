@@ -15,7 +15,7 @@ struct PlotData
 {
     PlotData() = default;
     PlotData(const PlotData &) = default;
-    explicit PlotData(const savefile_series::SaveFileSeries &series);
+    explicit PlotData(const SaveFileSeries &series);
 
     Players players;
     std::array<std::vector<uint64_t>, h3::player::maxPlayers> kas;
@@ -23,6 +23,6 @@ struct PlotData
     uint64_t max = 0;
 };
 
-void reset(const savefile_series::SaveFileSeries &series);
+void reset(const SaveFileSeries &series);
 void draw();
 } // namespace h3viewer::kingdom_army_strength

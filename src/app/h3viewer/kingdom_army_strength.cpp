@@ -14,7 +14,7 @@ bool gWasReset = false;
 
 namespace h3viewer::kingdom_army_strength
 {
-PlotData::PlotData(const savefile_series::SaveFileSeries &series) : players(series.players)
+PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
 {
     const auto size = series.files.size();
 
@@ -41,7 +41,7 @@ PlotData::PlotData(const savefile_series::SaveFileSeries &series) : players(seri
     }
 }
 
-void reset(const savefile_series::SaveFileSeries &series)
+void reset(const SaveFileSeries &series)
 {
     gPlotData = PlotData(series);
     gWasReset = true;

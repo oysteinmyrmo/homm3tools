@@ -13,7 +13,7 @@
 
 namespace
 {
-h3viewer::savefile_series::SaveFileSeries gSaveFileSeries;
+h3viewer::SaveFileSeries gSaveFileSeries;
 
 // Stolen from imgui_demo.cpp.
 void HelpMarker(const char* desc)
@@ -135,7 +135,7 @@ void draw()
             }
         }
 
-        gSaveFileSeries = savefile_series::read_savefiles(input, players);
+        gSaveFileSeries = read_savefiles(input, players);
         thieves_guild::reset(gSaveFileSeries);
     }
 
