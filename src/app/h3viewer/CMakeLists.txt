@@ -1,5 +1,5 @@
 # Inspired by https://github.com/ocornut/imgui/blob/master/examples/example_glfw_metal/Makefile
-project(homm3viewer)
+project(h3viewer)
 enable_language(OBJCXX)
 include(FetchContent)
 
@@ -47,7 +47,7 @@ set(IMPLOT_SOURCES
     ${IMPLOT_DIR}/implot_items.cpp
 )
 
-add_executable(homm3viewer
+add_executable(h3viewer
     ${IMGUI_SOURCES}
     ${IMPLOT_SOURCES}
     kingdom_army_strength.cpp
@@ -60,14 +60,14 @@ add_executable(homm3viewer
     thieves_guild.h
     main.mm)
 
-target_include_directories(homm3viewer PRIVATE
+target_include_directories(h3viewer PRIVATE
     ${IMGUI_DIR}
     ${IMGUI_DIR}/backends
     ${IMPLOT_DIR}
     ${GLFW_DIR}/include
 )
 
-target_link_libraries(homm3viewer PRIVATE
+target_link_libraries(h3viewer PRIVATE
     "-framework Metal"
     "-framework MetalKit"
     "-framework Cocoa"
