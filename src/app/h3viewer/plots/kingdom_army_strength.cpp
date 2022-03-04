@@ -3,9 +3,6 @@
 #include <imgui.h>
 #include <implot.h>
 
-#include <algorithm>
-#include <utility>
-
 namespace
 {
 h3viewer::kingdom_army_strength::PlotData gPlotData;
