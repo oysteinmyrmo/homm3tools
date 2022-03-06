@@ -1,6 +1,7 @@
 #pragma once
 
 #include "creatures.h"
+#include "stats.h"
 
 #include <cstddef>
 #include <cstdint>
@@ -21,6 +22,7 @@ struct Town
     static constexpr uint8_t noOwner = 0xFF;
 
     size_t sizeOfWithName() const { return sizeOfWithoutName() + name.size(); }
+    uint64_t armyStrength() const { return stats::army_strength(*this); }
 
     uint8_t owner;                          // -71
     uint8_t _unused0[3];

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "creatures.h"
+#include "stats.h"
 
 #include <algorithm>
 #include <array>
@@ -33,6 +34,9 @@ struct Hero
     static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }
     static constexpr uint8_t maxPrimarySkillValue = 99;
 
+    uint64_t armyStrength() const { return stats::army_strength(*this); }
+    bool garrison() const { return (on_map == 0) && (player < 8); } // TODO: Read h3::player::maxPlayers instead.
+
     // In-game primary values are clamped. Note that these values can overflow in the save files.
     uint8_t attackInGame() const { return std::min(attack, maxPrimarySkillValue); }
     uint8_t defenseInGame() const { return std::min(defense, maxPrimarySkillValue); }
@@ -43,7 +47,7 @@ struct Hero
     uint16_t x = 0xFFFF;                    // -195
     uint16_t y = 0XFFFF;                    // -193
     uint16_t z = 0xFFFF;                    // -191
-    uint8_t on_map = 0;                     // -189 (1 = on the map, 0 = visiting town or in prison. Position is set when in prison.)
+    uint8_t on_map = 0;                     // -189 (1 = on the map, 0 = town garrison or in prison. Position is set when in prison.)
     uint8_t _unused1[19];
     uint8_t player = 0xFF;                  // -169
     uint8_t _unused2[14];

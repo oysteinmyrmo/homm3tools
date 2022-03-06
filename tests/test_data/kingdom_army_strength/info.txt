@@ -1,0 +1,73 @@
+Notes about KAS:
+1. KAS is affected by hero attack and defense.
+2. Hero attack/defense is NOT considered when hero is in garrison. (verify)
+3. Units in towns are calculated as part of KAS (no attack/defense modifier as if hero visiting).
+4. KAS can be equal (though unlikely in a real game).
+
+[hotseat] 111.GM2:
+- Green Player:
+  - GreensTown (no units)
+  - Rion 1 angel, [0,0,1,1] primary stats
+  - KAS = 5019
+- Orange Player:
+  - OrangesTown (no units)
+  - Adelaide 1 angel, [0,0,1,1] primary stats
+  - KAS = 5019
+- Purple Player:
+  - PurplesTown (no units)
+  - Ingham 1 angel, [0,0,1,1] primary stats
+  - KAS = 5019
+
+// Rion +1 attack.
+// Adelaide +1 defense.
+[hotseat] 112.GM2:
+- Green Player:
+  - Rion 1 angel, [1,0,1,1] primary stats
+  - KAS = 5142
+- Orange Player:
+  - Adelaide 1 angel, [0,1,1,1] primary stats
+  - KAS = 5142
+- Purple Player:
+  - Ingham 1 angel, [0,0,1,1] primary stats
+  - KAS = 5019
+
+// Ingham +1 attack, +1 defense.
+[hotseat] 113.GM2:
+- Green Player:
+  - Rion 1 angel, [1,0,1,1] primary stats, VISITING
+  - KAS = 5142
+- Orange Player:
+  - Adelaide 1 angel, [0,1,1,1] primary stats, VISITING
+  - KAS = 5142
+- Purple Player:
+  - Ingham 1 angel, [1,1,1,1] primary stats
+  - KAS = 5269
+
+// Green recruits 14 halberdiers in town. Rion is visiting.
+// Orange recruits 14 halberdiers in town. Adelaide is visiting.
+[hotseat] 114.GM2:
+- Green Player:
+  - GreensTown: 14 halberdiers
+  - Rion 1 angel, [1,0,1,1] primary stats, VISITING
+  - KAS = 6752
+- Orange Player:
+  - OrangesTown: 14 halberdiers
+  - Adelaide 1 angel, [0,1,1,1] primary stats, VISITING
+  - KAS = 6752
+- Purple Player:
+  - Ingham 1 angel, [1,1,1,1] primary stats
+  - KAS = 5269
+
+// Green moves Rion to garrison.
+// Orange moves Adelaide to garrison.
+// Purple recruits 14 halberdiers in town. Moves Ingham to garrison.
+[hotseat] 115.GM2:
+- Green Player:
+  - Rion 1 angel, 14 halberdiers, [1,0,1,1] primary stats, GARRISON
+  - KAS = 6629
+- Orange Player:
+  - Adelaide 1 angel, 14 halberdiers, [0,1,1,1] primary stats, GARRISON
+  - KAS = 6629
+- Purple Player:
+  - Ingham 1 angel, 14 halberdiers, [1,1,1,1] primary stats, GARRISON
+  - KAS = 6629

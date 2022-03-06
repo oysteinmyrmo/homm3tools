@@ -40,3 +40,7 @@ add_test(NAME test-towns COMMAND test-towns)
 add_executable(test-savefile test-savefile.cpp)
 target_link_libraries(test-savefile PRIVATE homm3tools)
 add_test(NAME test-savefile COMMAND test-savefile)
+
+add_executable(test-kingdom-army-strength test-kingdom-army-strength.cpp)
+target_link_libraries(test-kingdom-army-strength PRIVATE homm3tools)
+add_test(NAME test-kingdom-army-strength COMMAND test-kingdom-army-strength)

@@ -33,11 +33,11 @@ uint64_t Player::kingdomArmyStrength() const
     uint64_t kas = 0;
     for (const auto &hero : heroes_)
     {
-        // TODO: Verify if/how visiting heroes are added to kingdom army strength.
-        if (hero.on_map == 1)
-        {
-            kas += stats::army_strength(hero);
-        }
+        kas += hero.armyStrength();
+    }
+    for (const auto &town : towns_)
+    {
+        kas += town.armyStrength();
     }
     return kas;
 }
