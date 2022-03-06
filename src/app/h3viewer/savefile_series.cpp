@@ -54,7 +54,7 @@ SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
         auto savefile = h3::SaveFile(input);
         if (savefile.valid())
         {
-            series.files.push_back(std::move(savefile));
+            series.files.emplace_back(std::move(savefile));
         }
     }
 
