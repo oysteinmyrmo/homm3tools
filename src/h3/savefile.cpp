@@ -24,13 +24,27 @@ std::vector<char> decompress(const fs::path &path)
         return {};
     }
 
+    constexpr size_t bufSize = 8192;
+    uint8_t unzipBuffer[bufSize];
+    int unzippedBytes = bufSize;
     std::vector<char> unzippedData;
-    uint8_t unzipBuffer[8192];
-    int unzippedBytes = 0;
+    unzippedData.reserve(bufSize * 200); // Semi-arbitrary
 
-    while (unzippedBytes >= 0)
+    while (unzippedBytes == bufSize)
     {
-        unzippedBytes = gzread(inFileZ, unzipBuffer, 8192);
+        unzippedBytes = gzread(inFileZ, unzipBuffer, bufSize);
+
+        if (unzippedBytes == -1)
+        {
+            // TODO: Do anything when errors are hit? For multiplayer test games the following error is hit:
+            // -3 / "/path/to/file.GM6: incorrect data check"
+            // Everything seems to work fine though...
+            int errnum;
+            const char *err = gzerror(inFileZ, &errnum);
+            printf(err, "%s\n");
+            break;
+        }
+
         if (unzippedBytes > 0)
         {
             unzippedData.insert(unzippedData.end(), unzipBuffer, unzipBuffer + unzippedBytes);
