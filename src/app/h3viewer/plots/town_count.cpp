@@ -76,6 +76,9 @@ void draw()
 
                 ImPlot::SetNextLineStyle(color);
                 ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
+
+                ImPlot::SetNextLineStyle(color);
+                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
             }
         }
 

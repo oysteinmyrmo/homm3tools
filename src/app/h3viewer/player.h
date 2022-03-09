@@ -13,6 +13,7 @@ struct Player
 {
     std::string name;
     ImVec4 color;
+    uint64_t vanquishedDay = 0;
     bool active = false; // Whether or not the player is part of the game.
 };
 

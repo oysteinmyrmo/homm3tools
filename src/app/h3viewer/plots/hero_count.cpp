@@ -92,6 +92,9 @@ void draw()
                     const auto &y_vals = plotData.allHeroes[i].data();
                     ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
                 }
+
+                ImPlot::SetNextLineStyle(color);
+                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
             }
         }
 

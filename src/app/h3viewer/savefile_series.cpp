@@ -47,6 +47,7 @@ SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
         }
     }
 
+    uint64_t day = 1;
     series.files.reserve(savefiles.size());
     for (const auto &s : savefiles)
     {
@@ -54,8 +55,18 @@ SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
         auto savefile = h3::SaveFile(input);
         if (savefile.valid())
         {
+            const auto playersInSavefile = h3::player::players(savefile);
+            for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+            {
+                if (playersInSavefile[i].alive())
+                {
+                    series.players[i].vanquishedDay = day;
+                }
+            }
+
             series.files.emplace_back(std::move(savefile));
         }
+        ++day;
     }
 
     if (series.files.size())
