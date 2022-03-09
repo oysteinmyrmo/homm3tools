@@ -23,7 +23,7 @@ PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
     x_vals.resize(size, 0);
     for (uint64_t i = 0; i < size; ++i)
     {
-        x_vals[i] = i; // The x-values are simply the day from 0 through N.
+        x_vals[i] = i + 1; // The x-values are simply the day from 1 through N.
     }
 
     for (auto &item : allHeroes)
@@ -93,7 +93,7 @@ void draw()
         {
             gWasReset = false;
             const uint64_t maxY = settings.showHeroesInGarrison ? plotData.allHeroesMaxValue() : h3::player::maxPlayers;
-            ImPlot::SetupAxesLimits(0, plotData.x_vals.size(), 0, maxY + 1, ImPlotCond_Always);
+            ImPlot::SetupAxesLimits(1, plotData.x_vals.size(), 0, maxY + 1, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
