@@ -1,5 +1,7 @@
 #include "hero_count.h"
 
+#include <h3/player.h>
+
 #include <imgui.h>
 #include <implot.h>
 
@@ -51,6 +53,18 @@ PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
     }
 }
 
+size_t PlotData::allHeroesMaxValue() const
+{
+    uint64_t max = 0;
+    for (const auto &h : allHeroes)
+    {
+        const auto maxElement = std::max_element(h.begin(), h.end());
+        const auto idx = std::distance(h.begin(), maxElement);
+        max = std::max(max, h[idx]);
+    }
+    return max;
+}
+
 void reset(const SaveFileSeries &series)
 {
     gPlotData = PlotData(series);
@@ -60,6 +74,17 @@ void reset(const SaveFileSeries &series)
 void draw()
 {
     const auto &plotData = gPlotData;
+    auto &settings = gPlotData.settings;
+
+    ImGui::BeginGroup();
+    ImGui::Checkbox("Show Vanquish Lines##Heroes", &settings.showVanquishedDay);
+    if (ImGui::Checkbox("Show Heroes In Garrison", &settings.showHeroesInGarrison))
+    {
+        gWasReset = true;
+    }
+    ImGui::EndGroup();
+
+    ImGui::SameLine();
 
     if (ImPlot::BeginPlot("Number of Heroes"))
     {
@@ -67,7 +92,8 @@ void draw()
         if (gWasReset)
         {
             gWasReset = false;
-            ImPlot::SetupAxesLimits(0, plotData.x_vals.size(), 0, 8, ImPlotCond_Always);
+            const uint64_t maxY = settings.showHeroesInGarrison ? plotData.allHeroesMaxValue() : h3::player::maxPlayers;
+            ImPlot::SetupAxesLimits(0, plotData.x_vals.size(), 0, maxY + 1, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
@@ -82,19 +108,22 @@ void draw()
 
                 ImPlot::SetNextLineStyle(color);
 
-                if (true) // TODO: Add checkbox to toggle all/on_map
-                {
-                    const auto &y_vals = plotData.heroesOnMap[i].data();
-                    ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
-                }
-                else
+                if (settings.showHeroesInGarrison)
                 {
                     const auto &y_vals = plotData.allHeroes[i].data();
                     ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
                 }
+                else
+                {
+                    const auto &y_vals = plotData.heroesOnMap[i].data();
+                    ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
+                }
 
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
+                if (settings.showVanquishedDay)
+                {
+                    ImPlot::SetNextLineStyle(color);
+                    ImPlot::PlotVLines("", &player.vanquishedDay, 1);
+                }
             }
         }
 

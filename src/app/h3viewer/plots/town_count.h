@@ -13,6 +13,11 @@ namespace h3viewer::town_count
 {
 struct PlotData
 {
+    struct Settings
+    {
+        bool showVanquishedDay = false;
+    };
+
     PlotData() = default;
     PlotData(const PlotData &) = default;
     explicit PlotData(const SaveFileSeries &series);
@@ -21,6 +26,7 @@ struct PlotData
     std::array<std::vector<uint64_t>, h3::player::maxPlayers> towns;
     std::vector<uint64_t> x_vals;
     uint64_t max = 0;
+    Settings settings;
 };
 
 void reset(const SaveFileSeries &series);

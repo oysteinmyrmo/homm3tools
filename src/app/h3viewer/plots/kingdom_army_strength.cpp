@@ -47,6 +47,13 @@ void reset(const SaveFileSeries &series)
 void draw()
 {
     const auto &plotData = gPlotData;
+    auto &settings = gPlotData.settings;
+
+    ImGui::BeginGroup();
+    ImGui::Checkbox("Show Vanquish Lines##KAS", &settings.showVanquishedDay);
+    ImGui::EndGroup();
+
+    ImGui::SameLine();
 
     if (ImPlot::BeginPlot("Kingdom Army Strength"))
     {
@@ -71,8 +78,11 @@ void draw()
                 ImPlot::SetNextLineStyle(color);
                 ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
 
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
+                if (settings.showVanquishedDay)
+                {
+                    ImPlot::SetNextLineStyle(color);
+                    ImPlot::PlotVLines("", &player.vanquishedDay, 1);
+                }
             }
         }
 
