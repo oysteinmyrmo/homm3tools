@@ -44,16 +44,14 @@ void reset(const SaveFileSeries &series)
     gWasReset = true;
 }
 
-void draw()
+void drawTools()
 {
-    const auto &plotData = gPlotData;
-    auto &settings = gPlotData.settings;
+    ImGui::Checkbox("Show Vanquish Lines##KAS", &gPlotData.settings.showVanquishedDay);
+}
 
-    ImGui::BeginGroup();
-    ImGui::Checkbox("Show Vanquish Lines##KAS", &settings.showVanquishedDay);
-    ImGui::EndGroup();
-
-    ImGui::SameLine();
+void drawPlot()
+{
+    const auto &plot = gPlotData;
 
     if (ImPlot::BeginPlot("Kingdom Army Strength"))
     {
@@ -61,24 +59,24 @@ void draw()
         if (gWasReset)
         {
             gWasReset = false;
-            ImPlot::SetupAxesLimits(1, plotData.x_vals.size(), 0, plotData.max, ImPlotCond_Always);
+            ImPlot::SetupAxesLimits(1, plot.x_vals.size(), 0, plot.max, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
         {
-            const auto &player = plotData.players[i];
+            const auto &player = plot.players[i];
             if (player.active)
             {
                 const auto &name = player.name;
                 const auto &color = player.color;
-                const auto &x_vals = plotData.x_vals.data();
-                const auto &y_vals = plotData.kas[i].data();
-                const auto &size = plotData.x_vals.size();
+                const auto &x_vals = plot.x_vals.data();
+                const auto &y_vals = plot.kas[i].data();
+                const auto &size = plot.x_vals.size();
 
                 ImPlot::SetNextLineStyle(color);
                 ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
 
-                if (settings.showVanquishedDay)
+                if (plot.settings.showVanquishedDay)
                 {
                     ImPlot::SetNextLineStyle(color);
                     ImPlot::PlotVLines("", &player.vanquishedDay, 1);

@@ -33,5 +33,6 @@ struct PlotData
 };
 
 void reset(const SaveFileSeries &series);
-void draw();
+void drawTools();
+void drawPlot();
 } // namespace h3viewer::hero_count

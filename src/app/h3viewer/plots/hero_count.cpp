@@ -71,20 +71,18 @@ void reset(const SaveFileSeries &series)
     gWasReset = true;
 }
 
-void draw()
+void drawTools()
 {
-    const auto &plotData = gPlotData;
-    auto &settings = gPlotData.settings;
-
-    ImGui::BeginGroup();
-    ImGui::Checkbox("Show Vanquish Lines##Heroes", &settings.showVanquishedDay);
-    if (ImGui::Checkbox("Show Heroes In Garrison", &settings.showHeroesInGarrison))
+    ImGui::Checkbox("Show Vanquish Lines##Heroes", &gPlotData.settings.showVanquishedDay);
+    if (ImGui::Checkbox("Show Heroes In Garrison", &gPlotData.settings.showHeroesInGarrison))
     {
         gWasReset = true;
     }
-    ImGui::EndGroup();
+}
 
-    ImGui::SameLine();
+void drawPlot()
+{
+    const auto &plot = gPlotData;
 
     if (ImPlot::BeginPlot("Number of Heroes"))
     {
@@ -92,34 +90,34 @@ void draw()
         if (gWasReset)
         {
             gWasReset = false;
-            const uint64_t maxY = settings.showHeroesInGarrison ? plotData.allHeroesMaxValue() : h3::player::maxPlayers;
-            ImPlot::SetupAxesLimits(1, plotData.x_vals.size(), 0, maxY + 1, ImPlotCond_Always);
+            const uint64_t maxY = plot.settings.showHeroesInGarrison ? plot.allHeroesMaxValue() : h3::player::maxPlayers;
+            ImPlot::SetupAxesLimits(1, plot.x_vals.size(), 0, maxY + 1, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
         {
-            const auto &player = plotData.players[i];
+            const auto &player = plot.players[i];
             if (player.active)
             {
                 const auto &name = player.name;
                 const auto &color = player.color;
-                const auto &x_vals = plotData.x_vals.data();
-                const auto &size = plotData.x_vals.size();
+                const auto &x_vals = plot.x_vals.data();
+                const auto &size = plot.x_vals.size();
 
                 ImPlot::SetNextLineStyle(color);
 
-                if (settings.showHeroesInGarrison)
+                if (plot.settings.showHeroesInGarrison)
                 {
-                    const auto &y_vals = plotData.allHeroes[i].data();
+                    const auto &y_vals = plot.allHeroes[i].data();
                     ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
                 }
                 else
                 {
-                    const auto &y_vals = plotData.heroesOnMap[i].data();
+                    const auto &y_vals = plot.heroesOnMap[i].data();
                     ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
                 }
 
-                if (settings.showVanquishedDay)
+                if (plot.settings.showVanquishedDay)
                 {
                     ImPlot::SetNextLineStyle(color);
                     ImPlot::PlotVLines("", &player.vanquishedDay, 1);
