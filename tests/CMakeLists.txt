@@ -1,46 +1,32 @@
 configure_file(test_data.h.in "${CMAKE_BINARY_DIR}/test_data.h")
 include_directories("${CMAKE_BINARY_DIR}")
 
-add_executable(test-hero-movement test-hero-movement.cpp)
-target_link_libraries(test-hero-movement PRIVATE homm3tools)
-add_test(NAME test-hero-movement COMMAND test-hero-movement)
+include(FetchContent)
 
-add_executable(test-hero-movement-gigantic test-hero-movement-gigantic.cpp)
-target_link_libraries(test-hero-movement-gigantic PRIVATE homm3tools)
-add_test(NAME test-hero-movement-gigantic COMMAND test-hero-movement-gigantic)
+FetchContent_Declare(
+    catch2
+    GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+    GIT_TAG        216713a4066b79d9803d374f261ccb30c0fb451f # v2.13.8
+)
 
-add_executable(test-creatures test-creatures.cpp)
-target_link_libraries(test-creatures PRIVATE homm3tools)
-add_test(NAME test-creatures COMMAND test-creatures)
+FetchContent_MakeAvailable(catch2)
+set(CATCH2_DIR "${catch2_SOURCE_DIR}")
 
-add_executable(test-spell-points test-spell-points.cpp)
-target_link_libraries(test-spell-points PRIVATE homm3tools)
-add_test(NAME test-spell-points COMMAND test-spell-points)
+add_executable(homm3tests
+    ${CATCH2_DIR}/src/catch_with_main.cpp
+    test-creatures.cpp
+    test-hero-movement.cpp
+    test-hero-movement-gigantic.cpp
+    test-hero-player.cpp
+    test-hero-town.cpp
+    test-kingdom-army-strength.cpp
+    test-primary-skills.cpp
+    test-prison.cpp
+    test-savefile.cpp
+    test-spell-points.cpp
+    test-towns.cpp
+)
 
-add_executable(test-primary-skills test-primary-skills.cpp)
-target_link_libraries(test-primary-skills PRIVATE homm3tools)
-add_test(NAME test-primary-skills COMMAND test-primary-skills)
-
-add_executable(test-hero-player test-hero-player.cpp)
-target_link_libraries(test-hero-player PRIVATE homm3tools)
-add_test(NAME test-hero-player COMMAND test-hero-player)
-
-add_executable(test-hero-town test-hero-town.cpp)
-target_link_libraries(test-hero-town PRIVATE homm3tools)
-add_test(NAME test-hero-town COMMAND test-hero-town)
-
-add_executable(test-prison test-prison.cpp)
-target_link_libraries(test-prison PRIVATE homm3tools)
-add_test(NAME test-prison COMMAND test-prison)
-
-add_executable(test-towns test-towns.cpp)
-target_link_libraries(test-towns PRIVATE homm3tools)
-add_test(NAME test-towns COMMAND test-towns)
-
-add_executable(test-savefile test-savefile.cpp)
-target_link_libraries(test-savefile PRIVATE homm3tools)
-add_test(NAME test-savefile COMMAND test-savefile)
-
-add_executable(test-kingdom-army-strength test-kingdom-army-strength.cpp)
-target_link_libraries(test-kingdom-army-strength PRIVATE homm3tools)
-add_test(NAME test-kingdom-army-strength COMMAND test-kingdom-army-strength)
+target_link_libraries(homm3tests PRIVATE homm3tools)
+target_include_directories(homm3tests PRIVATE ${CATCH2_DIR}/single_include)
+add_test(NAME homm3tests COMMAND homm3tests)

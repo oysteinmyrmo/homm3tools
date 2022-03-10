@@ -1,119 +1,107 @@
-#include <h3/creatures.h>
-#include <h3/hero.h>
-#include <h3/savefile.h>
-#include <h3/stats.h>
-
+#include <catch2/catch.hpp>
 #include <test_data.h>
 
-#include <cassert>
+#include <h3/hero.h>
+#include <h3/savefile.h>
+
 #include <filesystem>
 
-namespace  {
-namespace fs = std::filesystem;
-
+namespace
+{
 using h3::Hero;
 using h3::SaveFile;
-}
 
-void test_day1(const SaveFile &save)
+std::filesystem::path testDataDir(h3::test::testDataDir / "primary_skills");
+} // namespace
+
+TEST_CASE("primary-skills-day1", "[hero][primary-skills]")
 {
-    assert(save.valid());
+    SaveFile save({testDataDir / "[hotseat] 111.GM2"});
+    REQUIRE(save.valid());
 
     Hero hero = save.findHero("Clavius");
-    assert(hero.attack    == 1);
-    assert(hero.defense   == 2);
-    assert(hero.power     == 3);
-    assert(hero.knowledge == 4);
-    assert(hero.attackInGame()    == 1);
-    assert(hero.defenseInGame()   == 2);
-    assert(hero.powerInGame()     == 3);
-    assert(hero.knowledgeInGame() == 4);
+    REQUIRE(hero.attack    == 1);
+    REQUIRE(hero.defense   == 2);
+    REQUIRE(hero.power     == 3);
+    REQUIRE(hero.knowledge == 4);
+    REQUIRE(hero.attackInGame()    == 1);
+    REQUIRE(hero.defenseInGame()   == 2);
+    REQUIRE(hero.powerInGame()     == 3);
+    REQUIRE(hero.knowledgeInGame() == 4);
 
     hero = save.findHero("Nagash");
-    assert(hero.attack    == 10);
-    assert(hero.defense   == 20);
-    assert(hero.power     == 30);
-    assert(hero.knowledge == 40);
-    assert(hero.attackInGame()    == 10);
-    assert(hero.defenseInGame()   == 20);
-    assert(hero.powerInGame()     == 30);
-    assert(hero.knowledgeInGame() == 40);
+    REQUIRE(hero.attack    == 10);
+    REQUIRE(hero.defense   == 20);
+    REQUIRE(hero.power     == 30);
+    REQUIRE(hero.knowledge == 40);
+    REQUIRE(hero.attackInGame()    == 10);
+    REQUIRE(hero.defenseInGame()   == 20);
+    REQUIRE(hero.powerInGame()     == 30);
+    REQUIRE(hero.knowledgeInGame() == 40);
 
     hero = save.findHero("Erdamon");
-    assert(hero.attack    == 99);
-    assert(hero.defense   == 99);
-    assert(hero.power     == 99);
-    assert(hero.knowledge == 99);
-    assert(hero.attackInGame()    == 99);
-    assert(hero.defenseInGame()   == 99);
-    assert(hero.powerInGame()     == 99);
-    assert(hero.knowledgeInGame() == 99);
+    REQUIRE(hero.attack    == 99);
+    REQUIRE(hero.defense   == 99);
+    REQUIRE(hero.power     == 99);
+    REQUIRE(hero.knowledge == 99);
+    REQUIRE(hero.attackInGame()    == 99);
+    REQUIRE(hero.defenseInGame()   == 99);
+    REQUIRE(hero.powerInGame()     == 99);
+    REQUIRE(hero.knowledgeInGame() == 99);
 
     hero = save.findHero("Theodorus");
-    assert(hero.attack    == 99);
-    assert(hero.defense   == 99);
-    assert(hero.power     == 99);
-    assert(hero.knowledge == 99);
-    assert(hero.attackInGame()    == 99);
-    assert(hero.defenseInGame()   == 99);
-    assert(hero.powerInGame()     == 99);
-    assert(hero.knowledgeInGame() == 99);
+    REQUIRE(hero.attack    == 99);
+    REQUIRE(hero.defense   == 99);
+    REQUIRE(hero.power     == 99);
+    REQUIRE(hero.knowledge == 99);
+    REQUIRE(hero.attackInGame()    == 99);
+    REQUIRE(hero.defenseInGame()   == 99);
+    REQUIRE(hero.powerInGame()     == 99);
+    REQUIRE(hero.knowledgeInGame() == 99);
 }
 
-void test_day2(const SaveFile &save)
+TEST_CASE("primary-skills-day2", "[hero][primary-skills]")
 {
-    assert(save.valid());
+    SaveFile save({testDataDir / "[hotseat] 112.GM2"});
+    REQUIRE(save.valid());
 
     Hero hero = save.findHero("Clavius");
-    assert(hero.attack    == 1);
-    assert(hero.defense   == 2);
-    assert(hero.power     == 12);
-    assert(hero.knowledge == 4);
-    assert(hero.attackInGame()    ==  1);
-    assert(hero.defenseInGame()   ==  2);
-    assert(hero.powerInGame()     == 12);
-    assert(hero.knowledgeInGame() ==  4);
+    REQUIRE(hero.attack    == 1);
+    REQUIRE(hero.defense   == 2);
+    REQUIRE(hero.power     == 12);
+    REQUIRE(hero.knowledge == 4);
+    REQUIRE(hero.attackInGame()    ==  1);
+    REQUIRE(hero.defenseInGame()   ==  2);
+    REQUIRE(hero.powerInGame()     == 12);
+    REQUIRE(hero.knowledgeInGame() ==  4);
 
     hero = save.findHero("Nagash");
-    assert(hero.attack    == 10);
-    assert(hero.defense   == 20);
-    assert(hero.power     == 30);
-    assert(hero.knowledge == 49);
-    assert(hero.attackInGame()    == 10);
-    assert(hero.defenseInGame()   == 20);
-    assert(hero.powerInGame()     == 30);
-    assert(hero.knowledgeInGame() == 49);
+    REQUIRE(hero.attack    == 10);
+    REQUIRE(hero.defense   == 20);
+    REQUIRE(hero.power     == 30);
+    REQUIRE(hero.knowledge == 49);
+    REQUIRE(hero.attackInGame()    == 10);
+    REQUIRE(hero.defenseInGame()   == 20);
+    REQUIRE(hero.powerInGame()     == 30);
+    REQUIRE(hero.knowledgeInGame() == 49);
 
     hero = save.findHero("Erdamon");
-    assert(hero.attack    == 101);
-    assert(hero.defense   == 105);
-    assert(hero.power     ==  99);
-    assert(hero.knowledge ==  99);
-    assert(hero.attackInGame()    == 99);
-    assert(hero.defenseInGame()   == 99);
-    assert(hero.powerInGame()     == 99);
-    assert(hero.knowledgeInGame() == 99);
+    REQUIRE(hero.attack    == 101);
+    REQUIRE(hero.defense   == 105);
+    REQUIRE(hero.power     ==  99);
+    REQUIRE(hero.knowledge ==  99);
+    REQUIRE(hero.attackInGame()    == 99);
+    REQUIRE(hero.defenseInGame()   == 99);
+    REQUIRE(hero.powerInGame()     == 99);
+    REQUIRE(hero.knowledgeInGame() == 99);
 
     hero = save.findHero("Theodorus");
-    assert(hero.attack    ==  99);
-    assert(hero.defense   ==  99);
-    assert(hero.power     ==  99);
-    assert(hero.knowledge == 107);
-    assert(hero.attackInGame()    == 99);
-    assert(hero.defenseInGame()   == 99);
-    assert(hero.powerInGame()     == 99);
-    assert(hero.knowledgeInGame() == 99);
-}
-
-int main()
-{
-    fs::path dir(h3::test::testDataDir / "primary_skills");
-
-    h3::SaveFile day1({dir / "[hotseat] 111.GM2"});
-    h3::SaveFile day2({dir / "[hotseat] 112.GM2"});
-
-    test_day1(day1);
-    test_day2(day2);
-
-    return 0;
+    REQUIRE(hero.attack    ==  99);
+    REQUIRE(hero.defense   ==  99);
+    REQUIRE(hero.power     ==  99);
+    REQUIRE(hero.knowledge == 107);
+    REQUIRE(hero.attackInGame()    == 99);
+    REQUIRE(hero.defenseInGame()   == 99);
+    REQUIRE(hero.powerInGame()     == 99);
+    REQUIRE(hero.knowledgeInGame() == 99);
 }

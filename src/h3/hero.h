@@ -36,6 +36,7 @@ struct Hero
 
     uint64_t armyStrength() const { return stats::army_strength(*this); }
     bool garrison() const { return (on_map == 0) && (player < 8); } // TODO: Read h3::player::maxPlayers instead.
+    bool prison() const { return (on_map == 0) && (player == 0xFF); } // TODO: Read h3::player::maxPlayers instead.
 
     // In-game primary values are clamped. Note that these values can overflow in the save files.
     uint8_t attackInGame() const { return std::min(attack, maxPrimarySkillValue); }
