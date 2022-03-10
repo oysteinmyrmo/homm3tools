@@ -1,0 +1,229 @@
+Start:
+- Purple, Giselle:
+  - Level: 1
+  - Experience: 0
+  - Primary skills: [1,3,1,1]
+  - Secondary skills:
+    - Interference, Advanced
+- Teal, Thant:
+  - Level: 1
+  - Experience: 0
+  - Primary skills: [1,0,2,2]
+  - Secondary skills:
+    - Necromancy, Basic
+    - Mysticism, Basic
+
+// Giselle: Kills 1500 peasants.
+// Thant: Kills 1800 peasants.
+Day1:
+- Purple, Giselle:
+  - Level: 2
+  - Experience: 1500
+  - Primary skills: [1,3,2,1]
+  - Secondary skills:
+    - Interference, Expert
+- Teal, Thant:
+  - Level: 2
+  - Experience: 1800
+  - Primary skills: [1,0,2,3]
+  - Secondary skills:
+    - Necromancy, Basic
+    - Mysticism, Basic
+    - Tactics, Basic
+
+// Giselle: Kills 2500 pixies.
+// Thant: Kills 2000 pikemen.
+Day2:
+- Purple, Giselle:
+  - Level: 7
+  - Experience: 9000
+  - Primary skills: [4,4,2,2]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Basic
+    - Artillery, Advanced
+    - Wisdom, Basic
+    - Tactics, Basic
+- Teal, Thant:
+  - Level: 12
+  - Experience: 21800
+  - Primary skills: [2,2,5,7]
+  - Secondary skills:
+    - Necromancy, Advanced
+    - Mysticism, Advanced
+    - Tactics, Basic
+    - Wisdom, Advanced
+    - Air Magic, Basic
+    - Earth Magic, Expert
+    - Ballistics, Basic
+    - Intelligence, Basic
+
+// Giselle: Kills 200 zombies.
+// Thant: Kills 2000 dwarves.
+Day3:
+- Purple, Giselle:
+  - Level: 9
+  - Experience: 13000
+  - Primary skills: [4,5,3,2]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Advanced
+    - Artillery, Advanced
+    - Wisdom, Basic
+    - Tactics, Basic
+    - Logistics, Basic
+- Teal, Thant:
+  - Level: 18
+  - Experience: 61800
+  - Primary skills: [3,5,6,8]
+  - Secondary skills:
+    - Necromancy, Expert
+    - Mysticism, Expert
+    - Tactics, Basic
+    - Wisdom, Expert
+    - Air Magic, Expert
+    - Earth Magic, Expert
+    - Ballistics, Advanced
+    - Intelligence, Basic
+
+// Giselle: Kills 1000 master gremlins.
+// Thant: Kills 1000 nomads.
+Day4:
+- Purple, Giselle:
+  - Level: 10
+  - Experience: 17000
+  - Primary skills: [4,5,4,2]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Advanced
+    - Artillery, Advanced
+    - Wisdom, Basic
+    - Tactics, Basic
+    - Logistics, Advanced
+- Teal, Thant:
+  - Level: 20
+  - Experience: 91800
+  - Primary skills: [4,5,7,8]
+  - Secondary skills:
+    - Necromancy, Expert
+    - Mysticism, Expert
+    - Tactics, Basic
+    - Wisdom, Expert
+    - Air Magic, Expert
+    - Earth Magic, Expert
+    - Ballistics, Expert
+    - Intelligence, Advanced
+
+// Giselle: Kills 600 boars.
+// Thant: Kills 500 serpent flies.
+Day5:
+- Purple, Giselle:
+  - Level: 13
+  - Experience: 26000
+  - Primary skills: [5,6,5,2]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Expert
+    - Artillery, Advanced
+    - Wisdom, Advanced
+    - Tactics, Basic
+    - Logistics, Expert
+- Teal, Thant:
+  - Level: 21
+  - Experience: 101800
+  - Primary skills: [5,5,7,8]
+  - Secondary skills:
+    - Necromancy, Expert
+    - Mysticism, Expert
+    - Tactics, Basic
+    - Wisdom, Expert
+    - Air Magic, Expert
+    - Earth Magic, Expert
+    - Ballistics, Expert
+    - Intelligence, Expert
+
+// Giselle: Kills 150 griffins.
+// Thant: Kills 600 rogues.
+Day6:
+- Purple, Giselle:
+  - Level: 14
+  - Experience: 29750
+  - Primary skills: [5,6,5,3]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Expert
+    - Artillery, Advanced
+    - Wisdom, Expert
+    - Tactics, Basic
+    - Logistics, Expert
+- Teal, Thant:
+  - Level: 21
+  - Experience: 107800
+  - Primary skills: [5,5,7,8]
+  - Secondary skills:
+    - Necromancy, Expert
+    - Mysticism, Expert
+    - Tactics, Basic
+    - Wisdom, Expert
+    - Air Magic, Expert
+    - Earth Magic, Expert
+    - Ballistics, Expert
+    - Intelligence, Expert
+
+// Giselle: Kills 300 horned demons.
+// Thant: Kills 100 minotaur kings.
+Day7:
+- Purple, Giselle:
+  - Level: 16
+  - Experience: 41750
+  - Primary skills: [6,7,5,3]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Expert
+    - Artillery, Advanced
+    - Wisdom, Expert
+    - Tactics, Expert
+    - Logistics, Expert
+- Teal, Thant:
+  - Level: 21
+  - Experience: 112800
+  - Primary skills: [5,5,7,8]
+  - Secondary skills:
+    - Necromancy, Expert
+    - Mysticism, Expert
+    - Tactics, Basic
+    - Wisdom, Expert
+    - Air Magic, Expert
+    - Earth Magic, Expert
+    - Ballistics, Expert
+    - Intelligence, Expert
+
+// Giselle: Kills 413 hell hounds / 412 cerberi.
+// Thant: Kills 59 efreeti / 29 fire efreeti.
+Day8:
+- Purple, Giselle:
+  - Level: 18
+  - Experience: 62375
+  - Primary skills: [7,7,6,3]
+  - Secondary skills:
+    - Interference, Expert
+    - Water Magic, Expert
+    - Artillery, Advanced
+    - Wisdom, Expert
+    - Tactics, Expert
+    - Logistics, Expert
+	- Air Magic, Basic
+	- Armorer, Basic
+- Teal, Thant:
+  - Level: 22
+  - Experience: 120720
+  - Primary skills: [5,5,7,9]
+  - Secondary skills:
+    - Necromancy, Expert
+    - Mysticism, Expert
+    - Tactics, Advanced
+    - Wisdom, Expert
+    - Air Magic, Expert
+    - Earth Magic, Expert
+    - Ballistics, Expert
+    - Intelligence, Expert

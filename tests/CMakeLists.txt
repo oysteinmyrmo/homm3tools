@@ -15,6 +15,7 @@ set(CATCH2_DIR "${catch2_SOURCE_DIR}")
 add_executable(homm3tests
     ${CATCH2_DIR}/src/catch_with_main.cpp
     test-creatures.cpp
+    test-hero-experience.cpp
     test-hero-movement.cpp
     test-hero-movement-gigantic.cpp
     test-hero-player.cpp
