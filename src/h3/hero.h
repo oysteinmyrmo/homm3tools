@@ -63,7 +63,8 @@ struct Hero
     uint32_t experience = 0;                // -130
     uint8_t _unused6[4];
     uint16_t spell_points = 0;              // -122
-    uint8_t _unused7[64];
+    uint8_t level = 0;                      // -120
+    uint8_t _unused7[63];
     Creature creatures[maxStacks];          // -56
     uint32_t creature_count[maxStacks];     // -28
     uint8_t name[13];                       // 0

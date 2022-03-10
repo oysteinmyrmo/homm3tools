@@ -20,6 +20,7 @@ TEST_CASE("hero-experience-day1", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 2);
     REQUIRE(hero.experience == 1500);
     REQUIRE(hero.attack    == 1);
     REQUIRE(hero.defense   == 3);
@@ -27,6 +28,7 @@ TEST_CASE("hero-experience-day1", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 1);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 2);
     REQUIRE(hero.experience == 1800);
     REQUIRE(hero.attack    == 1);
     REQUIRE(hero.defense   == 0);
@@ -40,6 +42,7 @@ TEST_CASE("hero-experience-day2", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 7);
     REQUIRE(hero.experience == 9000);
     REQUIRE(hero.attack    == 4);
     REQUIRE(hero.defense   == 4);
@@ -47,6 +50,7 @@ TEST_CASE("hero-experience-day2", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 2);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 12);
     REQUIRE(hero.experience == 21800);
     REQUIRE(hero.attack    == 2);
     REQUIRE(hero.defense   == 2);
@@ -60,6 +64,7 @@ TEST_CASE("hero-experience-day3", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 9);
     REQUIRE(hero.experience == 13000);
     REQUIRE(hero.attack    == 4);
     REQUIRE(hero.defense   == 5);
@@ -67,6 +72,7 @@ TEST_CASE("hero-experience-day3", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 2);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 18);
     REQUIRE(hero.experience == 61800);
     REQUIRE(hero.attack    == 3);
     REQUIRE(hero.defense   == 5);
@@ -80,6 +86,7 @@ TEST_CASE("hero-experience-day4", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 10);
     REQUIRE(hero.experience == 17000);
     REQUIRE(hero.attack    == 4);
     REQUIRE(hero.defense   == 5);
@@ -87,6 +94,7 @@ TEST_CASE("hero-experience-day4", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 2);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 20);
     REQUIRE(hero.experience == 91800);
     REQUIRE(hero.attack    == 4);
     REQUIRE(hero.defense   == 5);
@@ -100,6 +108,7 @@ TEST_CASE("hero-experience-day5", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 13);
     REQUIRE(hero.experience == 26000);
     REQUIRE(hero.attack    == 5);
     REQUIRE(hero.defense   == 6);
@@ -107,6 +116,7 @@ TEST_CASE("hero-experience-day5", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 2);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 21);
     REQUIRE(hero.experience == 101800);
     REQUIRE(hero.attack    == 5);
     REQUIRE(hero.defense   == 5);
@@ -120,6 +130,7 @@ TEST_CASE("hero-experience-day6", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 14);
     REQUIRE(hero.experience == 29750);
     REQUIRE(hero.attack    == 5);
     REQUIRE(hero.defense   == 6);
@@ -127,6 +138,7 @@ TEST_CASE("hero-experience-day6", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 3);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 21);
     REQUIRE(hero.experience == 107800);
     REQUIRE(hero.attack    == 5);
     REQUIRE(hero.defense   == 5);
@@ -140,6 +152,7 @@ TEST_CASE("hero-experience-day7", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 16);
     REQUIRE(hero.experience == 41750);
     REQUIRE(hero.attack    == 6);
     REQUIRE(hero.defense   == 7);
@@ -147,6 +160,7 @@ TEST_CASE("hero-experience-day7", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 3);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 21);
     REQUIRE(hero.experience == 112800);
     REQUIRE(hero.attack    == 5);
     REQUIRE(hero.defense   == 5);
@@ -160,6 +174,7 @@ TEST_CASE("hero-experience-day8", "[hero][experience][level][secondary-skill]")
     REQUIRE(save.valid());
 
     Hero hero = save.findHero("Giselle");
+    REQUIRE(hero.level == 18);
     REQUIRE(hero.experience == 62375);
     REQUIRE(hero.attack    == 7);
     REQUIRE(hero.defense   == 7);
@@ -167,6 +182,7 @@ TEST_CASE("hero-experience-day8", "[hero][experience][level][secondary-skill]")
     REQUIRE(hero.knowledge == 3);
 
     hero = save.findHero("Thant");
+    REQUIRE(hero.level == 22);
     REQUIRE(hero.experience == 120720);
     REQUIRE(hero.attack    == 5);
     REQUIRE(hero.defense   == 5);
