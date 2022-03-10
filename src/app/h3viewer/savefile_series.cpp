@@ -60,7 +60,8 @@ SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
             {
                 if (playersInSavefile[i].alive())
                 {
-                    series.players[i].vanquishedDay = day;
+                    // Almost dead yesterday, maybe dead tomorrow, but alive, gloriously alive, today!
+                    series.players[i].vanquishedDay = day + 1;
                 }
             }
 
