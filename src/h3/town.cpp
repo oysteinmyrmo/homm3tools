@@ -1,6 +1,8 @@
 #include "town.h"
 #include "value_reader.h"
 
+#include <cassert>
+
 namespace h3::town
 {
 static_assert(Town::offsetFromNameToStart() == 71, "Offset to Town::name must be 71.");

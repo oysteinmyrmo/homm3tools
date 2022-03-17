@@ -13,14 +13,14 @@ std::vector<char> decompress(const fs::path &path)
 {
     if (!fs::is_regular_file(path))
     {
-        printf("Error: %s is not a regular file.\n", path.c_str());
+        printf("Error: %s is not a regular file.\n", path.string().c_str());
         return {};
     }
 
-    gzFile inFileZ = gzopen(path.c_str(), "rb");
+    gzFile inFileZ = gzopen(path.string().c_str(), "rb");
     if (inFileZ == NULL)
     {
-        printf("Error: gzopen() failed for file %s.\n", path.c_str());
+        printf("Error: gzopen() failed for file %s.\n", path.string().c_str());
         return {};
     }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "creatures.h"
+#include "packed_structs.h"
 #include "stats.h"
 
 #include <algorithm>
@@ -29,6 +30,7 @@ enum class Orientation : uint8_t
 };
 
 // See also http://heroescommunity.com/viewthread.php3?TID=18817&PID=1366926#focus
+PACKED_STRUCT(
 struct Hero
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }
@@ -74,7 +76,7 @@ struct Hero
     uint8_t power = 0;                      // +84
     uint8_t knowledge = 0;                  // +85
     uint8_t _unused9[879];                  // +86
-} __attribute__((__packed__));
+});
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> output);

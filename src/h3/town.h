@@ -1,6 +1,7 @@
 #pragma once
 
 #include "creatures.h"
+#include "packed_structs.h"
 #include "stats.h"
 
 #include <cstddef>
@@ -15,6 +16,7 @@ using creatures::maxStacks;
 
 // Note: The size of the Town struct in the save file is variable due to the size
 // of the name being variable. sizeof(Town) is therefore 545 + name.size().
+PACKED_STRUCT(
 struct Town
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Town, name); }
@@ -36,7 +38,7 @@ struct Town
     uint16_t nameSize;                      // -2  <-- Note: The town name is of variable size.
     std::string name;                       // 0
     // Remaining bytes intentionally left out.
-} __attribute__((__packed__));
+});
 
 void readTown(const std::span<const char> data, size_t idx, Town &hero);
 void readAllTowns(const std::span<const char> data, size_t idx, size_t count, std::vector<Town> &towns);
