@@ -28,6 +28,7 @@ size_t firstHeroIndex(const std::span<const char> data, const std::string &first
 // All map sizes are quadratic (and may have underground).
 enum class MapSize : uint8_t
 {
+    NA  =    0,
     S   =   36,
     M   =   72,
     L   =  108,
@@ -37,6 +38,7 @@ enum class MapSize : uint8_t
     G   =  252
 };
 
+PACKED_STRUCT_BEGIN
 struct SaveFile
 {
     struct Input
@@ -65,8 +67,11 @@ struct SaveFile
     Hero findHero(const std::string &name) const;
 
     uint8_t header[8];
+    uint8_t _unused1[48];
     uint16_t heroCount;       // byte 56 <-- Has correct value, not sure if this is what it means.
+    uint8_t _unused2[5];
     MapSize mapSize;          // byte 63
+    uint8_t _unused3[3];
     uint8_t hasUnderground;   // byte 67
     uint16_t mapNameSize;     // byte 68
     std::string mapName;      // byte 70
@@ -75,7 +80,8 @@ struct SaveFile
 
     std::vector<Town> towns;
     std::array<Hero, hero::heroCount> heroes;
-};
+}
+PACKED_STRUCT_END;
 } // namespace h3::savefile
 
 namespace h3
