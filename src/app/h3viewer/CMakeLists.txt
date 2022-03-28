@@ -33,7 +33,6 @@ set(IMGUI_SOURCES
     ${IMGUI_DIR}/imgui_tables.cpp
     ${IMGUI_DIR}/imgui_widgets.cpp
     ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
-    ${IMGUI_DIR}/backends/imgui_impl_metal.mm
 )
 
 set(IMPLOT_SOURCES
@@ -42,12 +41,7 @@ set(IMPLOT_SOURCES
     ${IMPLOT_DIR}/implot_items.cpp
 )
 
-set(CMAKE_OBJCXX_FLAGS "${CMAKE_OBJCXX_FLAGS} -ObjC++ -fobjc-weak -fobjc-arc")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-weak")
-
-add_executable(h3viewer
-    ${IMGUI_SOURCES}
-    ${IMPLOT_SOURCES}
+set(H3VIEWER_SOURCES
     player.cpp
     player.h
     plots/hero_count.cpp
@@ -60,7 +54,20 @@ add_executable(h3viewer
     savefile_series.h
     thieves_guild.cpp
     thieves_guild.h
-    main.mm)
+)
+
+if(WIN32)
+    list(APPEND IMGUI_SOURCES ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp)
+    list(APPEND H3VIEWER_SOURCES main_opengl3.cpp)
+elseif(APPLE)
+    list(APPEND IMGUI_SOURCES ${IMGUI_DIR}/backends/imgui_impl_metal.mm)
+    list(APPEND H3VIEWER_SOURCES main_metal.mm)
+    set(CMAKE_OBJCXX_FLAGS "${CMAKE_OBJCXX_FLAGS} -ObjC++ -fobjc-weak -fobjc-arc")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-weak")
+endif()
+
+list(APPEND H3VIEWER_SOURCES ${IMGUI_SOURCES} ${IMPLOT_SOURCES})
+add_executable(h3viewer ${H3VIEWER_SOURCES})
 
 target_include_directories(h3viewer PRIVATE
     ${HOMM3TOOLS_APP_DIR}
@@ -71,12 +78,23 @@ target_include_directories(h3viewer PRIVATE
 )
 
 target_link_libraries(h3viewer PRIVATE
-    "-framework Metal"
-    "-framework MetalKit"
-    "-framework Cocoa"
-    "-framework IOKit"
-    "-framework CoreVideo"
-    "-framework QuartzCore"
     glfw
     homm3tools
 )
+
+if(WIN32)
+    target_link_libraries(h3viewer PRIVATE
+        opengl32.lib
+        gdi32.lib
+        shell32.lib
+    )
+elseif(APPLE)
+    target_link_libraries(h3viewer PRIVATE
+        "-framework Metal"
+        "-framework MetalKit"
+        "-framework Cocoa"
+        "-framework IOKit"
+        "-framework CoreVideo"
+        "-framework QuartzCore"
+    )
+endif()
