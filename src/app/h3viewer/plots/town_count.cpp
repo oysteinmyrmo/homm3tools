@@ -65,7 +65,9 @@ void drawPlot()
         if (gWasReset)
         {
             gWasReset = false;
-            ImPlot::SetupAxesLimits(1, plot.x_vals.size(), 0, plot.max, ImPlotCond_Always);
+            const double sizeX = double(plot.x_vals.size());
+            const double sizeY = double(plot.max);
+            ImPlot::SetupAxesLimits(1, sizeX, 0, sizeY, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
@@ -76,7 +78,7 @@ void drawPlot()
                 const auto &name = player.name;
                 const auto &color = player.color;
                 const auto &x_vals = plot.x_vals.data();
-                const auto &size = plot.x_vals.size();
+                const auto size = int(plot.x_vals.size());
                 const auto &y_vals = plot.towns[i].data();
 
                 ImPlot::SetNextLineStyle(color);

@@ -91,7 +91,9 @@ void drawPlot()
         {
             gWasReset = false;
             const uint64_t maxY = plot.settings.showHeroesInGarrison ? plot.allHeroesMaxValue() : h3::player::maxPlayers;
-            ImPlot::SetupAxesLimits(1, plot.x_vals.size(), 0, maxY + 1, ImPlotCond_Always);
+            const double sizeX = double(plot.x_vals.size());
+            const double sizeY = double(maxY + 1);
+            ImPlot::SetupAxesLimits(1, sizeX, 0, sizeY, ImPlotCond_Always);
         }
 
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
@@ -102,7 +104,7 @@ void drawPlot()
                 const auto &name = player.name;
                 const auto &color = player.color;
                 const auto &x_vals = plot.x_vals.data();
-                const auto &size = plot.x_vals.size();
+                const auto size = int(plot.x_vals.size());
 
                 ImPlot::SetNextLineStyle(color);
 
