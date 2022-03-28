@@ -21,4 +21,10 @@ The code in these files are used to build the other tools.
 ## h3decompress
 
 [h3decompress](https://github.com/oysteinmyrmo/homm3tools/tree/master/src/app/h3decompress) is an application to decompress a single save file.
-This is nothing but a `gunzip` of the target save file. First argument must be the HotA save file to decompress while the second argument must be the output filename.
+The `h3decompress` utility is mainly a `gunzip` of the target save file. However, it does handle some quirks of the save files themselves:
+
+- `gunzip` requires the file extension to be known while `h3decompress` does not.
+- Using `gunzip` on the (renamed) save file produces the error `gzip: savefile.gz: invalid compressed data--crc error` while `h3decompress` does not.
+- The reason for the former error is not known, but the checksum of the compressed library is incorrect. `h3decompress` therefore inflates/decompresses as many bytes as it can before `zlib` returns an error about incorrect data (`Z_DATA_ERROR`). It is always the last 4 bytes that are disregarded in the save files.
+
+The first argument to `h3decompress` must be a HotA save file while the second argument must be the output filename.
