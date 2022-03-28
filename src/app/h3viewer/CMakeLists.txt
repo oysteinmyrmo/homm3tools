@@ -1,6 +1,4 @@
-# Inspired by https://github.com/ocornut/imgui/blob/master/examples/example_glfw_metal/Makefile
 project(h3viewer)
-enable_language(OBJCXX)
 
 include(FetchContent)
 
@@ -60,6 +58,7 @@ if(WIN32)
     list(APPEND IMGUI_SOURCES ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp)
     list(APPEND H3VIEWER_SOURCES main_opengl3.cpp)
 elseif(APPLE)
+    enable_language(OBJCXX)
     list(APPEND IMGUI_SOURCES ${IMGUI_DIR}/backends/imgui_impl_metal.mm)
     list(APPEND H3VIEWER_SOURCES main_metal.mm)
     set(CMAKE_OBJCXX_FLAGS "${CMAKE_OBJCXX_FLAGS} -ObjC++ -fobjc-weak -fobjc-arc")
