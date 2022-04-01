@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace h3viewer::hero_count
+namespace h3viewer::experience
 {
 struct PlotData
 {
@@ -23,11 +23,11 @@ struct PlotData
     PlotData(const PlotData &) = default;
     explicit PlotData(const SaveFileSeries &series);
 
-    size_t allHeroesMaxValue() const;
+    size_t maxValue() const;
 
     Players players;
-    std::array<std::vector<uint64_t>, h3::player::maxPlayers> allHeroes;   // All heroes, including those in garrison
-    std::array<std::vector<uint64_t>, h3::player::maxPlayers> heroesOnMap; // Heroes on map (as in in-game thieves guild).
+    std::array<std::vector<uint64_t>, h3::player::maxPlayers> experience;
+    std::array<std::vector<uint64_t>, h3::player::maxPlayers> experienceAllHeroes;
     std::vector<uint64_t> x_vals;
     Settings settings;
 };
@@ -35,4 +35,4 @@ struct PlotData
 void reset(const SaveFileSeries &series);
 void drawTools();
 void drawPlot();
-} // namespace h3viewer::hero_count
+} // namespace h3viewer::experience

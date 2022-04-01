@@ -1,5 +1,6 @@
 #include "thieves_guild.h"
 
+#include "plots/experience.h"
 #include "plots/hero_count.h"
 #include "plots/kingdom_army_strength.h"
 #include "plots/town_count.h"
@@ -14,6 +15,7 @@ namespace h3viewer::thieves_guild
 {
 void reset(const SaveFileSeries &series)
 {
+    experience::reset(series);
     hero_count::reset(series);
     town_count::reset(series);
     kingdom_army_strength::reset(series);
@@ -58,6 +60,12 @@ void draw()
         kingdom_army_strength::drawTools();
         ImGui::TableNextColumn();
         kingdom_army_strength::drawPlot();
+
+        ImGui::TableNextRow();
+        ImGui::TableNextColumn();
+        experience::drawTools();
+        ImGui::TableNextColumn();
+        experience::drawPlot();
 
         ImGui::EndTable();
     }

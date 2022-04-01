@@ -1,4 +1,4 @@
-#include "hero_count.h"
+#include "experience.h"
 
 #include <h3/player.h>
 
@@ -10,11 +10,11 @@
 
 namespace
 {
-h3viewer::hero_count::PlotData gPlotData;
+h3viewer::experience::PlotData gPlotData;
 bool gWasReset = false;
 } // namespace
 
-namespace h3viewer::hero_count
+namespace h3viewer::experience
 {
 PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
 {
@@ -26,12 +26,12 @@ PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
         x_vals[i] = i + 1; // The x-values are simply the day from 1 through N.
     }
 
-    for (auto &item : allHeroes)
+    for (auto &item : experience)
     {
         item.resize(size, 0);
     }
 
-    for (auto &item : heroesOnMap)
+    for (auto &item : experienceAllHeroes)
     {
         item.resize(size, 0);
     }
@@ -43,24 +43,25 @@ PlotData::PlotData(const SaveFileSeries &series) : players(series.players)
         {
             for (const auto &hero : players[j].heroes())
             {
-                ++allHeroes[j][i];
+                experienceAllHeroes[j][i] += hero.experience;
                 if (hero.on_map)
                 {
-                    ++heroesOnMap[j][i];
+                    experience[j][i] += hero.experience;
                 }
             }
         }
     }
 }
 
-size_t PlotData::allHeroesMaxValue() const
+size_t PlotData::maxValue() const
 {
     uint64_t max = 0;
-    for (const auto &h : allHeroes)
+    const auto &data = settings.includeHeroesInGarrison ? experienceAllHeroes : experience;
+    for (const auto &d : data)
     {
-        const auto maxElement = std::max_element(h.begin(), h.end());
-        const auto idx = std::distance(h.begin(), maxElement);
-        max = std::max(max, h[idx]);
+        const auto maxElement = std::max_element(d.begin(), d.end());
+        const auto idx = std::distance(d.begin(), maxElement);
+        max = std::max(max, d[idx]);
     }
     return max;
 }
@@ -73,8 +74,8 @@ void reset(const SaveFileSeries &series)
 
 void drawTools()
 {
-    ImGui::Checkbox("Show Vanquish Lines##Heroes", &gPlotData.settings.showVanquishedDay);
-    if (ImGui::Checkbox("Include Heroes In Garrison##Heroes", &gPlotData.settings.includeHeroesInGarrison))
+    ImGui::Checkbox("Show Vanquish Lines##Experience", &gPlotData.settings.showVanquishedDay);
+    if (ImGui::Checkbox("Include Heroes In Garrison##Experience", &gPlotData.settings.includeHeroesInGarrison))
     {
         gWasReset = true;
     }
@@ -84,15 +85,14 @@ void drawPlot()
 {
     const auto &plot = gPlotData;
 
-    if (ImPlot::BeginPlot("Number of Heroes"))
+    if (ImPlot::BeginPlot("Accumulated Experience"))
     {
-        ImPlot::SetupAxes("Day", "Number of Heroes");
+        ImPlot::SetupAxes("Day", "Accumulated Experience");
         if (gWasReset)
         {
             gWasReset = false;
-            const uint64_t maxY = plot.settings.includeHeroesInGarrison ? plot.allHeroesMaxValue() : h3::player::maxPlayers;
             const double sizeX = double(plot.x_vals.size());
-            const double sizeY = double(maxY + 1);
+            const double sizeY = double(plot.maxValue());
             ImPlot::SetupAxesLimits(1, sizeX, 0, sizeY, ImPlotCond_Always);
         }
 
@@ -110,12 +110,12 @@ void drawPlot()
 
                 if (plot.settings.includeHeroesInGarrison)
                 {
-                    const auto &y_vals = plot.allHeroes[i].data();
+                    const auto &y_vals = plot.experienceAllHeroes[i].data();
                     ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
                 }
                 else
                 {
-                    const auto &y_vals = plot.heroesOnMap[i].data();
+                    const auto &y_vals = plot.experience[i].data();
                     ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
                 }
 
@@ -130,5 +130,5 @@ void drawPlot()
         ImPlot::EndPlot();
     }
 }
-} // namespace h3viewer::hero_count
+} // namespace h3viewer::experience
 

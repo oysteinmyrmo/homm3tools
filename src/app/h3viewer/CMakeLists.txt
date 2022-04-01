@@ -42,6 +42,8 @@ set(IMPLOT_SOURCES
 set(H3VIEWER_SOURCES
     player.cpp
     player.h
+    plots/experience.cpp
+    plots/experience.h
     plots/hero_count.cpp
     plots/hero_count.h
     plots/kingdom_army_strength.cpp
