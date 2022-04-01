@@ -65,8 +65,8 @@ void drawPlot()
         if (gWasReset)
         {
             gWasReset = false;
-            const double sizeX = double(plot.x_vals.size());
-            const double sizeY = double(plot.max);
+            const double sizeX = double(plot.x_vals.size() + 1);
+            const double sizeY = double(plot.max + 1);
             ImPlot::SetupAxesLimits(1, sizeX, 0, sizeY, ImPlotCond_Always);
         }
 

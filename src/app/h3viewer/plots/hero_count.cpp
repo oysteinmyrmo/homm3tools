@@ -91,7 +91,7 @@ void drawPlot()
         {
             gWasReset = false;
             const uint64_t maxY = plot.settings.includeHeroesInGarrison ? plot.allHeroesMaxValue() : h3::player::maxPlayers;
-            const double sizeX = double(plot.x_vals.size());
+            const double sizeX = double(plot.x_vals.size() + 1);
             const double sizeY = double(maxY + 1);
             ImPlot::SetupAxesLimits(1, sizeX, 0, sizeY, ImPlotCond_Always);
         }
