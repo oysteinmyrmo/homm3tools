@@ -155,6 +155,7 @@ void draw()
     ImGui::Checkbox("Show Thieves Guild", &showThievesGuild);
     if (showThievesGuild)
     {
+        thieves_guild::update(gSaveFileSeries);
         thieves_guild::draw();
     }
 

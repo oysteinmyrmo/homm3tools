@@ -48,6 +48,8 @@ set(H3VIEWER_SOURCES
     plots/hero_count.h
     plots/kingdom_army_strength.cpp
     plots/kingdom_army_strength.h
+    plots/plot.cpp
+    plots/plot.h
     plots/town_count.cpp
     plots/town_count.h
     savefile_series.cpp

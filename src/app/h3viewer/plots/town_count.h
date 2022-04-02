@@ -1,35 +1,18 @@
 #pragma once
+#include "plot.h"
 
 #include <h3viewer/savefile_series.h>
-#include <h3viewer/player.h>
 
-#include <h3/player.h>
-
-#include <array>
-#include <cstdint>
-#include <vector>
-
-namespace h3viewer::town_count
+namespace h3viewer::plot
 {
-struct PlotData
+class TownsPlot : public Plot
 {
-    struct Settings
-    {
-        bool showVanquishedDay = false;
-    };
+public:
+    TownsPlot();
 
-    PlotData() = default;
-    PlotData(const PlotData &) = default;
-    explicit PlotData(const SaveFileSeries &series);
+    void invalidate(const SaveFileSeries &series) override;
+    void drawPlotSpecifics() override;
 
-    Players players;
-    std::array<std::vector<uint64_t>, h3::player::maxPlayers> towns;
-    std::vector<uint64_t> x_vals;
-    uint64_t max = 0;
-    Settings settings;
+    bool showVanquishLines() const;
 };
-
-void reset(const SaveFileSeries &series);
-void drawTools();
-void drawPlot();
-} // namespace h3viewer::hero_count
+} // namespace h3viewer::plot

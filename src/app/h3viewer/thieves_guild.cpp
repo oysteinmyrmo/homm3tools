@@ -9,18 +9,30 @@
 namespace
 {
 bool gInitialized = false;
+h3viewer::plot::ExperiencePlot experiencePlot;
+h3viewer::plot::HeroesPlot heroesPlot;
+h3viewer::plot::KingdomArmyStrengthPlot kasPlot;
+h3viewer::plot::TownsPlot townsPlot;
 } // namespace
 
 namespace h3viewer::thieves_guild
 {
 void reset(const SaveFileSeries &series)
 {
-    experience::reset(series);
-    hero_count::reset(series);
-    town_count::reset(series);
-    kingdom_army_strength::reset(series);
+    experiencePlot.invalidate(series);
+    heroesPlot.invalidate(series);
+    kasPlot.invalidate(series);
+    townsPlot.invalidate(series);
 
     gInitialized = true;
+}
+
+void update(const SaveFileSeries &series)
+{
+    experiencePlot.update(series);
+    heroesPlot.update(series);
+    kasPlot.update(series);
+    townsPlot.update(series);
 }
 
 void draw()
@@ -39,33 +51,33 @@ void draw()
     ImGui::Begin("Thieves Guild##Window");
     if (ImGui::BeginTable("Thieves Guild##Table", 2, flags))
     {
-        ImGui::TableSetupColumn("Tools", ImGuiTableColumnFlags_WidthFixed);
+        ImGui::TableSetupColumn("Settings", ImGuiTableColumnFlags_WidthFixed);
         ImGui::TableSetupColumn("Plots", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableHeadersRow();
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
-        hero_count::drawTools();
+        heroesPlot.drawSettings();
         ImGui::TableNextColumn();
-        hero_count::drawPlot();
+        heroesPlot.drawPlot();
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
-        town_count::drawTools();
+        townsPlot.drawSettings();
         ImGui::TableNextColumn();
-        town_count::drawPlot();
+        townsPlot.drawPlot();
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
-        kingdom_army_strength::drawTools();
+        kasPlot.drawSettings();
         ImGui::TableNextColumn();
-        kingdom_army_strength::drawPlot();
+        kasPlot.drawPlot();
 
         ImGui::TableNextRow();
         ImGui::TableNextColumn();
-        experience::drawTools();
+        experiencePlot.drawSettings();
         ImGui::TableNextColumn();
-        experience::drawPlot();
+        experiencePlot.drawPlot();
 
         ImGui::EndTable();
     }

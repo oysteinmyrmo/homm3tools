@@ -1,38 +1,19 @@
 #pragma once
+#include "plot.h"
 
 #include <h3viewer/savefile_series.h>
-#include <h3viewer/player.h>
 
-#include <h3/player.h>
-
-#include <array>
-#include <cstdint>
-#include <vector>
-
-namespace h3viewer::experience
+namespace h3viewer::plot
 {
-struct PlotData
+class ExperiencePlot : public Plot
 {
-    struct Settings
-    {
-        bool showVanquishedDay = false;
-        bool includeHeroesInGarrison = false;
-    };
+public:
+    ExperiencePlot();
 
-    PlotData() = default;
-    PlotData(const PlotData &) = default;
-    explicit PlotData(const SaveFileSeries &series);
+    void invalidate(const SaveFileSeries &series) override;
+    void drawPlotSpecifics() override;
 
-    size_t maxValue() const;
-
-    Players players;
-    std::array<std::vector<uint64_t>, h3::player::maxPlayers> experience;
-    std::array<std::vector<uint64_t>, h3::player::maxPlayers> experienceAllHeroes;
-    std::vector<uint64_t> x_vals;
-    Settings settings;
+    bool showVanquishLines() const;
+    bool includeHeroesInGarrison() const;
 };
-
-void reset(const SaveFileSeries &series);
-void drawTools();
-void drawPlot();
-} // namespace h3viewer::experience
+} // namespace h3viewer::plot

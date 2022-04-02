@@ -1,99 +1,68 @@
 #include "town_count.h"
 
-#include <imgui.h>
+#include <h3/player.h>
+
 #include <implot.h>
 
-#include <algorithm>
-#include <utility>
-
-namespace
+namespace h3viewer::plot
 {
-h3viewer::town_count::PlotData gPlotData;
-bool gWasReset = false;
-} // namespace
-
-namespace h3viewer::town_count
+TownsPlot::TownsPlot() : Plot()
 {
-PlotData::PlotData(const SaveFileSeries &series)
-    : players(series.players)
-    , max(series.numberOfTowns)
-{
-    const auto size = series.files.size();
+    settings = {
+        CheckBoxSetting{"Show Vanquish Lines##TownsPlot"}
+        // TODO: Add setting to split on towns/forts/citadels/castles.
+    };
 
-    x_vals.resize(size, 0);
-    for (uint64_t i = 0; i < size; ++i)
+    axisTexts = {
+        {"Towns"},
+        {"Day"},
+        {"Number of Towns"},
+    };
+}
+
+void TownsPlot::invalidate(const SaveFileSeries &series)
+{
+    Plot::invalidate(series);
+
+    for (auto &item : yVals)
     {
-        x_vals[i] = i + 1; // The x-values are simply the day from 1 through N.
+        item.resize(size(), 0);
     }
 
-    for (auto &item : towns)
-    {
-        item.resize(size, 0);
-    }
-
-    for (size_t i = 0; i < size; ++i)
+    for (size_t i = 0; i < size(); ++i)
     {
         const auto players{h3::player::players(series.files[i])};
         for (size_t j = 0; j < h3::player::maxPlayers; ++j)
         {
             for (const auto &town : players[j].towns())
             {
-                ++towns[j][i];
+                ++yVals[j][i];
             }
         }
     }
 }
 
-void reset(const SaveFileSeries &series)
+void TownsPlot::drawPlotSpecifics()
 {
-    gPlotData = PlotData(series);
-    gWasReset = true;
-}
-
-void drawTools()
-{
-    ImGui::Checkbox("Show Vanquish Lines##Towns", &gPlotData.settings.showVanquishedDay);
-}
-
-void drawPlot()
-{
-    const auto &plot = gPlotData;
-
-    if (ImPlot::BeginPlot("Number of Towns"))
+    if (showVanquishLines())
     {
-        ImPlot::SetupAxes("Day", "Number of Towns");
-        if (gWasReset)
-        {
-            gWasReset = false;
-            const double sizeX = double(plot.x_vals.size() + 1);
-            const double sizeY = double(plot.max + 1);
-            ImPlot::SetupAxesLimits(1, sizeX, 0, sizeY, ImPlotCond_Always);
-        }
-
         for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
         {
-            const auto &player = plot.players[i];
+            const auto &player = players[i];
             if (player.active)
             {
                 const auto &name = player.name;
                 const auto &color = player.color;
-                const auto &x_vals = plot.x_vals.data();
-                const auto size = int(plot.x_vals.size());
-                const auto &y_vals = plot.towns[i].data();
 
                 ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotLine(name.c_str(), x_vals, y_vals, size);
-
-                if (plot.settings.showVanquishedDay)
-                {
-                    ImPlot::SetNextLineStyle(color);
-                    ImPlot::PlotVLines("", &player.vanquishedDay, 1);
-                }
+                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
             }
         }
-
-        ImPlot::EndPlot();
     }
 }
-} // namespace h3viewer::kingdom_army_strength
 
+bool TownsPlot::showVanquishLines() const
+{
+    return std::get<CheckBoxSetting>(settings[0]).checked;
+}
+} // namespace h3viewer::plot
