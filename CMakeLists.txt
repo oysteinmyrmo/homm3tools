@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
 project(homm3tools)
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(src/h3)
 add_subdirectory(src/app)
