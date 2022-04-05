@@ -40,7 +40,13 @@ jobs:
             --install-prefix "$(pwd)/install"
       - name: Build
         shell: bash
-        run: cmake --build build --config ${{ matrix.config.build_type }}
+        run: cmake --build build --config ${{ matrix.config.build_type }} --target install
+      - name: Archive Install Directory
+        uses: actions/upload-artifact@v3
+        with:
+          name: install-artifacts
+          path: |
+            install
       - name: Test
         shell: bash
         run: ctest -C ${{ matrix.config.build_type }} --verbose --output-on-failure --test-dir build

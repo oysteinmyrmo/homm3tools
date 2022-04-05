@@ -101,3 +101,5 @@ elseif(APPLE)
         "-framework QuartzCore"
     )
 endif()
+
+install(TARGETS h3viewer)
