@@ -35,17 +35,21 @@ namespace h3viewer::plot
         Plot() = default;
 
         virtual void invalidate(const SaveFileSeries &series);
-        virtual void drawPlotSpecifics();
-
-        void update(const SaveFileSeries &series);
-        void drawSettings();
-        void drawPlot();
+        virtual void drawPlotSpecifics() = 0;
+        virtual bool showAsPercentageStackedAreaChart() const = 0;
 
         double maxX() const;
         double maxY() const;
         size_t size() const;
 
+        void update(const SaveFileSeries &series);
+        void drawSettings();
+        void drawPlot();
+
     protected:
+        void alterDataToChartType();
+        void setupPercentageStackedAreaChart();
+
         Players players;
         std::vector<std::variant<Setting, CheckBoxSetting>> settings;
         AxisText axisTexts;

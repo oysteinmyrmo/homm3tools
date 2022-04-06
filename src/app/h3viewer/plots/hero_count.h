@@ -12,6 +12,7 @@ public:
 
     void invalidate(const SaveFileSeries &series) override;
     void drawPlotSpecifics() override;
+    bool showAsPercentageStackedAreaChart() const override;
 
     bool showVanquishLines() const;
     bool includeHeroesInGarrison() const;

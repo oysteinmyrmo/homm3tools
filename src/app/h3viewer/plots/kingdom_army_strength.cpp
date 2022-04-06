@@ -4,11 +4,15 @@
 
 #include <implot.h>
 
+#include <cmath>
+#include <numeric>
+
 namespace h3viewer::plot
 {
 KingdomArmyStrengthPlot::KingdomArmyStrengthPlot() : Plot()
 {
     settings = {
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart##KingdomArmyStrengthPlot"},
         CheckBoxSetting{"Show Vanquish Lines##KingdomArmyStrengthPlot"}
     };
 
@@ -36,6 +40,11 @@ void KingdomArmyStrengthPlot::invalidate(const SaveFileSeries &series)
             yVals[j][i] = players[j].kingdomArmyStrength();
         }
     }
+
+    if (showAsPercentageStackedAreaChart())
+    {
+        setupPercentageStackedAreaChart();
+    }
 }
 
 void KingdomArmyStrengthPlot::drawPlotSpecifics()
@@ -57,8 +66,13 @@ void KingdomArmyStrengthPlot::drawPlotSpecifics()
     }
 }
 
-bool KingdomArmyStrengthPlot::showVanquishLines() const
+bool KingdomArmyStrengthPlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
+}
+
+bool KingdomArmyStrengthPlot::showVanquishLines() const
+{
+    return std::get<CheckBoxSetting>(settings[1]).checked;
 }
 } // namespace h3viewer::plot

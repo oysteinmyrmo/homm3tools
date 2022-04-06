@@ -9,6 +9,7 @@ namespace h3viewer::plot
 ExperiencePlot::ExperiencePlot() : Plot()
 {
     settings = {
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart##ExperiencePlot"},
         CheckBoxSetting{"Show Vanquish Lines##ExperiencePlot"},
         CheckBoxSetting{"Include heroes in garrison##ExperiencePlot"}
     };
@@ -45,6 +46,8 @@ void ExperiencePlot::invalidate(const SaveFileSeries &series)
             }
         }
     }
+
+    alterDataToChartType();
 }
 
 void ExperiencePlot::drawPlotSpecifics()
@@ -66,13 +69,18 @@ void ExperiencePlot::drawPlotSpecifics()
     }
 }
 
-bool ExperiencePlot::showVanquishLines() const
+bool ExperiencePlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
 }
 
-bool ExperiencePlot::includeHeroesInGarrison() const
+bool ExperiencePlot::showVanquishLines() const
 {
     return std::get<CheckBoxSetting>(settings[1]).checked;
+}
+
+bool ExperiencePlot::includeHeroesInGarrison() const
+{
+    return std::get<CheckBoxSetting>(settings[2]).checked;
 }
 } // namespace h3viewer::plot

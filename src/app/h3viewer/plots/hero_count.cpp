@@ -9,6 +9,7 @@ namespace h3viewer::plot
 HeroesPlot::HeroesPlot() : Plot()
 {
     settings = {
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart##HeroesPlot"},
         CheckBoxSetting{"Show Vanquish Lines##HeroesPlot"},
         CheckBoxSetting{"Include heroes in garrison##HeroesPot"}
     };
@@ -45,6 +46,17 @@ void HeroesPlot::invalidate(const SaveFileSeries &series)
             }
         }
     }
+
+    alterDataToChartType();
+
+    if (showAsPercentageStackedAreaChart())
+    {
+        axisTexts.yText = "Number of Heroes (%)";
+    }
+    else
+    {
+        axisTexts.yText = "Number of Heroes";
+    }
 }
 
 void HeroesPlot::drawPlotSpecifics()
@@ -66,14 +78,19 @@ void HeroesPlot::drawPlotSpecifics()
     }
 }
 
-bool HeroesPlot::showVanquishLines() const
+bool HeroesPlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
 }
 
-bool HeroesPlot::includeHeroesInGarrison() const
+bool HeroesPlot::showVanquishLines() const
 {
     return std::get<CheckBoxSetting>(settings[1]).checked;
+}
+
+bool HeroesPlot::includeHeroesInGarrison() const
+{
+    return std::get<CheckBoxSetting>(settings[2]).checked;
 }
 } // namespace h3viewer::plot
 

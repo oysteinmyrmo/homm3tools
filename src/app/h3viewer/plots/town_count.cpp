@@ -9,6 +9,7 @@ namespace h3viewer::plot
 TownsPlot::TownsPlot() : Plot()
 {
     settings = {
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart##TownsPlot"},
         CheckBoxSetting{"Show Vanquish Lines##TownsPlot"}
         // TODO: Add setting to split on towns/forts/citadels/castles.
     };
@@ -40,6 +41,8 @@ void TownsPlot::invalidate(const SaveFileSeries &series)
             }
         }
     }
+
+    alterDataToChartType();
 }
 
 void TownsPlot::drawPlotSpecifics()
@@ -61,8 +64,13 @@ void TownsPlot::drawPlotSpecifics()
     }
 }
 
-bool TownsPlot::showVanquishLines() const
+bool TownsPlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
+}
+
+bool TownsPlot::showVanquishLines() const
+{
+    return std::get<CheckBoxSetting>(settings[1]).checked;
 }
 } // namespace h3viewer::plot

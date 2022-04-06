@@ -24,10 +24,6 @@ void Plot::invalidate(const SaveFileSeries &series)
     }
 }
 
-void Plot::drawPlotSpecifics()
-{
-}
-
 double Plot::maxX() const
 {
     return static_cast<double>(xVals.back());
@@ -87,21 +83,74 @@ void Plot::drawPlot()
             ImPlot::SetupAxesLimits(1, maxX() + padding, 0, maxY() + padding, ImPlotCond_Always);
         }
 
-        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+        if (showAsPercentageStackedAreaChart())
         {
-            const auto &player = players[i];
-            if (player.active)
-            {
-                const auto &name = player.name;
-                const auto &color = player.color;
+            ImPlot::PushStyleVar(ImPlotStyleVar_FillAlpha, 1.0f);
 
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotLine(name.c_str(), xVals.data(), yVals[i].data(), int(size()));
+            for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+            {
+                const auto &player = players[i];
+                if (player.active)
+                {
+                    const auto &name = player.name;
+                    const auto &color = player.color;
+
+                    ImPlot::SetNextFillStyle(color);
+                    ImPlot::PlotShaded(name.c_str(), xVals.data(), yVals[i].data(), int(size()));
+                }
+            }
+
+            ImPlot::PopStyleVar();
+        }
+        else
+        {
+            for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+            {
+                const auto &player = players[i];
+                if (player.active)
+                {
+                    const auto &name = player.name;
+                    const auto &color = player.color;
+
+                    ImPlot::SetNextLineStyle(color);
+                    ImPlot::PlotLine(name.c_str(), xVals.data(), yVals[i].data(), int(size()));
+                }
             }
         }
 
         drawPlotSpecifics();
         ImPlot::EndPlot();
+    }
+}
+
+void Plot::alterDataToChartType()
+{
+    if (showAsPercentageStackedAreaChart())
+    {
+        setupPercentageStackedAreaChart();
+    }
+}
+
+// Manipulate the data to present it as a percentage stacked area chart.
+void Plot::setupPercentageStackedAreaChart()
+{
+    for (size_t i = 0; i < size(); ++i)
+    {
+        double sum = 0;
+        for (size_t j = 0; j < h3::player::maxPlayers; ++j)
+        {
+            sum += double(yVals[j][i]);
+        }
+
+        double accumulatedPct = 0;
+
+        // Setup values backwards to get correct draw order when plotting.
+        for (int8_t j = h3::player::maxPlayers - 1; j >= 0; --j)
+        {
+            accumulatedPct += double(yVals[j][i]) / sum * 100.0;
+            const auto val = uint64_t(std::lround(accumulatedPct));
+            yVals[j][i] = val;
+        }
     }
 }
 } // namespace h3viewer::plot
