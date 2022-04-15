@@ -8,6 +8,8 @@ set(homm3tools_files
     player.h
     savefile.cpp
     savefile.h
+    secondary_skills.cpp
+    secondary_skills.h
     stats.cpp
     stats.h
     town.cpp

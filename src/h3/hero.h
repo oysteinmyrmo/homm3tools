@@ -2,6 +2,7 @@
 
 #include "creatures.h"
 #include "packed_structs.h"
+#include "secondary_skills.h"
 #include "stats.h"
 
 #include <algorithm>
@@ -46,6 +47,8 @@ struct Hero
     uint8_t powerInGame() const { return std::min(power, maxPrimarySkillValue); }
     uint8_t knowledgeInGame() const { return std::min(knowledge, maxPrimarySkillValue); }
 
+    SkillSlots skills() const;
+
     // Offsets are relative to name.
     uint16_t x = 0xFFFF;                    // -195
     uint16_t y = 0XFFFF;                    // -193
@@ -63,19 +66,21 @@ struct Hero
     uint16_t movement_remaining = 0xFFFF;   // -134
     uint8_t _unused5[2];
     uint32_t experience = 0;                // -130
-    uint8_t _unused6[4];
+    uint32_t skill_count = 0;               // -126 (Number of secondary skills)
     uint16_t spell_points = 0;              // -122
     uint8_t level = 0;                      // -120
-    uint8_t _unused7[63];
+    uint8_t _unused6[63];
     Creature creatures[maxStacks];          // -56
     uint32_t creature_count[maxStacks];     // -28
     uint8_t name[13];                       // 0
-    uint8_t _unused8[56];                   // +13
-    uint8_t attack = 0;                     // +82
-    uint8_t defense = 0;                    // +83
-    uint8_t power = 0;                      // +84
-    uint8_t knowledge = 0;                  // +85
-    uint8_t _unused9[879];                  // +86
+    SkillLevel skillLevels[SkillCount];     // +13
+    uint8_t _unused7[27];                   // +42
+    uint8_t attack = 0;                     // +69
+    uint8_t defense = 0;                    // +70
+    uint8_t power = 0;                      // +71
+    uint8_t knowledge = 0;                  // +72
+    uint8_t _unused8[850];                  // +73
+    uint8_t skillSlots[SkillCount];         // +923
 });
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);

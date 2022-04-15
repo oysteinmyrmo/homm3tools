@@ -1,10 +1,32 @@
 #include "hero.h"
 #include "value_reader.h"
 
+#include <cassert>
+
 namespace h3::hero
 {
 static_assert(sizeof(Hero) == 1147, "sizeof(Hero) must be 1147.");
 static_assert(Hero::offsetFromNameToStart() == 195, "Offset to Hero::name must be 195.");
+
+SkillSlots Hero::skills() const
+{
+    SkillSlots skills;
+
+    for (uint8_t i = 0; i < SkillCount; ++i)
+    {
+        if (skillLevels[i] != SkillLevel::None)
+        {
+            const uint8_t slot = skillSlots[i];
+            assert(slot > 0 && slot <= 8);
+
+            Skill skill = static_cast<Skill>(i);
+            skills[slot - 1].level = skillLevels[i];
+            skills[slot - 1].skill = skill;
+        }
+    }
+
+    return skills;
+}
 
 void readHero(const std::span<const char> data, size_t idx, Hero &hero)
 {
@@ -24,19 +46,21 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::readVal(data, idx, hero.movement_remaining);
     values::skipVal(idx, hero._unused5);
     values::readVal(data, idx, hero.experience);
-    values::skipVal(idx, hero._unused6);
+    values::readVal(data, idx, hero.skill_count);
     values::readVal(data, idx, hero.spell_points);
     values::readVal(data, idx, hero.level);
-    values::skipVal(idx, hero._unused7);
+    values::skipVal(idx, hero._unused6);
     values::readEnumArr(data, idx, hero.creatures);
     values::readArr(data, idx, hero.creature_count);
     values::readArr(data, idx, hero.name);
-    values::skipVal(idx, hero._unused8);
+    values::readArr(data, idx, hero.skillLevels);
+    values::skipVal(idx, hero._unused7);
     values::readVal(data, idx, hero.attack);
     values::readVal(data, idx, hero.defense);
     values::readVal(data, idx, hero.power);
     values::readVal(data, idx, hero.knowledge);
-    values::skipVal(idx, hero._unused9);
+    values::skipVal(idx, hero._unused8);
+    values::readArr(data, idx, hero.skillSlots);
 }
 
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> heroes)

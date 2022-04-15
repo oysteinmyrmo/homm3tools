@@ -1,0 +1,98 @@
+Red Player: Edric
+Blue Player: Axsis
+Orange Player: Leena
+Teal Player: Lacus
+Pink Player: Septienna
+
+Day 1:
+- Edric (Red):
+  - Leadership: Basic
+  - Armorer: Basic
+- Axsis (Blue):
+  - Wisdom: Basic
+  - Mysticism: Basic
+- Leena (Orange):
+  - Estates: Basic
+  - Pathfinding: Basic
+- Lacus (Teal):
+  - Tactics: Advanced
+- Septienna (Pink):
+  - Necromancy: Basic
+  - Scholar: Basic
+
+Day 2:
+- Edric (Red):
+  - Leadership: Basic
+  - Armorer: Basic
+  - Air Magic: Basic
+  - Archery: Basic
+  - Artillery: Basic
+- Axsis (Blue):
+  - Wisdom: Basic
+  - Mysticism: Basic
+  - Eagle Eye: Basic
+  - Earth Magic: Basic
+  - Estates: Basic
+- Leena (Orange):
+  - Estates: Basic
+  - Pathfinding: Basic
+  - Interference: Basic
+  - Leadership: Basic
+  - Learning: Basic
+- Lacus (Teal):
+  - Tactics: Advanced
+  - Navigation: Basic
+  - Necromancy: Basic
+  - Offense: Basic
+- Septienna (Pink):
+  - Necromancy: Basic
+  - Scholar: Basic
+  - Scouting: Basic
+  - Sorcery: Basic
+  - Tactics: Basic
+
+Day 3:
+- Edric (Red):
+  - Leadership: Expert
+  - Armorer: Advanced
+  - Air Magic: Expert
+  - Archery: Expert
+  - Artillery: Expert
+  - Ballistics: Expert
+  - Diplomacy: Expert
+  - Offense: Expert
+- Axsis (Blue):
+  - Wisdom: Expert
+  - Mysticism: Advanced
+  - Eagle Eye: Basic
+  - Earth Magic: Expert
+  - Estates: Expert
+  - Fire Magic: Expert
+  - First Aid: Expert
+  - Intelligence: Expert
+- Leena (Orange):
+  - Estates: Expert
+  - Pathfinding: Expert
+  - Interference: Expert
+  - Leadership: Expert
+  - Learning: Basic
+  - Logistics: Expert
+  - Luck: Expert
+  - Mysticism: Advanced
+- Lacus (Teal):
+  - Tactics: Expert
+  - Navigation: Expert
+  - Necromancy: Expert
+  - Offense: Expert
+  - Pathfinding: Expert
+  - Scholar: Expert
+  - Archery: Advanced
+- Septienna (Pink):
+  - Necromancy: Basic
+  - Scholar: Expert
+  - Scouting: Expert
+  - Sorcery: Expert
+  - Tactics: Advanced
+  - Water Magic: Expert
+  - Wisdom: Expert
+  - Logistics: Advanced

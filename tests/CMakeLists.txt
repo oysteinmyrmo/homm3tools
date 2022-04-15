@@ -24,6 +24,7 @@ add_executable(homm3tests
     test-primary-skills.cpp
     test-prison.cpp
     test-savefile.cpp
+    test-secondary-skills.cpp
     test-spell-points.cpp
     test-towns.cpp
 )
