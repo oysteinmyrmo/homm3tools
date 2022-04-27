@@ -3,6 +3,7 @@
 #include "creatures.h"
 #include "packed_structs.h"
 #include "secondary_skills.h"
+#include "spells.h"
 #include "stats.h"
 
 #include <algorithm>
@@ -40,6 +41,9 @@ struct Hero
     uint64_t armyStrength() const { return stats::army_strength(*this); }
     bool garrison() const { return (on_map == 0) && (player < 8); } // TODO: Read h3::player::maxPlayers instead.
     bool prison() const { return (on_map == 0) && (player == 0xFF); } // TODO: Read h3::player::maxPlayers instead.
+
+    bool hasSpell(const Spell spell) const { return spells::has_spell(*this, spell); };
+    bool hasSpellInSpellBook(const Spell spell) const { return spells::has_spell_in_spellbook(*this, spell); };
 
     // In-game primary values are clamped. Note that these values can overflow in the save files.
     uint8_t attackInGame() const { return std::min(attack, maxPrimarySkillValue); }
@@ -79,7 +83,9 @@ struct Hero
     uint8_t defense = 0;                    // +70
     uint8_t power = 0;                      // +71
     uint8_t knowledge = 0;                  // +72
-    uint8_t _unused8[850];                  // +73
+    uint8_t spellbook[SpellCount];          // +73  (Spells written to spell book. Permanent spells. 1 means spell is written, otherwise 0.)
+    uint8_t spells[SpellCount];             // +143 (All available spells, spell book and artifacts. 1 means spell is available, otherwise 0.)
+    uint8_t _unused8[710];                  // +213
     uint8_t skillSlots[SkillCount];         // +923
 });
 

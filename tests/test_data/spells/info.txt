@@ -1,0 +1,187 @@
+Day 1 (Everyone has 0 spells):
+- (Red) Sanya
+- (Red) Rion
+- (Red) Cuthbert
+- (Red) Loynis
+- (Red) Adela
+- (Red) Ingham
+- (Red) Adelaide
+- (Red) Caitlin
+- (Blue) Elleshar
+- (Blue) Coronius
+- (Blue) Alagar
+- (Blue) Gem
+- (Blue) Aeris
+- (Blue) Malcom
+- (Blue) Uland
+- (Blue) Melodia
+- (Tan) Theodorus
+- (Tan) Halon
+- (Tan) Daremyth
+- (Tan) Solmyr
+
+Day 1:
+- (Red) Sanya (spellbook)
+  - Bless
+  - Bloodlust
+  - Cure
+  - Curse
+  - Dispel
+  - Haste
+  - Magic Arrow
+  - Protection from Water
+  - Protection from Fire
+  - Shield
+  - Slow
+  - Stone Skin
+  - Summon Boat
+  - View Air
+  - View Earth
+- (Red) Rion (spellbook)
+  - Blind
+  - Death Ripple
+  - Disguise
+  - Disrupting Ray
+  - Fire Wall
+  - Fortune
+  - Ice Bolt
+  - Lightning Bolt
+  - Precision
+  - Protection from Air
+  - Quicksand
+  - Remove Obstacle
+  - Scuttle Boat
+  - Visions
+  - Weakness
+- (Red) Cuthbert (spellbook)
+  - Air Shield
+  - Animate Dead
+  - Anti-Magic
+  - Destroy Undead
+  - Earthquake
+  - Fireball
+  - Force Field
+  - Forgetfulness
+  - Frost Ring
+  - Hypnotize
+  - Land Mine
+  - Mirth
+  - Misfortune
+  - Protection from Earth
+  - Teleport
+- (Red) Loynis (spellbook)
+  - Prayer
+  - Armageddon
+  - Berserk
+  - Chain Lightning
+  - Clone
+  - Counterstrike
+  - Fire Shield
+  - Frenzy
+  - Inferno
+  - Meteor Shower
+  - Resurrection
+  - Slayer
+  - Sorrow
+  - Town Portal
+  - Water Walk
+- (Red) Adela (spellbook)
+  - Dimension Door
+  - Fly
+  - Implosion
+  - Magic Mirror
+  - Sacrifice
+  - Air Elemental
+  - Earth Elemental
+  - Fire Elemental
+  - Water Elemental
+- (Red) Ingham (artifacts)
+  - Titan's Thunder
+  - All Fire Spells
+  - All Air Spells
+  - All Water Spells
+  - All Earth Spells
+- (Red) Adelaide (scrolls)
+  - Air Elemental
+  - Air Shield
+  - Animate Dead
+  - Anti-Magic
+  - Armageddon
+- (Red) Caitlin (scrolls)
+  - Berserk
+  - Bless
+  - Blind
+  - Bloodlust
+  - Chain Lightning
+- (Blue) Elleshar (scrolls)
+  - Clone
+  - Counterstrike
+  - Cure
+  - Curse
+  - Death Ripple
+- (Blue) Coronius (scrolls)
+  - Destroy Undead
+  - Dimension Door
+  - Disguise
+  - Dispel
+  - Disrupting Ray
+- (Blue) Alagar (scrolls)
+  - Earth Elemental
+  - Earthquake
+  - Fire Elemental
+  - Fire Shield
+  - Fire Wall
+- (Blue) Gem (scrolls)
+  - Fireball
+  - Fly
+  - Force Field
+  - Forgetfulness
+  - Fortune
+- (Blue) Aeris (scrolls)
+  - Frenzy
+  - Frost Ring
+  - Haste
+  - Hypnotize
+  - Ice Bolt
+- (Blue) Malcom (scrolls)
+  - Implosion
+  - Inferno
+  - Land Mine
+  - Lightning Bolt
+  - Magic Arrow
+- (Blue) Uland (scrolls)
+  - Magic Mirror
+  - Meteor Shower
+  - Mirth
+  - Misfortune
+  - Prayer
+- (Blue) Melodia (scrolls)
+  - Precision
+  - Protection from Earth
+  - Protection from Water
+  - Protection from Air
+  - Protection from Fire
+- (Tan) Theodorus (scrolls)
+  - Quicksand
+  - Remove Obstacle
+  - Resurrection
+  - Sacrifice
+  - Scuttle Boat
+- (Tan) Halon (scrolls)
+  - Shield
+  - Slayer
+  - Slow
+  - Sorrow
+  - Stone Skin
+- (Tan) Daremyth (scrolls)
+  - Summon Boat
+  - Teleport
+  - Town Portal
+  - View Air
+  - View Earth
+- (Tan) Solmyr (scrolls)
+  - Visions
+  - Water Elemental
+  - Water Walk
+  - Weakness
+  - Chain Lightning
