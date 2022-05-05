@@ -61,6 +61,9 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::readVal(data, idx, hero.knowledge);
     values::readArr(data, idx, hero.spellbook);
     values::readArr(data, idx, hero.spells);
+    values::readStructArr(data, idx, hero.artifacts,
+                          &artifacts::ArtifactEntry::artifactId,
+                          &artifacts::ArtifactEntry::scrollSpellId);
     values::skipVal(idx, hero._unused8);
     values::readArr(data, idx, hero.skillSlots);
 }

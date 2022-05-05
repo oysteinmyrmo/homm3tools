@@ -51,4 +51,22 @@ void readEnumArr(const std::span<const char> &data, size_t &idx, T (&val)[N])
 }
 
 void readStr(const std::span<const char> &data, size_t &idx, std::string &str, const size_t size);
+
+template<typename T, typename ...T_members>
+void readStruct(const std::span<const char> &data, size_t &idx, T &t, T_members... members)
+{
+    for (auto m : {members...})
+    {
+        readVal(data, idx, t.*m);
+    }
+}
+
+template<typename T, size_t N, typename ...T_members>
+void readStructArr(const std::span<const char> &data, size_t &idx, T (&vals)[N], T_members... members)
+{
+    for (size_t i = 0; i < N; ++i)
+    {
+        readStruct(data, idx, vals[i], members...);
+    }
+}
 } // namespace h3::values

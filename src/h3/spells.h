@@ -21,7 +21,7 @@ enum class Spell : uint8_t
     WaterWalk               =   7,
     DimensionDoor           =   8,
     TownPortal              =   9,
-    QuickSand               =  10,
+    Quicksand               =  10,
     LandMine                =  11,
     ForceField              =  12,
     FireWall                =  13,

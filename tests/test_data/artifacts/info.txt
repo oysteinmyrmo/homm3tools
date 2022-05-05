@@ -1,0 +1,771 @@
+Day 1:
+Red:
+- Orrin: Catapult only
+- Mephala: Catapult only
+- Piquedram: Catapult + Spellbook
+- Fiona: Catapult only
+Blue:
+- Valeska: Catapult only
+- Ufretin: Catapult only
+- Thane: Catapult + Spellbook
+- Jeremy: Catapult + Cannon
+Tan:
+- Edric: Catapult only
+- Clancy: Catapult only
+- Josephine: Catapult + Spellbook
+Green:
+- Sylvia: Catapult
+- Jenova: Catapult only
+- Neela: Catapult + Spellbook
+Orange:
+- Lord Haart: Catapult only
+- Ryland: Catapult only
+- Torosar: Catapult + Ballista + Spellbook
+Purple:
+- Sorsha: Catapult only
+- Ivor: Catapult only
+- Fafner: Catapult + Spellbook
+Teal:
+- Tyris: Catapult only
+- Kyrre: Catapult only
+- Rissa: Catapult + Spellbook
+Pink:
+- Christian: Catapult + Ballista
+- Iona: Catapult + Spellbook
+- Giselle: Catapult only
+
+Day 2:
+Red:
+- Orrin:
+  - Helm:           Admiral's Hat
+  - Cloak:          Cornucopia
+  - Neck:           Admiral's Hat
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      Cornucopia
+  - Right ring:     Cornucopia
+  - Boots:          
+  - Misc01:         Bow of the Sharpshooter
+  - Misc02:         Cornucopia
+  - Misc03:         
+  - Misc04:         Bow of the Sharpshooter
+  - Ballista:        
+  - Ammo Cart:        
+  - First Aid Tent:    
+  - Catapult:       YES
+  - Spellbook:        
+  - Misc05:         Bow of the Sharpshooter
+  - Inventory01:    Wizard's Well
+  - Inventory02:    Ring of the Magi
+  - Inventory03:    Diplomat's Cloak
+  - Inventory04:    Pendant of Reflection
+  - Inventory05:    Ironfist of the Ogre
+  - Inventory06:    Golden Goose
+- Mephala:
+  - Helm:           Crown of the Supreme Magi
+  - Cloak:          Cape of Velocity
+  - Neck:           Necklace of Swiftness
+  - Weapon:         Ogre's Club of Havoc
+  - Shield:         Targ of the Rampaging Ogre
+  - Armor:          Tunic of the Cyclops King
+  - Left ring:      Ring of Oblivion
+  - Right ring:     
+  - Boots:          Boots of Speed
+  - Misc01:         
+  - Misc02:         
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+  - Inventory01:    Cape of Silence
+- Piquedram:
+  - Helm:           
+  - Cloak:          Ambassador's Sash
+  - Neck:           Statesman's Medal
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      Diplomat's Ring
+  - Right ring:     Ring of the Wayfarer
+  - Boots:          
+  - Misc01:         
+  - Misc02:         
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         
+  - Inventory01:    Equestrian's Gloves
+- Fiona:
+  - Helm:           
+  - Cloak:          Surcoat of Counterpoise
+  - Neck:           Garniture of Interference
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          Boots of Polarity
+  - Misc01:         
+  - Misc02:         
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       YES
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+Blue:
+- Valeska:
+  - Helm:           
+  - Cloak:          Cloak of the Undead King
+  - Neck:           Cloak of the Undead King
+  - Weapon:         Armageddon's Blade
+  - Shield:         
+  - Armor:          
+  - Left ring:      Elixir of Life
+  - Right ring:     Elixir of Life
+  - Boots:          Cloak of the Undead King
+  - Misc01:         Vial of Dragon Blood
+  - Misc02:         Horn of Abyss
+  - Misc03:         Elixir of Life
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+  - Inventory01:    Statue of Legion
+  - Inventory02:    Angelic Alliance
+  - Inventory03:    Armor of the Damned
+  - Inventory04:    Power of the Dragon Father
+  - Inventory05:    Titan's Thunder
+- Ufretin:
+  - Helm:           Hellstorm Helmet
+  - Cloak:          
+  - Neck:           Pendant of Negativity
+  - Weapon:         Sword of Hellfire
+  - Shield:         Shield of the Damned
+  - Armor:          Breastplate of Brimstone
+  - Left ring:      Ring of Infinite Gems
+  - Right ring:     Eversmoking Ring of Sulfur
+  - Boots:          
+  - Misc01:         Everpouring Vial of Mercury
+  - Misc02:         Inexhaustible Cart of Ore
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+  - Inventory01:    Pendant of Dispassion
+- Thane: No changes
+- Jeremy
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         
+  - Misc02:         
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       CANNON
+  - Ammo Cart:      YES
+  - First Aid Tent: YES
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         
+Tan:
+- Edric:
+  - Helm:           Spellbinder's Hat
+  - Cloak:          Cape of Conjuring
+  - Neck:           Collar of Conjuring
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      Ring of Conjuring
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Orb of Firmament
+  - Misc02:         Orb of Silt
+  - Misc03:         Orb of Tempestuous Fire
+  - Misc04:         Orb of Driving Rain
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:           
+- Clancy:
+  - Helm:           Crown of the Five Seas
+  - Cloak:          
+  - Neck:           Pendant of Second Sight
+  - Weapon:         Trident of Dominion
+  - Shield:         Shield of Naval Glory
+  - Armor:          Royal Armor of Nix
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Endless Sack of Gold
+  - Misc02:         Endless Bag of Gold
+  - Misc03:         Endless Purse of Gold
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+  - Inventory01:    Pendant of Total Recall
+- Josephine:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Summon Air Elemental
+  - Misc02:         Scroll: Air Shield
+  - Misc03:         Scroll: Animate Dead
+  - Misc04:         Scroll: Anti-Magic
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         Scroll: Armageddon
+  - Inventory01:    Scroll: Berserk
+  - Inventory02:    Scroll: Bless
+  - Inventory03:    Scroll: Blind
+  - Inventory04:    Scroll: Bloodlust
+  - Inventory05:    Scroll: Chain Lightning
+Green:
+- Sylvia:
+  - Helm:           Sea Captain's Hat
+  - Cloak:          Angel Wings
+  - Neck:           Necklace of Ocean Guidance
+  - Weapon:         
+  - Shield:         
+  - Armor:          Plate of Dying Light
+  - Left ring:      Seal of Sunset
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Charm of Mana
+  - Misc02:         Talisman of Mana
+  - Misc03:         Mystic Orb of Mana
+  - Misc04:         Shackles of War
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         Charm of Eclipse 
+- Jenova:
+  - Helm:           Thunder Helmet
+  - Cloak:          
+  - Neck:           Pendant of Holiness
+  - Weapon:         Titan's Gladius
+  - Shield:         Sentinel's Shield
+  - Armor:          Titan's Cuirass
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Legs of Legion
+  - Misc02:         Loins of Legion
+  - Misc03:         Torso of Legion
+  - Misc04:         Arms of Legion
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+  - Inventory01:    Pendant of Courage
+- Neela:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Clone
+  - Misc02:         Scroll: Counterstrike
+  - Misc03:         Scroll: Cure
+  - Misc04:         Scroll: Curse
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         Scroll: Death Ripple
+  - Inventory01:    Scroll: Destroy Undead
+  - Inventory02:    Scroll: Dimension Door
+  - Inventory03:    Scroll: Disguise
+  - Inventory04:    Scroll: Dispel
+  - Inventory05:    Scroll: Disrupting Ray
+Orange:
+- Lord Haart:
+  - Helm:           Helm of the Alabaster Unicorn
+  - Cloak:          Recanter's Cloak
+  - Neck:           
+  - Weapon:         Centaur's Axe
+  - Shield:         Shield of the Dwarven Lords
+  - Armor:          Breastplate of Petrified Wood
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Spirit of Oppresseion
+  - Misc02:         Hourglass of the Evil Hour
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+- Ryland:
+  - Helm:           Helm of Heavenly Enlightenment
+  - Cloak:          
+  - Neck:           Celestial Necklace of Bliss
+  - Weapon:         Sword of Judgement
+  - Shield:         Lion's Shield of Courage
+  - Armor:          Armor of Wonder
+  - Left ring:      
+  - Right ring:     
+  - Boots:          Sandals of the Saint
+  - Misc01:         Orb of Inhibition
+  - Misc02:         Runes of Imminency
+  - Misc03:         Demon's Horseshoe
+  - Misc04:         Shaman's Puppet
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+- Torosar:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Summon Earth Elemental
+  - Misc02:         Scroll: Earthquake
+  - Misc03:         Scroll: Summon Fire Elemental
+  - Misc04:         Scroll: Fire Shield
+  - Ballista:       YES
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         Scroll: Fire Wall
+  - Inventory01:    Scroll: Fireball
+  - Inventory02:    Scroll: Fly
+  - Inventory03:    Scroll: Force Field
+  - Inventory04:    Scroll: Forgetfulness
+  - Inventory05:    Scroll: Fortune
+Purple:
+- Sorsha:
+  - Helm:           Skull Helmet
+  - Cloak:          
+  - Neck:           
+  - Weapon:         Blackshard of the Dead Knight
+  - Shield:         Shield of the Yawning Dead
+  - Armor:          Rib Cage
+  - Left ring:      
+  - Right ring:     
+  - Boots:          Boots of Levitation
+  - Misc01:         Tome of Fire Magic
+  - Misc02:         Tome of Air Magic
+  - Misc03:         Tome of Water Magic
+  - Misc04:         Tome of Earth Magic
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+- Ivor:
+  - Helm:           Crown of Dragontooth
+  - Cloak:          Dragon Wing Tabard
+  - Neck:           Necklace of Dragonteeth
+  - Weapon:         Red Dragon Flame Tongue
+  - Shield:         Dragon Scale Shield
+  - Armor:          Dragon Scale Armor
+  - Left ring:      Quiet Eye of the Dragon
+  - Right ring:     Still Eye of the Dragon
+  - Boots:          Dragon Bone Greaves
+  - Misc01:         
+  - Misc02:         
+  - Misc03:         
+  - Misc04:         
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+- Fafner:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Frenzy
+  - Misc02:         Scroll: Frost Ring
+  - Misc03:         Scroll: Haste
+  - Misc04:         Scroll: Hypnotize
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         Scroll: Ice Bolt
+  - Inventory01:    Scroll: Implosion
+  - Inventory02:    Scroll: Inferno
+  - Inventory03:    Scroll: Land Mine
+  - Inventory04:    Scroll: Lightning Bolt
+  - Inventory05:    Scroll: Magic Arrow
+Teal:
+- Tyris:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Summon Boat
+  - Misc02:         Scroll: Teleport
+  - Misc03:         Scroll: Town Portal
+  - Misc04:         Scroll: View Air
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         Scroll: View Earth
+  - Inventory01:    Scroll: Visions
+  - Inventory02:    Scroll: Summon Water Elemental
+  - Inventory03:    Scroll: Water Walk
+  - Inventory04:    Scroll: Weakness
+- Kyrre:
+  - Helm:           
+  - Cloak:          
+  - Neck:           Pendant of Life
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Clover of Fortune
+  - Misc02:         Cards of Prophecy
+  - Misc03:         Ladybird of Luck
+  - Misc04:         Badge of Courage
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         Crest of Valor
+  - Inventory01:    Glyph of Gallantry
+  - Inventory02:    Speculum
+  - Inventory03:    Spyglass
+  - Inventory04:    Pendant of Death
+  - Inventory05:    Pendant of Free Will
+- Rissa:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Magic Mirror
+  - Misc02:         Scroll: Meteor Shower
+  - Misc03:         Scroll: Mirth
+  - Misc04:         Scroll: Misfortune
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         Scroll: Prayer
+  - Inventory01:    Scroll: Precision
+  - Inventory02:    Scroll: Protection from Earth
+  - Inventory03:    Scroll: Protection from Water
+  - Inventory04:    Scroll: Protection from Air
+  - Inventory05:    Scroll: Protection from Fire
+Pink:
+- Christian:
+  - Helm:           Helm of Chaos
+  - Cloak:          
+  - Neck:           
+  - Weapon:         Greater Gnoll's Flail
+  - Shield:         Buckler of the Gnoll King
+  - Armor:          Scales of the Greater Basilisk
+  - Left ring:      Ring of Vitality
+  - Right ring:     Ring of Life
+  - Boots:          
+  - Misc01:         Golden Bow
+  - Misc02:         Sphere of Permanence
+  - Misc03:         Orb of Vulnerability
+  - Misc04:         Vial of Lifeblood
+  - Ballista:       YES
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         
+- Iona:
+  - Helm:           
+  - Cloak:          
+  - Neck:           
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          
+  - Misc01:         Scroll: Quicksand
+  - Misc02:         Scroll: Remove Obstacle
+  - Misc03:         Scroll: Resurrection
+  - Misc04:         Scroll: Sacrifice
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      YES
+  - Misc05:         Scroll: Scuttle Boat
+  - Inventory01:    Scroll: Shield
+  - Inventory02:    Scroll: Slayer
+  - Inventory03:    Scroll: Slow
+  - Inventory04:    Scroll: Sorrow
+  - Inventory05:    Scroll: Stone Skin
+- Giselle:
+  - Helm:           
+  - Cloak:          Vampire's Cowl
+  - Neck:           Amulet of the Undertaker
+  - Weapon:         
+  - Shield:         
+  - Armor:          
+  - Left ring:      
+  - Right ring:     
+  - Boots:          Dead Man's Boots
+  - Misc01:         Bow of Elven Cherrywood
+  - Misc02:         Bowstring of the Unicorn's Mane
+  - Misc03:         Angel Feather Arrows
+  - Misc04:         Bird of Perception
+  - Ballista:       
+  - Ammo Cart:      
+  - First Aid Tent: 
+  - Catapult:       YES
+  - Spellbook:      
+  - Misc05:         Stoic Watchman
+  - Inventory01:    Emblem of Cognizance
+
+Day 3 (diffs from day 2):
+Red:
+- Orrin:
+  - Swap Diplomat's Cloak and Ring of the Magi (inventory)
+- Mephala:
+  - Assemble Ironfist of the Ogre
+  - Swap Cape of Velocity and Cape of Silence
+- Piquedram:
+  - Assemble Diplomat's Cloak
+- Fiona:
+  - Assemble Pendant of Reflection
+Blue:
+- Valeska:
+  - Move Statue of the Legion from inventory01 to inventory05
+- Ufretin:
+  - Swap Pendant of Negativity and Pendant of Dispassion
+- Thane:
+  - The Grail is now in inventory01
+- Jeremy: No changes
+Tan:
+- Edric:
+  - Assemble Ring of the Magi
+- Clancy:
+  - Assemble Golden Goose
+- Josephine:
+  - Swap Bless and Air Shield, put Air Shield in inventory04
+Green:
+- Sylvia:
+  - Assemble Wizard's Well
+- Jenova:
+  - Add Head of Legion to Misc05
+  - Add Wayfarer's Boots to Boots
+- Neela: No changes
+Orange:
+- Lord Haart:
+  - Move Shield of the Dwarven Lords to inventory01
+- Ryland:
+  - Assemble Angelic Alliance
+- Torosar: No changes
+Purple:
+- Sorsha:
+  - Assemble Armor of the Damned
+- Ivor:
+  - Assemble Power of the Dragon Father
+- Fafner: No changes
+Teal:
+- Tyris: No changes
+- Kyrre: No changes
+- Rissa: No changes
+Pink:
+- Christian:
+  - Assemble Elixir of Life
+- Iona: No changes
+- Giselle:
+  - Assemble Bow of the Sharpshooter
+
+Day 4 (diffs from day3):
+Red:
+- Orrin: No Changes
+- Mephala: No Changes
+- Piquedram: No Changes
+- Fiona: No Changes
+Blue:
+- Valeska: No changes
+- Ufretin:
+  - Misc03: Add Inexhaustible Cart of Lumber
+  - Cloak: Add Everflowing Crystal Cloak
+- Thane: No changes
+- Jeremy: No changes
+Tan:
+- Edric: No changes
+- Clancy: No changes
+(- Josephine: Suicided on Neela)
+Green:
+- Sylvia: No changes
+- Jenova:
+  - Assemble Statue of Legion
+  - Assemble Titan's Thunder
+  - Gives Pendant of Courage to Neela, who is now full of scrolls. The pendant disappears!
+- Neela: Kills all other scroll heroes. Inventory scrolled so that Blind is in the first slot.
+  - Misc01:         Scroll: Clone
+  - Misc02:         Scroll: Counterstrike
+  - Misc03:         Scroll: Cure
+  - Misc04:         Scroll: Curse
+  - Misc05:         Scroll: Death Ripple
+  - Inventory01:    Scroll: Blind
+  - Inventory02:    Scroll: Berserk
+  - Inventory03:    Scroll: Summon Earth Elemental
+  - Inventory04:    Scroll: Earthquake
+  - Inventory05:    Scroll: Summon Fire Elemental
+  - Inventory06:    Scroll: Fire Shield
+  - Inventory07:    Scroll: Fire Wall
+  - Inventory08:    Scroll: Fortune
+  - Inventory09:    Scroll: Forgetfulness
+  - Inventory10:    Scroll: Force Field
+  - Inventory11:    Scroll: Fly
+  - Inventory12:    Scroll: Fireball
+  - Inventory13:    Scroll: Frenzy
+  - Inventory14:    Scroll: Frost Ring
+  - Inventory15:    Scroll: Haste
+  - Inventory16:    Scroll: Hypnotize
+  - Inventory17:    Scroll: Ice Bolt
+  - Inventory18:    Scroll: Magic Arrow
+  - Inventory19:    Scroll: Lightning Bolt
+  - Inventory20:    Scroll: Land Mine
+  - Inventory21:    Scroll: Inferno
+  - Inventory22:    Scroll: Implosion
+  - Inventory23:    Scroll: Magic Mirror
+  - Inventory24:    Scroll: Meteor Shower
+  - Inventory25:    Scroll: Mirth
+  - Inventory26:    Scroll: Misfortune
+  - Inventory27:    Scroll: Prayer
+  - Inventory28:    Scroll: Protection from Fire
+  - Inventory29:    Scroll: Protection from Air
+  - Inventory30:    Scroll: Protection from Water
+  - Inventory31:    Scroll: Protection from Earth
+  - Inventory32:    Scroll: Precision
+  - Inventory33:    Scroll: Quicksand
+  - Inventory34:    Scroll: Remove Obstacle
+  - Inventory35:    Scroll: Resurrection
+  - Inventory36:    Scroll: Sacrifice
+  - Inventory37:    Scroll: Scuttle Boat
+  - Inventory38:    Scroll: Stone Skin
+  - Inventory39:    Scroll: Sorrow
+  - Inventory40:    Scroll: Slow
+  - Inventory41:    Scroll: Slayer
+  - Inventory42:    Scroll: Shield
+  - Inventory43:    Scroll: Summon Boat
+  - Inventory44:    Scroll: Teleport
+  - Inventory45:    Scroll: Town Portal
+  - Inventory46:    Scroll: View Air
+  - Inventory47:    Scroll: View Earth
+  - Inventory48:    Scroll: Weakness
+  - Inventory49:    Scroll: Water Walk
+  - Inventory50:    Scroll: Summon Water Elemental
+  - Inventory51:    Scroll: Visions
+  - Inventory52:    Scroll: Destroy Undead
+  - Inventory53:    Scroll: Dimension Door
+  - Inventory54:    Scroll: Disguise
+  - Inventory55:    Scroll: Dispel
+  - Inventory56:    Scroll: Disrupting Ray
+  - Inventory57:    Scroll: Summon Air Elemental
+  - Inventory58:    Scroll: Bless
+  - Inventory59:    Scroll: Animate Dead
+  - Inventory60:    Scroll: Anti-Magic
+  - Inventory61:    Scroll: Armageddon
+  - Inventory62:    Scroll: Chain Lightning
+  - Inventory63:    Scroll: Air Shield
+  - Inventory64:    Scroll: Bloodlust
+Orange:
+- Lord Haart: No changes
+- Ryland:
+  - Adds Left ring: Ring of Suppression
+  - Adds Misc05: Hideous Mask
+  - Adds inventory01: Pendant of Downfall
+- Torosar: Dead
+Purple:
+- Sorsha: No changes
+- Ivor: No changes
+- Fafner: Dead
+Teal:
+- Tyris: Dead
+- Kyrre: No changes
+- Rissa: Dead
+Pink:
+- Christian: No changes
+- Iona: Dead
+- Giselle: No changes

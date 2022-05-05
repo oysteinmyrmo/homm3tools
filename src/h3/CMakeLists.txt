@@ -1,4 +1,6 @@
 set(homm3tools_files
+    artifacts.cpp
+    artifacts.h
     creatures.cpp
     creatures.h
     hero.cpp

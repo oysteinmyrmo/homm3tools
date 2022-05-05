@@ -1,5 +1,6 @@
 #pragma once
 
+#include "artifacts.h"
 #include "creatures.h"
 #include "packed_structs.h"
 #include "secondary_skills.h"
@@ -18,6 +19,8 @@ namespace h3::hero
 static constexpr size_t heroCount = 179;
 
 using creatures::maxStacks;
+using artifacts::ArtifactEntry;
+using artifacts::ArtifactSlotCount;
 
 enum class Orientation : uint8_t
 {
@@ -85,7 +88,8 @@ struct Hero
     uint8_t knowledge = 0;                  // +72
     uint8_t spellbook[SpellCount];          // +73  (Spells written to spell book. Permanent spells. 1 means spell is written, otherwise 0.)
     uint8_t spells[SpellCount];             // +143 (All available spells, spell book and artifacts. 1 means spell is available, otherwise 0.)
-    uint8_t _unused8[710];                  // +213
+    ArtifactEntry artifacts[ArtifactSlotCount]; // +213
+    uint8_t _unused8[46];                   // +877
     uint8_t skillSlots[SkillCount];         // +923
 });
 

@@ -256,7 +256,7 @@ TEST_CASE("spells-day2-sanya", "[hero][spells]")
             Spell::LightningBolt,
             Spell::Precision,
             Spell::ProtectionFromAir,
-            Spell::QuickSand,
+            Spell::Quicksand,
             Spell::RemoveObstacle,
             Spell::ScuttleBoat,
             Spell::Visions,
@@ -382,7 +382,7 @@ TEST_CASE("spells-day2-sanya", "[hero][spells]")
             Spell::ProtectionFromEarth,
             Spell::ProtectionFromFire,
             Spell::ProtectionFromWater,
-            Spell::QuickSand,
+            Spell::Quicksand,
             Spell::RemoveObstacle,
             Spell::Resurrection,
             Spell::Sacrifice,
@@ -543,7 +543,7 @@ TEST_CASE("spells-day2-sanya", "[hero][spells]")
     {
         const Hero hero = save.findHero("Theodorus");
         const std::array spells {
-            Spell::QuickSand,
+            Spell::Quicksand,
             Spell::RemoveObstacle,
             Spell::Resurrection,
             Spell::Sacrifice,
