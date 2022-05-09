@@ -160,10 +160,14 @@ enum class Artifact : uint32_t
     WizardsWell                     =   138,
     RingOfTheMagi                   =   139,
     Cornucopia                      =   140,
+
+    // Note: HotA artifacts from here on.
+
     DiplomatsCloak                  =   141,
     PendantOfReflection             =   142,
     IronfistOfTheOgre               =   143,
-    // TODO: Are we missing 144 and 145?
+
+    // Note: Artifacts 144 and 145 do not exist.
 
     Cannon                          =   146,
 
@@ -188,8 +192,8 @@ enum class Artifact : uint32_t
     NONE                            =   std::numeric_limits<uint32_t>::max() // As in the save files
 };
 
-// Artifact 144 and 145 are not in the list.
-constexpr uint8_t ArtifactCount = 165 - 2;
+// Note: Artifacts 144 and 145 do not exist.
+constexpr uint8_t ArtifactCount = 163;
 
 // A single artifact entry in a save file.
 struct ArtifactEntry
