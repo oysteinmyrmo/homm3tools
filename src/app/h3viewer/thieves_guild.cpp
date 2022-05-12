@@ -13,6 +13,14 @@ h3viewer::plot::ExperiencePlot experiencePlot;
 h3viewer::plot::HeroesPlot heroesPlot;
 h3viewer::plot::KingdomArmyStrengthPlot kasPlot;
 h3viewer::plot::TownsPlot townsPlot;
+
+constexpr const char *plot_categories[] = {"Army", "Heroes", "Kingdom", "Economy"};
+constexpr int plot_idx_army    = 0;
+constexpr int plot_idx_heroes  = 1;
+constexpr int plot_idx_kingdom = 2;
+constexpr int plot_idx_economy = 3;
+
+int current_plot_idx = 0;
 } // namespace
 
 namespace h3viewer::thieves_guild
@@ -42,42 +50,58 @@ void draw()
         return; // Simply not show the window before any data is loaded.
     }
 
-    static ImGuiTableFlags flags = ImGuiTableFlags_SizingFixedFit
-                                 | ImGuiTableFlags_RowBg
-                                 | ImGuiTableFlags_Borders
-                                 | ImGuiTableFlags_Resizable
-                                 | ImGuiTableFlags_Hideable;
-
     ImGui::Begin("Thieves Guild##Window");
-    if (ImGui::BeginTable("Thieves Guild##Table", 2, flags))
+
+    ImGui::PushItemWidth(100);
+    ImGui::Combo("Select Category", &current_plot_idx, plot_categories, IM_ARRAYSIZE(plot_categories));
+    ImGui::NewLine();
+
+    constexpr ImGuiTableFlags tableFlags = ImGuiTableFlags_SizingFixedFit
+                                         | ImGuiTableFlags_RowBg
+                                         | ImGuiTableFlags_Borders
+                                         | ImGuiTableFlags_Resizable
+                                         | ImGuiTableFlags_Hideable;
+
+    if (ImGui::BeginTable("Thieves Guild##Table", 2, tableFlags))
     {
         ImGui::TableSetupColumn("Settings", ImGuiTableColumnFlags_WidthFixed);
         ImGui::TableSetupColumn("Plots", ImGuiTableColumnFlags_WidthStretch);
         ImGui::TableHeadersRow();
 
-        ImGui::TableNextRow();
-        ImGui::TableNextColumn();
-        heroesPlot.drawSettings();
-        ImGui::TableNextColumn();
-        heroesPlot.drawPlot();
+        if (current_plot_idx == plot_idx_army)
+        {
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            kasPlot.drawSettings();
+            ImGui::TableNextColumn();
+            kasPlot.drawPlot();
+        }
+        else if (current_plot_idx == plot_idx_heroes)
+        {
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            heroesPlot.drawSettings();
+            ImGui::TableNextColumn();
+            heroesPlot.drawPlot();
 
-        ImGui::TableNextRow();
-        ImGui::TableNextColumn();
-        townsPlot.drawSettings();
-        ImGui::TableNextColumn();
-        townsPlot.drawPlot();
-
-        ImGui::TableNextRow();
-        ImGui::TableNextColumn();
-        kasPlot.drawSettings();
-        ImGui::TableNextColumn();
-        kasPlot.drawPlot();
-
-        ImGui::TableNextRow();
-        ImGui::TableNextColumn();
-        experiencePlot.drawSettings();
-        ImGui::TableNextColumn();
-        experiencePlot.drawPlot();
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            experiencePlot.drawSettings();
+            ImGui::TableNextColumn();
+            experiencePlot.drawPlot();
+        }
+        else if (current_plot_idx == plot_idx_kingdom)
+        {
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            townsPlot.drawSettings();
+            ImGui::TableNextColumn();
+            townsPlot.drawPlot();
+        }
+        else if (current_plot_idx == plot_idx_economy)
+        {
+            ImGui::Text("Nothing here yet.");
+        }
 
         ImGui::EndTable();
     }
