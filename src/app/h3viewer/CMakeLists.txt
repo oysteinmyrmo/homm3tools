@@ -103,3 +103,6 @@ elseif(APPLE)
 endif()
 
 install(TARGETS h3viewer)
+
+include(release)
+install_release_dir(h3viewer)

@@ -1,0 +1,7 @@
+function(install_release_dir target_name)
+    if(WIN32)
+        install(TARGETS ${target_name} DESTINATION "release/windows")
+    elseif(APPLE)
+        install(TARGETS ${target_name} DESTINATION "release/macos")
+    endif()
+endfunction()
