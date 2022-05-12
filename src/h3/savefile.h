@@ -16,7 +16,8 @@ namespace fs = std::filesystem;
 
 // Note: AppleClang does not have constexpr std::string at the time of writing.
 constexpr char defaultFirstHeroName[] = "Orrin";
-constexpr uint8_t fileHeader[] = "H3SVG";
+constexpr uint8_t fileHeaderNormal[] = "H3SVG";
+constexpr uint8_t fileHeaderCampaign[] = "H3SVC";
 
 std::vector<char> decompress(const fs::path &path);
 void write_decompressed(const fs::path &path, const std::span<const char> data);
@@ -62,6 +63,8 @@ struct SaveFile
 
     explicit SaveFile(const Input &input);
     bool valid() const;
+    bool normalSaveFile() const;
+    bool campaignSaveFile() const;
 
     Town findTown(const std::string &name) const;
     Hero findHero(const std::string &name) const;

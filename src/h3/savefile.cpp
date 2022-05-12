@@ -243,7 +243,17 @@ SaveFile::SaveFile(const Input &input)
 
 bool SaveFile::valid() const
 {
-    return memcmp(this->header, fileHeader, sizeof(fileHeader)) == 0;
+    return normalSaveFile() || campaignSaveFile();
+}
+
+bool SaveFile::normalSaveFile() const
+{
+    return memcmp(this->header, fileHeaderNormal, sizeof(fileHeaderNormal)) == 0;
+}
+
+bool SaveFile::campaignSaveFile() const
+{
+    return memcmp(this->header, fileHeaderCampaign, sizeof(fileHeaderCampaign)) == 0;
 }
 
 Town SaveFile::findTown(const std::string &name) const
