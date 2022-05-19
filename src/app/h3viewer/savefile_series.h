@@ -16,10 +16,11 @@ namespace fs = std::filesystem;
 
 struct SaveFileSeries
 {
-    size_t size() const { return files.size(); }
+    size_t size() const;
+    bool hasActivePlayers() const;
+    bool valid() const;
 
     Players players;
-    uint64_t numberOfTowns = 0;
     std::vector<h3::SaveFile> files;
 };
 

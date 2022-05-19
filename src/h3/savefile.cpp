@@ -7,6 +7,7 @@
 #include <cassert>
 #include <cstring>
 #include <fstream>
+#include <span>
 #include <string>
 
 namespace
@@ -21,36 +22,61 @@ struct MapProperties
     bool hasUnderground = false;
 };
 
-MapProperties readMapProperties(unsigned char *compressed, const size_t size)
+int decompressBytes(std::span<unsigned char> compressed, std::span<unsigned char> decompressed)
 {
-    // We read data up to and including hasUnderground.
-    constexpr size_t propsSize = offsetof(SaveFile, hasUnderground) + 1;
-    std::array<unsigned char, propsSize> mapProperties;
-
     z_stream zStream;
     memset(&zStream, 0, sizeof(zStream));
 
-    zStream.next_in = static_cast<Bytef*>(compressed);
-    zStream.avail_in = static_cast<uInt>(size);
+    zStream.next_in = static_cast<Bytef*>(compressed.data());
+    zStream.avail_in = static_cast<uInt>(compressed.size());
 
-    zStream.next_out = static_cast<Bytef*>(mapProperties.data());
-    zStream.avail_out = static_cast<uInt>(mapProperties.size());
+    zStream.next_out = static_cast<Bytef*>(decompressed.data());
+    zStream.avail_out = static_cast<uInt>(decompressed.size());
 
-    int err = inflateInit2(&zStream, MAX_WBITS + 16); // + 16 --> decode gzip format
-    if (err == Z_OK)
+    const int err = inflateInit2(&zStream, MAX_WBITS + 16); // + 16 --> decode gzip format
+    return (err == Z_OK) ? inflate(&zStream, Z_FINISH) : err;
+}
+
+MapProperties readMapProperties(std::span<unsigned char> compressed)
+{
+    // We read data up to and including hasUnderground.
+    constexpr size_t propsSize = offsetof(SaveFile, hasUnderground) + sizeof(SaveFile::hasUnderground);
+    std::array<unsigned char, propsSize> decompressed;
+
+    const int err = decompressBytes(compressed, decompressed);
+
+    // When Z_FINISH is used, Z_BUF_ERROR is returned instead of Z_OK (by design).
+    if (err == Z_BUF_ERROR)
     {
-        err = inflate(&zStream, Z_FINISH);
-
-        // When Z_FINISH is used, Z_BUF_ERROR is returned instead of Z_OK (by design).
-        if (err == Z_BUF_ERROR)
-        {
-            constexpr size_t mapSizeIdx = offsetof(SaveFile, mapSize);
-            constexpr size_t undergroundIdx = offsetof(SaveFile, hasUnderground);
-            return MapProperties{ MapSize(mapProperties[mapSizeIdx]), bool(mapProperties[undergroundIdx]) };
-        }
+        constexpr size_t mapSizeIdx = offsetof(SaveFile, mapSize);
+        constexpr size_t undergroundIdx = offsetof(SaveFile, hasUnderground);
+        return MapProperties{ MapSize(decompressed[mapSizeIdx]), bool(decompressed[undergroundIdx]) };
     }
 
     return {};
+}
+
+std::string readFileHeader(std::span<unsigned char> compressed)
+{
+    // We read data up to and including hasUnderground.
+    constexpr size_t headerSize = offsetof(SaveFile, header) + sizeof(SaveFile::header);
+    std::array<unsigned char, headerSize> decompressed;
+
+    const int err = decompressBytes(compressed, decompressed);
+
+    // When Z_FINISH is used, Z_BUF_ERROR is returned instead of Z_OK (by design).
+    if (err == Z_BUF_ERROR)
+    {
+        return std::string(decompressed.begin(), decompressed.end());
+    }
+
+    return {};
+}
+
+bool isCompressedSaveFile(std::span<unsigned char> compressed)
+{
+    const std::string header = readFileHeader(compressed);
+    return SaveFile::valid(header);
 }
 
 // TODO: Find decent values by creating several random maps and view their decompressed size.
@@ -89,15 +115,22 @@ std::vector<char> decompress(const fs::path& path)
     const size_t compressedSize = std::filesystem::file_size(path);
     std::vector<unsigned char> compressed;
     std::ifstream fileStream(path, std::ios::binary);
-    if (fileStream)
+    if (compressedSize == 0 || !fileStream)
     {
-        compressed.resize(compressedSize, 0);
-        char *output = reinterpret_cast<char*>(&compressed[0]);
-        fileStream.read(output, compressedSize); // Read everything.
-        fileStream.close();
+        return {};
     }
 
-    MapProperties props = readMapProperties(compressed.data(), compressedSize);
+    compressed.resize(compressedSize);
+    char *output = reinterpret_cast<char*>(&compressed[0]);
+    fileStream.read(output, compressedSize); // Read everything.
+    fileStream.close();
+
+    if (!isCompressedSaveFile(compressed))
+    {
+        return {};
+    }
+
+    const MapProperties props = readMapProperties(compressed);
 
     std::vector<unsigned char> buf;
     buf.resize(262144); // 256 kiB, as recommended by Zlib.
@@ -248,12 +281,27 @@ bool SaveFile::valid() const
 
 bool SaveFile::normalSaveFile() const
 {
-    return memcmp(this->header, fileHeaderNormal, sizeof(fileHeaderNormal)) == 0;
+    return normalSaveFile({std::begin(this->header), std::end(this->header)});
 }
 
 bool SaveFile::campaignSaveFile() const
 {
-    return memcmp(this->header, fileHeaderCampaign, sizeof(fileHeaderCampaign)) == 0;
+    return campaignSaveFile({std::begin(this->header), std::end(this->header)});
+}
+
+bool SaveFile::valid(const std::string &header)
+{
+    return normalSaveFile(header) || campaignSaveFile(header);
+}
+
+bool SaveFile::normalSaveFile(const std::string &header)
+{
+    return memcmp(header.data(), fileHeaderNormal, sizeof(fileHeaderNormal)) == 0;
+}
+
+bool SaveFile::campaignSaveFile(const std::string &header)
+{
+    return memcmp(header.data(), fileHeaderCampaign, sizeof(fileHeaderCampaign)) == 0;
 }
 
 Town SaveFile::findTown(const std::string &name) const

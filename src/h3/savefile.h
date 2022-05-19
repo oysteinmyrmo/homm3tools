@@ -62,9 +62,14 @@ struct SaveFile
     };
 
     explicit SaveFile(const Input &input);
+
     bool valid() const;
     bool normalSaveFile() const;
     bool campaignSaveFile() const;
+
+    static bool valid(const std::string &header);
+    static bool normalSaveFile(const std::string &header);
+    static bool campaignSaveFile(const std::string &header);
 
     Town findTown(const std::string &name) const;
     Hero findHero(const std::string &name) const;

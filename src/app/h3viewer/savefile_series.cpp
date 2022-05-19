@@ -32,9 +32,27 @@ void HelpMarker(const char* desc)
 
 namespace h3viewer::savefile_series
 {
+size_t SaveFileSeries::size() const
+{
+    return files.size();
+}
+
+bool SaveFileSeries::hasActivePlayers() const
+{
+    return std::any_of(players.begin(), players.end(), [](const Player &player)
+    {
+        return player.active;
+    });
+};
+
+bool SaveFileSeries::valid() const
+{
+    return size() && hasActivePlayers();
+}
+
 SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
 {
-    SaveFileSeries series{players, input.townCount};
+    SaveFileSeries series{players};
 
     // Use a set to ensure that savefiles are ordered by name (i.e. by in-game day).
     std::set<fs::path> savefiles;
@@ -107,8 +125,8 @@ void draw()
         "binary data in the save file itself.\n"
     );
 
-    static char townCount[256];
-    ImGui::InputText("Number of towns", townCount, IM_ARRAYSIZE(townCount), ImGuiInputTextFlags_CharsDecimal);
+    static char townCount[256]{"0"};
+    ImGui::InputTextWithHint("Number of towns", "0", townCount, IM_ARRAYSIZE(townCount), ImGuiInputTextFlags_CharsDecimal);
     ImGui::SameLine(); HelpMarker(
         "The number of towns in the game. This is needed to read all the\n"
         "towns and who owns them during the game. This information is needed\n"
@@ -134,26 +152,32 @@ void draw()
 
     if (ImGui::Button("Load"))
     {
-        size_t count = std::stoull({townCount});
-        h3::SaveFile::Input input{path, firstTownName, count, firstHeroName};
+        const bool pathOk = fs::is_directory(path);
+        const bool townsOk = strcmp(townCount, "") != 0;
 
-        Players players = defaultPlayers();
-        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+        if (pathOk && townsOk)
         {
-            players[i].name = names[i];
-            if (players[i].name.empty())
-            {
-                players[i].name = h3::player::playerColorsStr[i];
-            }
-        }
+            size_t count = std::stoull({townCount});
+            h3::SaveFile::Input input{path, firstTownName, count, firstHeroName};
 
-        gSaveFileSeries = read_savefiles(input, players);
-        thieves_guild::reset(gSaveFileSeries);
+            Players players = defaultPlayers();
+            for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+            {
+                players[i].name = names[i];
+                if (players[i].name.empty())
+                {
+                    players[i].name = h3::player::playerColorsStr[i];
+                }
+            }
+
+            gSaveFileSeries = read_savefiles(input, players);
+            thieves_guild::reset(gSaveFileSeries);
+        }
     }
 
     static bool showThievesGuild = true;
     ImGui::Checkbox("Show Thieves Guild", &showThievesGuild);
-    if (showThievesGuild)
+    if (showThievesGuild && gSaveFileSeries.valid())
     {
         thieves_guild::update(gSaveFileSeries);
         thieves_guild::draw();
