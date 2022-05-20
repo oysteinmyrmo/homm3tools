@@ -1,0 +1,4 @@
+Test all town names for:
+- Inferno (blue)
+- Necropolis (purple)
+- Dungeon (pink)

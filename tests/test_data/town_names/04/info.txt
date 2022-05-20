@@ -1,0 +1,3 @@
+Test all town names for:
+- Conflux (orange)
+- Cove (green)

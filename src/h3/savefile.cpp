@@ -210,7 +210,43 @@ void read_write_decompressed(const fs::path &path, const fs::path &outPath)
     }
 }
 
-// The name of the first town in the file is always the name of red player's start town.s
+// Returns index of first town and town count.
+std::pair<size_t, size_t> firstTownIndex(const std::span<const char> data, const size_t firstHeroIdx)
+{
+    size_t townEndIdx = firstHeroIdx - 1;
+    size_t townCount = 0;
+    bool townFound = true;
+
+    while(townFound)
+    {
+        townFound = false;
+
+        // Note: This is an approximation since the length of the town name is unknown.
+        const size_t townStartIdx = townEndIdx - Town::sizeOfWithoutName() - town::longestTownName();
+        std::span searchData{data.data() + townStartIdx, townEndIdx - townStartIdx};
+
+        for (const char *town : town::townNames)
+        {
+            const auto townNameIt = std::search(searchData.begin(), searchData.end(), town, town + strlen(town));
+
+            // Found a legit town name, continue searching backwards in the save file data.
+            if (townNameIt != searchData.end())
+            {
+                ++townCount;
+                townFound = true;
+
+                // Reset the index referring to the end of the next possible town.
+                townEndIdx = (townNameIt - data.begin()) - Town::offsetFromNameToStart() - 1;
+                break;
+            }
+        }
+    }
+
+    const size_t firstTownIdx = townEndIdx + 1;
+    return std::make_pair(firstTownIdx, townCount);
+}
+
+// The name of the first town in the file is always the name of red player's start town.
 size_t firstTownIndex(const std::span<const char> data, const std::string &firstTownName)
 {
     if (firstTownName.size())
@@ -261,13 +297,26 @@ SaveFile::SaveFile(const Input &input)
     values::readVal(data, idx, descriptionSize);
     values::readStr(data, idx, description, descriptionSize);
 
-    idx = firstTownIndex(data, input.firstTownName);
-    if (idx != 0)
+    const size_t firstHeroIdx = firstHeroIndex(data, input.firstHeroName);
+    size_t townCount = input.townCount;
+
+    if (input.readAllTownsAutomatically())
     {
-        town::readAllTowns(data, idx, input.townCount, towns);
+        const auto [firstTownIdx, count] = firstTownIndex(data, firstHeroIdx);
+        idx = firstTownIdx;
+        townCount = count;
+    }
+    else
+    {
+        idx = firstTownIndex(data, input.firstTownName);
     }
 
-    idx = firstHeroIndex(data, input.firstHeroName);
+    if (idx != 0)
+    {
+        town::readAllTowns(data, idx, townCount, towns);
+    }
+
+    idx = firstHeroIdx;
     if (idx != 0)
     {
         readAllHeroes(data, idx, heroes);

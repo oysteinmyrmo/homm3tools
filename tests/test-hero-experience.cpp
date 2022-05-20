@@ -16,8 +16,12 @@ std::filesystem::path testDataDir(h3::test::testDataDir / "experience");
 
 TEST_CASE("hero-experience-day1", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 111.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 111.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 2);
@@ -38,8 +42,12 @@ TEST_CASE("hero-experience-day1", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day2", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 112.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 112.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 7);
@@ -60,8 +68,12 @@ TEST_CASE("hero-experience-day2", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day3", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 113.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 113.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 9);
@@ -82,8 +94,12 @@ TEST_CASE("hero-experience-day3", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day4", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 114.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 114.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 10);
@@ -104,8 +120,12 @@ TEST_CASE("hero-experience-day4", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day5", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 115.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 115.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 13);
@@ -126,8 +146,12 @@ TEST_CASE("hero-experience-day5", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day6", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 116.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 116.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 14);
@@ -148,8 +172,12 @@ TEST_CASE("hero-experience-day6", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day7", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 117.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 117.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 16);
@@ -170,8 +198,12 @@ TEST_CASE("hero-experience-day7", "[hero][experience][level][secondary-skill]")
 
 TEST_CASE("hero-experience-day8", "[hero][experience][level][secondary-skill]")
 {
-    SaveFile save({testDataDir / "[hotseat] 121.GM2", "Emerald Moor", 2});
+    SaveFile save({testDataDir / "[hotseat] 121.GM2"});
     REQUIRE(save.valid());
+
+    REQUIRE(save.towns.size() == 2);
+    REQUIRE(save.towns[0].name == "Emerald Moor");
+    REQUIRE(save.towns[1].name == "Cessacioun");
 
     Hero hero = save.findHero("Giselle");
     REQUIRE(hero.level == 18);

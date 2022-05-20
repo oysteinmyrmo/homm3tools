@@ -1,0 +1,3 @@
+Test all town names for:
+- Stronghold (red)
+- Fortress (teal)

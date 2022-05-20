@@ -1,0 +1,4 @@
+Test all town names for:
+- Castle (green)
+- Rampart (orange)
+- Tower (purple)

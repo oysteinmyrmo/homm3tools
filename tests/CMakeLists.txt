@@ -29,6 +29,7 @@ add_executable(homm3tests
     test-spell-points.cpp
     test-spells.cpp
     test-towns.cpp
+    test-town-names.cpp
 )
 
 target_link_libraries(homm3tests PRIVATE homm3tools)

@@ -4,6 +4,7 @@
 #include "packed_structs.h"
 #include "stats.h"
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
 #include <span>
@@ -40,8 +41,195 @@ struct Town
     // Remaining bytes intentionally left out.
 });
 
+// Taken from http://heroes.thelazy.net/index.php/List_of_all_town_names
+constexpr std::array townNames{
+
+    // Castle
+    "Alexandretta",
+    "Armitage",
+    "Brettonia",
+    "Castellatus",
+    "Claxton",
+    "Cornerstone",
+    "Dunwall",
+    "Gateway",
+    "Highcastle",
+    "Kanan",
+    "Kildare",
+    "Middleheim",
+    "Transom",
+    "Whistledale",
+    "Whitemoon",
+    "Whitestone",
+
+    // Rampart
+    "Bath'iere",
+    "Ceiliedgh",
+    "Elfwind",
+    "Emerald Moor",
+    "Forest",
+    "Forest Glen",
+    "Fortune Keep",
+    "Green Falls",
+    "Gladeroot",
+    "Marishen",
+    "Rainhaven",
+    "Serenity",
+    "Still Water",
+    "Strongglen",
+    "Wild Willow",
+    "Wise Oak",
+
+    // Tower
+    "Athenaeum",
+    "Ayer",
+    "Cloudfire",
+    "Cloudspire",
+    "Corona",
+    "Equinox",
+    "Facture",
+    "Fallen Star",
+    "Machina",
+    "Manufactury",
+    "Mystos",
+    "Silverspire",
+    "Silverwing",
+    "Stronggale",
+    "Tirith",
+    "Valtara",
+
+    // Inferno
+    "Abaddon",
+    "Acheron",
+    "Ashcombe",
+    "Ashden",
+    "Blackburn",
+    "Brimstone",
+    "Candent",
+    "Cinderspire",
+    "Daemon Gate",
+    "Enkindle",
+    "Firebrand",
+    "Gehenna",
+    "Hellwind",
+    "Stygius",
+    "Styx",
+    "Tartaros",
+
+    // Necropolis
+    "Agony",
+    "Blackquarter",
+    "Blight",
+    "Cessacioun",
+    "Coldreign",
+    "Coldsoul",
+    "Dark Cloud",
+    "Dark Eternal",
+    "Death's Gate",
+    "Ghostwind",
+    "Grave Raven",
+    "Haunt's Wind",
+    "Sanctum",
+    "Shadow Keep",
+    "Terminus",
+    "Worm Warren",
+
+    // Dungeon
+    "Blindroot",
+    "Castigare",
+    "Chillwater",
+    "Coldshadow",
+    "Darkburrow",
+    "Darkhold",
+    "Deepshadow",
+    "Dragonnade",
+    "Evernight",
+    "Lost Hold",
+    "Malev",
+    "Scar",
+    "Shade",
+    "Shadowden",
+    "Sorrow Crown",
+    "Veks",
+
+    // Stronghold
+    "Battlement",
+    "Bocc",
+    "Cragmoor",
+    "Dolere",
+    "Drago Breach",
+    "Dragonspire",
+    "Hartgrim",
+    "Kragg",
+    "Kruber",
+    "Morganheim",
+    "Rockwarren",
+    "Rovener",
+    "Sandflash",
+    "Slau",
+    "Strongglen",
+    "Tormina",
+
+    // Fortress
+    "Backwater",
+    "Coolmire",
+    "Deadfall",
+    "Deadwood",
+    "Drakenmoor",
+    "Edgewater",
+    "Hermit Cove",
+    "Lostmoor",
+    "Marshank",
+    "Marshchoke",
+    "Marshwall",
+    "Mossden",
+    "Mosswood",
+    "Mudshire",
+    "Silt",
+    "Stillbog",
+
+    // Conflux
+    "Ceald",
+    "Electrising",
+    "Elementon",
+    "Fenderen",
+    "Fleogan Mills",
+    "Froisan",
+    "Igne",
+    "Lagumoor",
+    "Lanting",
+    "Magmetin",
+    "Massein",
+    "Solium",
+    "Styriam",
+    "Ventu",
+    "Vluchton",
+    "Wazzar",
+
+    // Cove
+    "Brown's Bay",
+    "Downhaven",
+    "Hitchgrove",
+    "Jordanhall",
+    "Lakenshire",
+    "Lewindale",
+    "Nithenes",
+    "Noral",
+    "Port Crowland",
+    "Port Evendore",
+    "Rotunda",
+    "Sleepy Creek",
+    "Tartaglia",
+    "Walendale",
+    "Watergate",
+    "Westland Pier",
+};
+
 void readTown(const std::span<const char> data, size_t idx, Town &hero);
 void readAllTowns(const std::span<const char> data, size_t idx, size_t count, std::vector<Town> &towns);
+
+// Fleogan Mills is 13 characters long.
+constexpr size_t longestTownName() { return 13; }
 } // namespace h3::town
 
 namespace h3

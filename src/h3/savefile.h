@@ -8,6 +8,7 @@
 #include <span>
 #include <string>
 #include <string_view>
+#include <utility>
 #include <vector>
 
 namespace h3::savefile
@@ -23,6 +24,7 @@ std::vector<char> decompress(const fs::path &path);
 void write_decompressed(const fs::path &path, const std::span<const char> data);
 void read_write_decompressed(const fs::path &path, const fs::path &outPath);
 
+std::pair<size_t, size_t> firstTownIndex(const std::span<const char> data, size_t firstHeroIdx);
 size_t firstTownIndex(const std::span<const char> data, const std::string &firstTownName);
 size_t firstHeroIndex(const std::span<const char> data, const std::string &firstHeroName);
 
@@ -44,16 +46,23 @@ struct SaveFile
 {
     struct Input
     {
+        // Attempt to read all the towns automatically, bacwards from the first hero.
+        // The towns are stored right before the heroes, but with varying length. The
+        // default town names must be used to read the towns.
+        bool readAllTownsAutomatically() const { return firstTownName.empty() || townCount == 0; }
+
         // The path to the HotA save file to read.
         fs::path path;
 
         // The name of the start town for red player is used to read all the towns.
-        // It is always the first in the list, but its position (and name) is always
-        // in a different location in the file because the entire map is saved earlier.
+        // Note: If not provided an attempt will be made to find all towns, read backwards
+        // from the first Hero, using the default town names. This means that if any town
+        // name is not default in the map, the name of the first town must be provided.
         std::string firstTownName;
 
-        // Number of towns is currently not known from the save file. Therefore it must
-        // be part of the input to read all towns.
+        // Number of towns in the save file must be provided if any town uses a
+        // non-default name. If all town names are default, this can be left as 0,
+        // making an attempt to read all the towns automatically backwards.
         size_t townCount = 0;
 
         // The name of the first hero is Orrin, if not changed in the map. This is
