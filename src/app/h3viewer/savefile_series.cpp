@@ -163,13 +163,19 @@ void draw()
         ImGui::EndGroup();
     }
 
+    static bool useCustomPlayerNames = false;
     constexpr size_t maxNameLength = 32;
-    const auto &defaultNames = h3::player::playerColorsStr;
     static std::array<char[maxNameLength], h3::player::maxPlayers> names;
-    ImGui::Text("Player Names:");
-    for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+    const auto &defaultNames = h3::player::playerColorsStr;
+
+    ImGui::Checkbox("Custom Player Names", &useCustomPlayerNames);
+
+    if (useCustomPlayerNames)
     {
-        ImGui::InputTextWithHint(defaultNames[i], defaultNames[i], names[i], maxNameLength);
+        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
+        {
+            ImGui::InputTextWithHint(defaultNames[i], defaultNames[i], names[i], maxNameLength);
+        }
     }
 
     if (ImGui::Button("Load"))
@@ -190,7 +196,7 @@ void draw()
             Players players = defaultPlayers();
             for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
             {
-                players[i].name = names[i];
+                players[i].name = useCustomPlayerNames ? names[i] : defaultNames[i];
                 if (players[i].name.empty())
                 {
                     players[i].name = h3::player::playerColorsStr[i];
