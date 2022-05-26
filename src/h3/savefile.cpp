@@ -298,7 +298,7 @@ SaveFile::SaveFile(const Input &input)
     values::readStr(data, idx, description, descriptionSize);
 
     const size_t firstHeroIdx = firstHeroIndex(data, input.firstHeroName);
-    size_t townCount = input.townCount;
+    size_t townCount = input.numberOfTowns;
 
     if (input.readAllTownsAutomatically())
     {
@@ -311,15 +311,23 @@ SaveFile::SaveFile(const Input &input)
         idx = firstTownIndex(data, input.firstTownName);
     }
 
-    if (idx != 0)
+    if (idx > 0)
     {
         town::readAllTowns(data, idx, townCount, towns);
     }
+    else
+    {
+        // TODO: Show a warning that "firstTownName" could not be found.
+    }
 
     idx = firstHeroIdx;
-    if (idx != 0)
+    if (idx > 0)
     {
         readAllHeroes(data, idx, heroes);
+    }
+    else
+    {
+        // TODO: Show a warning that "firstHeroName" could not be found.
     }
 }
 

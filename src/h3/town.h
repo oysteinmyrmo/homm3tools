@@ -230,6 +230,7 @@ void readAllTowns(const std::span<const char> data, size_t idx, size_t count, st
 
 // Fleogan Mills is 13 characters long.
 constexpr size_t longestTownName() { return 13; }
+constexpr size_t maxNumberOfTowns = 48; // In-game limit.
 } // namespace h3::town
 
 namespace h3

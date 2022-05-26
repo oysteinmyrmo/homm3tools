@@ -49,7 +49,7 @@ struct SaveFile
         // Attempt to read all the towns automatically, bacwards from the first hero.
         // The towns are stored right before the heroes, but with varying length. The
         // default town names must be used to read the towns.
-        bool readAllTownsAutomatically() const { return firstTownName.empty() || townCount == 0; }
+        bool readAllTownsAutomatically() const { return firstTownName.empty() || numberOfTowns == 0; }
 
         // The path to the HotA save file to read.
         fs::path path;
@@ -63,7 +63,7 @@ struct SaveFile
         // Number of towns in the save file must be provided if any town uses a
         // non-default name. If all town names are default, this can be left as 0,
         // making an attempt to read all the towns automatically backwards.
-        size_t townCount = 0;
+        size_t numberOfTowns = 0;
 
         // The name of the first hero is Orrin, if not changed in the map. This is
         // used to read all the heroes when opening the save file.
