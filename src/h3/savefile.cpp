@@ -210,8 +210,14 @@ void read_write_decompressed(const fs::path &path, const fs::path &outPath)
     }
 }
 
+// Note: firstTownIdx is identical to firstHeroIdx if the map has no towns.
+size_t firstPlayerIndex(const size_t firstTownIdx)
+{
+    return firstTownIdx - (player::maxPlayers * sizeof(player::PlayerData));
+}
+
 // Returns index of first town and town count.
-std::pair<size_t, size_t> firstTownIndex(const std::span<const char> data, const size_t firstHeroIdx)
+std::pair<size_t, size_t> firstTownIndexAndCount(const std::span<const char> data, const size_t firstHeroIdx)
 {
     size_t townEndIdx = firstHeroIdx - 1;
     size_t townCount = 0;
@@ -298,19 +304,25 @@ SaveFile::SaveFile(const Input &input)
     values::readStr(data, idx, description, descriptionSize);
 
     const size_t firstHeroIdx = firstHeroIndex(data, input.firstHeroName);
-    size_t townCount = input.numberOfTowns;
-
-    if (input.readAllTownsAutomatically())
+    const auto [firstTownIdx, townCount] = [&data, &input, firstHeroIdx]()
     {
-        const auto [firstTownIdx, count] = firstTownIndex(data, firstHeroIdx);
-        idx = firstTownIdx;
-        townCount = count;
+        return input.readAllTownsAutomatically()
+            ? firstTownIndexAndCount(data, firstHeroIdx)
+            : std::make_pair(firstTownIndex(data, input.firstTownName), input.numberOfTowns);
+    }();
+    const auto firstPlayerIdx = firstPlayerIndex(firstTownIdx);
+
+    idx = firstPlayerIdx;
+    if (idx > 0)
+    {
+        player::readAllPlayers(data, idx, players);
     }
     else
     {
-        idx = firstTownIndex(data, input.firstTownName);
+        // TODO: Show a warning that "firstPlayerIndex" could not be found.
     }
 
+    idx = firstTownIdx;
     if (idx > 0)
     {
         town::readAllTowns(data, idx, townCount, towns);
@@ -323,7 +335,7 @@ SaveFile::SaveFile(const Input &input)
     idx = firstHeroIdx;
     if (idx > 0)
     {
-        readAllHeroes(data, idx, heroes);
+        hero::readAllHeroes(data, idx, heroes);
     }
     else
     {

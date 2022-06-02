@@ -1,6 +1,7 @@
 #pragma once
 
 #include "hero.h"
+#include "player.h"
 #include "town.h"
 
 #include <array>
@@ -24,7 +25,8 @@ std::vector<char> decompress(const fs::path &path);
 void write_decompressed(const fs::path &path, const std::span<const char> data);
 void read_write_decompressed(const fs::path &path, const fs::path &outPath);
 
-std::pair<size_t, size_t> firstTownIndex(const std::span<const char> data, size_t firstHeroIdx);
+size_t firstPlayerIndex(size_t firstTownIdx);
+std::pair<size_t, size_t> firstTownIndexAndCount(const std::span<const char> data, size_t firstHeroIdx);
 size_t firstTownIndex(const std::span<const char> data, const std::string &firstTownName);
 size_t firstHeroIndex(const std::span<const char> data, const std::string &firstHeroName);
 
@@ -95,6 +97,7 @@ struct SaveFile
     uint16_t descriptionSize; // byte 70 + mapNameSize
     std::string description;  // byte 72 + mapNameSize
 
+    std::array<player::PlayerData, player::maxPlayers> players;
     std::vector<Town> towns;
     std::array<Hero, hero::heroCount> heroes;
 }

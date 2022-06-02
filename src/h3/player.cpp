@@ -1,8 +1,12 @@
 #include "player.h"
+#include "savefile.h"
 #include "stats.h"
+#include "value_reader.h"
 
 namespace h3::player
 {
+static_assert(sizeof(PlayerData) == 149, "sizeof(PlayerData) must be 149.");
+
 Player::Player()
 {
     heroes_.reserve(16);
@@ -28,6 +32,11 @@ void Player::setColor(const Color color)
     color_ = color;
 }
 
+void Player::setPlayerData(const PlayerData &playerData)
+{
+    playerData_ = playerData;
+}
+
 uint64_t Player::kingdomArmyStrength() const
 {
     uint64_t kas = 0;
@@ -46,9 +55,10 @@ std::array<Player, maxPlayers> players(const SaveFile &save)
 {
     std::array<Player, maxPlayers> players;
 
-    for (uint8_t idx = 0; idx < maxPlayers; ++idx)
+    for (uint8_t i = 0; i < maxPlayers; ++i)
     {
-        players[idx].setColor(static_cast<Color>(idx));
+        players[i].setColor(static_cast<Color>(i));
+        players[i].setPlayerData(save.players[i]);
     }
 
     for (const auto &hero : save.heroes)
@@ -68,5 +78,21 @@ std::array<Player, maxPlayers> players(const SaveFile &save)
     }
 
     return players;
+}
+
+void readAllPlayers(const std::span<const char> data, size_t idx, std::array<PlayerData, maxPlayers> &playerData)
+{
+    for (auto &p : playerData)
+    {
+        values::skipVal(idx, p._unused01);
+        values::readVal(data, idx, p.wood);
+        values::readVal(data, idx, p.mercury);
+        values::readVal(data, idx, p.ore);
+        values::readVal(data, idx, p.sulfur);
+        values::readVal(data, idx, p.crystal);
+        values::readVal(data, idx, p.gems);
+        values::readVal(data, idx, p.gold);
+        values::skipVal(idx, p._unused02);
+    }
 }
 } // namespace h3::player

@@ -1,0 +1,31 @@
+Resources listed as wood, mercury, ore, sulfur, crystal, gems, gold as in game.
+
+Day 1:
+Red:     0  5  5  0  0  0  2500
+Blue:    0  0  5  0  0  0  3400
+Tan:     0  5  5  0  0  0  2500
+Green:   0  0  5  0  0  0  3400
+Orange:  0  3  5  0  0  0  2500
+Purple:  0  0  5  0  0  0  3300
+Teal:    0  6  5  0  0  0  2500
+Pink:    0  0  5  0  0  0  3500
+
+Day 2:
+Red:    15 17 16  5  5  0  6700
+Blue:    0 12 23  0  8 11  6700
+Tan:     0  5 15 18  6  0  3100
+Green:   5 10 10 14  0  0  6800
+Orange:  5  3  5  0  6 12  7250
+Purple:  0  0 20  5  6 10  6900
+Teal:    6  6 11  4  6 10  5950
+Pink:    6  6 11 17  6 10  5000
+
+Day 3:
+Red:    19 32 21  5 21  0 10700
+Blue:   VANQUISHED
+Tan:    VANQUISHED
+Green:   5 10 10 14  0  0  6800
+Orange: VANQUISHED
+Purple:  0  0 20  5  6 10  6900
+Teal:    6  6 11  4  6 10  5950
+Pink:    6  6 11 17  6 10  5000

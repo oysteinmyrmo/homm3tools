@@ -24,6 +24,7 @@ add_executable(homm3tests
     test-kingdom-army-strength.cpp
     test-primary-skills.cpp
     test-prison.cpp
+    test-resources.cpp
     test-savefile.cpp
     test-secondary-skills.cpp
     test-spell-points.cpp

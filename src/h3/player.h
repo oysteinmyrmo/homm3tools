@@ -1,13 +1,18 @@
 #pragma once
 
 #include "hero.h"
-#include "savefile.h"
+#include "packed_structs.h"
 #include "town.h"
 
 #include <array>
 #include <cstdint>
 #include <unordered_map>
 #include <vector>
+
+namespace h3::savefile
+{
+class SaveFile;
+} // namespace h3::savefile
 
 namespace h3::player
 {
@@ -55,6 +60,20 @@ static constexpr std::array<const char*, maxPlayers> playerColorsStr = {
     "Pink",
 };
 
+PACKED_STRUCT(
+struct PlayerData
+{
+    uint8_t _unused01[97];
+    uint32_t wood = 0;
+    uint32_t mercury = 0;
+    uint32_t ore = 0;
+    uint32_t sulfur = 0;
+    uint32_t crystal = 0;
+    uint32_t gems = 0;
+    uint32_t gold = 0;
+    uint8_t _unused02[24];
+});
+
 class Player
 {
 public:
@@ -68,16 +87,27 @@ public:
     void addHero(const Hero &hero);
     void addTown(const Town &town);
     void setColor(const Color color);
+    void setPlayerData(const PlayerData &playerData);
 
     uint64_t kingdomArmyStrength() const;
 
+    uint32_t wood()    const { return playerData_.wood;    }
+    uint32_t mercury() const { return playerData_.mercury; }
+    uint32_t ore()     const { return playerData_.ore;     }
+    uint32_t sulfur()  const { return playerData_.sulfur;  }
+    uint32_t crystal() const { return playerData_.crystal; }
+    uint32_t gems()    const { return playerData_.gems;    }
+    uint32_t gold()    const { return playerData_.gold;    }
+
 private:
+    PlayerData playerData_;
     std::vector<Hero> heroes_;
     std::vector<Town> towns_;
     Color color_{Color::Empty};
 };
 
-std::array<Player, maxPlayers> players(const SaveFile &save);
+std::array<Player, maxPlayers> players(const savefile::SaveFile &save);
+void readAllPlayers(const std::span<const char> data, size_t idx, std::array<PlayerData, maxPlayers> &playerData);
 } // namespace h3::player
 
 namespace h3
