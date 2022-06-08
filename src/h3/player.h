@@ -63,7 +63,7 @@ static constexpr std::array<const char*, maxPlayers> playerColorsStr = {
 PACKED_STRUCT(
 struct PlayerData
 {
-    uint8_t _unused01[97];
+    uint8_t _unused01[96];
     uint32_t wood = 0;
     uint32_t mercury = 0;
     uint32_t ore = 0;
@@ -71,7 +71,7 @@ struct PlayerData
     uint32_t crystal = 0;
     uint32_t gems = 0;
     uint32_t gold = 0;
-    uint8_t _unused02[24];
+    uint8_t _unused02[25];
 });
 
 class Player

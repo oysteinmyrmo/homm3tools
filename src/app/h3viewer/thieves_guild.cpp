@@ -1,6 +1,7 @@
 #include "thieves_guild.h"
 
 #include "plots/experience.h"
+#include "plots/gold.h"
 #include "plots/hero_count.h"
 #include "plots/kingdom_army_strength.h"
 #include "plots/town_count.h"
@@ -10,6 +11,7 @@ namespace
 {
 bool gInitialized = false;
 h3viewer::plot::ExperiencePlot experiencePlot;
+h3viewer::plot::GoldPlot goldPlot;
 h3viewer::plot::HeroesPlot heroesPlot;
 h3viewer::plot::KingdomArmyStrengthPlot kasPlot;
 h3viewer::plot::TownsPlot townsPlot;
@@ -28,6 +30,7 @@ namespace h3viewer::thieves_guild
 void reset(const SaveFileSeries &series)
 {
     experiencePlot.invalidate(series);
+    goldPlot.invalidate(series);
     heroesPlot.invalidate(series);
     kasPlot.invalidate(series);
     townsPlot.invalidate(series);
@@ -38,6 +41,7 @@ void reset(const SaveFileSeries &series)
 void update(const SaveFileSeries &series)
 {
     experiencePlot.update(series);
+    goldPlot.update(series);
     heroesPlot.update(series);
     kasPlot.update(series);
     townsPlot.update(series);
@@ -100,7 +104,11 @@ void draw()
         }
         else if (current_plot_idx == plot_idx_economy)
         {
-            ImGui::Text("Nothing here yet.");
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            goldPlot.drawSettings();
+            ImGui::TableNextColumn();
+            goldPlot.drawPlot();
         }
 
         ImGui::EndTable();

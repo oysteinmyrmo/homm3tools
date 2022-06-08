@@ -242,13 +242,19 @@ std::pair<size_t, size_t> firstTownIndexAndCount(const std::span<const char> dat
                 townFound = true;
 
                 // Reset the index referring to the end of the next possible town.
-                townEndIdx = (townNameIt - data.begin()) - Town::offsetFromNameToStart() - 1;
+                const size_t townNameIdx = townNameIt - data.begin();
+                townEndIdx = townNameIdx - Town::offsetFromNameToStart() - 1;
                 break;
             }
         }
     }
 
-    const size_t firstTownIdx = townEndIdx + 1;
+    // Note: This weirdness stems from the fact that the save file is slightly differenct
+    // in the case where there are no towns. The "townEndIdx + 2" part should be wrong, but
+    // it needs to be like that when no towns are present in the save file. It is not clear
+    // at the time of writing why it is so, but this makes the plots and tests work for both
+    // cases. This might come and bite at a later time...
+    const size_t firstTownIdx = (townCount == 0) ? townEndIdx + 2 : townEndIdx + 1;
     return std::make_pair(firstTownIdx, townCount);
 }
 
