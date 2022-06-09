@@ -68,6 +68,22 @@ void Plot::drawSettings()
                 dataInvalidated = true;
             }
         }
+        else if (std::holds_alternative<RadioButtonSetting>(setting))
+        {
+            auto &s = std::get<RadioButtonSetting>(setting);
+            for (int i = 0; i < s.settings.size(); ++i)
+            {
+                const auto &r = s.settings[i];
+                if (ImGui::RadioButton(r.text.c_str(), &s.selected, i))
+                {
+                    dataInvalidated = true;
+                }
+                if (!r.newline)
+                {
+                    ImGui::SameLine();
+                }
+            }
+        }
     }
 }
 

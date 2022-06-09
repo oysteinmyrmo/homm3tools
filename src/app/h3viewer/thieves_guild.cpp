@@ -4,6 +4,7 @@
 #include "plots/gold.h"
 #include "plots/hero_count.h"
 #include "plots/kingdom_army_strength.h"
+#include "plots/resources.h"
 #include "plots/town_count.h"
 #include "savefile_series.h"
 
@@ -14,6 +15,7 @@ h3viewer::plot::ExperiencePlot experiencePlot;
 h3viewer::plot::GoldPlot goldPlot;
 h3viewer::plot::HeroesPlot heroesPlot;
 h3viewer::plot::KingdomArmyStrengthPlot kasPlot;
+h3viewer::plot::ResourcesPlot resourcesPlot;
 h3viewer::plot::TownsPlot townsPlot;
 
 constexpr const char *plot_categories[] = {"Army", "Heroes", "Kingdom", "Economy"};
@@ -33,6 +35,7 @@ void reset(const SaveFileSeries &series)
     goldPlot.invalidate(series);
     heroesPlot.invalidate(series);
     kasPlot.invalidate(series);
+    resourcesPlot.invalidate(series);
     townsPlot.invalidate(series);
 
     gInitialized = true;
@@ -44,6 +47,7 @@ void update(const SaveFileSeries &series)
     goldPlot.update(series);
     heroesPlot.update(series);
     kasPlot.update(series);
+    resourcesPlot.update(series);
     townsPlot.update(series);
 }
 
@@ -109,6 +113,12 @@ void draw()
             goldPlot.drawSettings();
             ImGui::TableNextColumn();
             goldPlot.drawPlot();
+
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            resourcesPlot.drawSettings();
+            ImGui::TableNextColumn();
+            resourcesPlot.drawPlot();
         }
 
         ImGui::EndTable();

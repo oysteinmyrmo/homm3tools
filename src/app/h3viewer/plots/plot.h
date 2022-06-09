@@ -22,6 +22,18 @@ namespace h3viewer::plot
         bool checked = false;
     };
 
+    struct RadioButtonSetting : Setting
+    {
+        struct RadioSetting
+        {
+            std::string text;
+            bool newline = false;
+        };
+
+        int selected = 0;
+        std::vector<RadioSetting> settings;
+    };
+
     struct AxisText
     {
         std::string header;
@@ -51,7 +63,7 @@ namespace h3viewer::plot
         void setupPercentageStackedAreaChart();
 
         Players players;
-        std::vector<std::variant<Setting, CheckBoxSetting>> settings;
+        std::vector<std::variant<Setting, CheckBoxSetting, RadioButtonSetting>> settings;
         AxisText axisTexts;
         std::vector<uint64_t> xVals; // Days from 1 through N.
         std::array<std::vector<uint64_t>, h3::player::maxPlayers> yVals;
