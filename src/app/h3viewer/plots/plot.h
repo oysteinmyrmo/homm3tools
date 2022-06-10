@@ -17,6 +17,11 @@ namespace h3viewer::plot
         bool enabled = true;
     };
 
+    // Simply draws an ImGui::Separator().
+    struct SettingSeparator : Setting
+    {
+    };
+
     struct CheckBoxSetting : Setting
     {
         bool checked = false;
@@ -63,7 +68,7 @@ namespace h3viewer::plot
         void setupPercentageStackedAreaChart();
 
         Players players;
-        std::vector<std::variant<Setting, CheckBoxSetting, RadioButtonSetting>> settings;
+        std::vector<std::variant<Setting, SettingSeparator, CheckBoxSetting, RadioButtonSetting>> settings;
         AxisText axisTexts;
         std::vector<uint64_t> xVals; // Days from 1 through N.
         std::array<std::vector<uint64_t>, h3::player::maxPlayers> yVals;

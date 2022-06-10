@@ -84,6 +84,10 @@ void Plot::drawSettings()
                 }
             }
         }
+        else if (std::holds_alternative<SettingSeparator>(setting))
+        {
+            ImGui::Separator();
+        }
     }
 }
 

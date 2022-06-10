@@ -11,6 +11,7 @@ ResourcesPlot::ResourcesPlot() : Plot()
     settings = {
         CheckBoxSetting{"Show as Percentage Stacked Area Chart##ResourcesPlot"},
         CheckBoxSetting{"Show Vanquish Lines##ResourcesPlot"},
+        SettingSeparator{},
         RadioButtonSetting{
             {.text="Customize##ResourcesPlot"},
             .settings = {
@@ -20,6 +21,7 @@ ResourcesPlot::ResourcesPlot() : Plot()
                 {"Custom##ResourcesPlot", .newline=true}
             }
         },
+        SettingSeparator{},
         CheckBoxSetting{{"Wood##ResourcesPlot"}, .checked=true},
         CheckBoxSetting{{"Ore##ResourcesPlot"}, .checked=true},
         CheckBoxSetting{{"Mercury##ResourcesPlot"}, .checked=true},
@@ -112,85 +114,85 @@ bool ResourcesPlot::showVanquishLines() const
 
 bool ResourcesPlot::showAll() const
 {
-    return std::get<RadioButtonSetting>(settings[2]).selected == 0;
+    return std::get<RadioButtonSetting>(settings[3]).selected == 0;
 }
 
 bool ResourcesPlot::showWoodOre() const
 {
-    return std::get<RadioButtonSetting>(settings[2]).selected == 1;
+    return std::get<RadioButtonSetting>(settings[3]).selected == 1;
 }
 
 bool ResourcesPlot::showMagical() const
 {
-    return std::get<RadioButtonSetting>(settings[2]).selected == 2;
+    return std::get<RadioButtonSetting>(settings[3]).selected == 2;
 }
 
 bool ResourcesPlot::showCustom() const
 {
-    return std::get<RadioButtonSetting>(settings[2]).selected == 3;
+    return std::get<RadioButtonSetting>(settings[3]).selected == 3;
 }
 
 void ResourcesPlot::checkNone()
 {
-    std::get<CheckBoxSetting>(settings[3]).checked = false;
-    std::get<CheckBoxSetting>(settings[4]).checked = false;
     std::get<CheckBoxSetting>(settings[5]).checked = false;
     std::get<CheckBoxSetting>(settings[6]).checked = false;
     std::get<CheckBoxSetting>(settings[7]).checked = false;
     std::get<CheckBoxSetting>(settings[8]).checked = false;
+    std::get<CheckBoxSetting>(settings[9]).checked = false;
+    std::get<CheckBoxSetting>(settings[10]).checked = false;
 }
 
 void ResourcesPlot::checkAll()
 {
-    std::get<CheckBoxSetting>(settings[3]).checked = true;
-    std::get<CheckBoxSetting>(settings[4]).checked = true;
     std::get<CheckBoxSetting>(settings[5]).checked = true;
     std::get<CheckBoxSetting>(settings[6]).checked = true;
     std::get<CheckBoxSetting>(settings[7]).checked = true;
     std::get<CheckBoxSetting>(settings[8]).checked = true;
+    std::get<CheckBoxSetting>(settings[9]).checked = true;
+    std::get<CheckBoxSetting>(settings[10]).checked = true;
 }
 
 void ResourcesPlot::checkWoodOre()
 {
-    std::get<CheckBoxSetting>(settings[3]).checked = true;
-    std::get<CheckBoxSetting>(settings[4]).checked = true;
+    std::get<CheckBoxSetting>(settings[5]).checked = true;
+    std::get<CheckBoxSetting>(settings[6]).checked = true;
 }
 
 void ResourcesPlot::checkMagical()
 {
-    std::get<CheckBoxSetting>(settings[5]).checked = true;
-    std::get<CheckBoxSetting>(settings[6]).checked = true;
     std::get<CheckBoxSetting>(settings[7]).checked = true;
     std::get<CheckBoxSetting>(settings[8]).checked = true;
+    std::get<CheckBoxSetting>(settings[9]).checked = true;
+    std::get<CheckBoxSetting>(settings[10]).checked = true;
 }
 
 bool ResourcesPlot::includeWood() const
 {
-    return std::get<CheckBoxSetting>(settings[3]).checked;
+    return std::get<CheckBoxSetting>(settings[5]).checked;
 }
 
 bool ResourcesPlot::includeOre() const
 {
-    return std::get<CheckBoxSetting>(settings[4]).checked;
+    return std::get<CheckBoxSetting>(settings[6]).checked;
 }
 
 bool ResourcesPlot::includeMercury() const
 {
-    return std::get<CheckBoxSetting>(settings[5]).checked;
+    return std::get<CheckBoxSetting>(settings[7]).checked;
 }
 
 bool ResourcesPlot::includeSulfur() const
 {
-    return std::get<CheckBoxSetting>(settings[6]).checked;
+    return std::get<CheckBoxSetting>(settings[8]).checked;
 }
 
 bool ResourcesPlot::includeCrystal() const
 {
-    return std::get<CheckBoxSetting>(settings[7]).checked;
+    return std::get<CheckBoxSetting>(settings[9]).checked;
 }
 
 bool ResourcesPlot::includeGems() const
 {
-    return std::get<CheckBoxSetting>(settings[8]).checked;
+    return std::get<CheckBoxSetting>(settings[10]).checked;
 }
 } // namespace h3viewer::plot
