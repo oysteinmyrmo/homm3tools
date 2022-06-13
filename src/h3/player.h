@@ -11,7 +11,7 @@
 
 namespace h3::savefile
 {
-class SaveFile;
+struct SaveFile;
 } // namespace h3::savefile
 
 namespace h3::player
