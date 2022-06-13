@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <limits>
+#include <unordered_map>
 
 namespace h3::hero
 {
@@ -198,17 +199,20 @@ constexpr uint8_t ArtifactCount = 163;
 // A single artifact entry in a save file.
 struct ArtifactEntry
 {
+    bool empty() const { return artifactId == std::numeric_limits<uint32_t>::max(); }
+
     uint32_t artifactId = std::numeric_limits<uint32_t>::max();
     uint32_t scrollSpellId = std::numeric_limits<uint32_t>::max(); // Spell ID if artifact is a spell scroll.
 };
 
 enum class ArtifactClass : uint8_t
 {
-    Treasure      =   0,
-    Minor         =   1,
-    Major         =   2,
-    Relic         =   3,
-    Combination   =   4,
+    Other         =   0, // Catapult, ballista, spell book, etc.
+    Treasure      =   1,
+    Minor         =   2,
+    Major         =   3,
+    Relic         =   4,
+    Combination   =   5,
 };
 
 // Where on a Hero an artifact resides.
@@ -300,6 +304,27 @@ enum class ArtifactSlot : uint8_t
     COUNT         =   83,
 };
 
+// Not the actual slots, but the type of slots.
+enum class ArtifactSlotType : uint8_t
+{
+    Helm         =  0,
+    Cloak        =  1,
+    Neck         =  2,
+    Weapon       =  3,
+    Shield       =  4,
+    Armor        =  5,
+    Ring         =  6,
+    Boots        =  7,
+    Misc         =  8,
+    Combination  =  9,
+    Ballista     = 10,
+    AmmoCart     = 11,
+    FirstAidTent = 12,
+    Catapult     = 13,
+    SpellBook    = 14,
+    Backpack     = 15,
+};
+
 constexpr uint8_t ArtifactSlotCount = static_cast<uint8_t>(ArtifactSlot::COUNT);
 
 spells::Spell spellFromScroll(const hero::Hero &hero, uint8_t slot);
@@ -329,6 +354,21 @@ Artifact firstAidTent(const hero::Hero &hero);
 Artifact catapult(const hero::Hero &hero);
 Artifact spellBook(const hero::Hero &hero);
 Artifact inventory(const hero::Hero &hero, uint8_t slot);
+
+struct ArtifactDetails
+{
+    bool isTreasure() const { return artifactClass == ArtifactClass::Treasure; }
+    bool isMinor() const { return artifactClass == ArtifactClass::Minor; }
+    bool isMajor() const { return artifactClass == ArtifactClass::Major; }
+    bool isRelic() const { return artifactClass == ArtifactClass::Relic; }
+    bool isCombo() const { return artifactClass == ArtifactClass::Combination; }
+
+    ArtifactClass artifactClass;
+    ArtifactSlotType slotType;
+    uint32_t cost = 0;
+};
+
+extern const std::unordered_map<Artifact, ArtifactDetails> artifactDetails;
 } // namespace h3::artifacts
 
 namespace h3

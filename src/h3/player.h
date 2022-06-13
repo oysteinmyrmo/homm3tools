@@ -106,6 +106,15 @@ private:
     Color color_{Color::Empty};
 };
 
+template<class Func>
+void forEachHero(const Player &player, const Func func)
+{
+    for (const auto &hero : player.heroes())
+    {
+        func(hero);
+    }
+}
+
 std::array<Player, maxPlayers> players(const savefile::SaveFile &save);
 void readAllPlayers(const std::span<const char> data, size_t idx, std::array<PlayerData, maxPlayers> &playerData);
 } // namespace h3::player

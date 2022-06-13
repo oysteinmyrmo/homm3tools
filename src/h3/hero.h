@@ -93,6 +93,20 @@ struct Hero
     uint8_t skillSlots[SkillCount];         // +923
 });
 
+template <class Callback>
+void forEachArtifact(const Hero &hero, const Callback callback)
+{
+    for (const auto &entry : hero.artifacts)
+    {
+        if (!entry.empty())
+        {
+            const Artifact artifact = static_cast<Artifact>(entry.artifactId);
+            const auto &details = h3::artifacts::artifactDetails.at(artifact);
+            callback(artifact, details);
+        }
+    }
+}
+
 void readHero(const std::span<const char> data, size_t idx, Hero &hero);
 void readAllHeroes(const std::span<const char> data, size_t idx, std::span<Hero> output);
 } // namespace h3::hero

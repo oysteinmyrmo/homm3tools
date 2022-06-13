@@ -1,5 +1,6 @@
 #include "thieves_guild.h"
 
+#include "plots/artifacts.h"
 #include "plots/experience.h"
 #include "plots/gold.h"
 #include "plots/hero_count.h"
@@ -11,6 +12,7 @@
 namespace
 {
 bool gInitialized = false;
+h3viewer::plot::ArtifactsPlot artifactsPlot;
 h3viewer::plot::ExperiencePlot experiencePlot;
 h3viewer::plot::GoldPlot goldPlot;
 h3viewer::plot::HeroesPlot heroesPlot;
@@ -31,6 +33,7 @@ namespace h3viewer::thieves_guild
 {
 void reset(const SaveFileSeries &series)
 {
+    artifactsPlot.invalidate(series);
     experiencePlot.invalidate(series);
     goldPlot.invalidate(series);
     heroesPlot.invalidate(series);
@@ -43,6 +46,7 @@ void reset(const SaveFileSeries &series)
 
 void update(const SaveFileSeries &series)
 {
+    artifactsPlot.update(series);
     experiencePlot.update(series);
     goldPlot.update(series);
     heroesPlot.update(series);
@@ -91,6 +95,12 @@ void draw()
             heroesPlot.drawSettings();
             ImGui::TableNextColumn();
             heroesPlot.drawPlot();
+
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            artifactsPlot.drawSettings();
+            ImGui::TableNextColumn();
+            artifactsPlot.drawPlot();
 
             ImGui::TableNextRow();
             ImGui::TableNextColumn();

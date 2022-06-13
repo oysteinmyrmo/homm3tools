@@ -42,6 +42,8 @@ set(IMPLOT_SOURCES
 set(H3VIEWER_SOURCES
     player.cpp
     player.h
+    plots/artifacts.cpp
+    plots/artifacts.h
     plots/experience.cpp
     plots/experience.h
     plots/gold.cpp
