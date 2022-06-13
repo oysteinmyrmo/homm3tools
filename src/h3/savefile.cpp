@@ -242,7 +242,8 @@ std::pair<size_t, size_t> firstTownIndexAndCount(const std::span<const char> dat
                 townFound = true;
 
                 // Reset the index referring to the end of the next possible town.
-                const size_t townNameIdx = townNameIt - data.begin();
+                const size_t townNameIdxInSearch = std::distance(searchData.begin(), townNameIt);
+                const size_t townNameIdx = townStartIdx + townNameIdxInSearch;
                 townEndIdx = townNameIdx - Town::offsetFromNameToStart() - 1;
                 break;
             }
