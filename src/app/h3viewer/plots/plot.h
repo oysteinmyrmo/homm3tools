@@ -35,8 +35,8 @@ namespace h3viewer::plot
             bool newline = false;
         };
 
-        int selected = 0;
         std::vector<RadioSetting> settings;
+        int selected = 0;
     };
 
     struct AxisText

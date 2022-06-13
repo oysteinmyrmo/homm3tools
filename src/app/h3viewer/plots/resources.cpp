@@ -9,25 +9,25 @@ namespace h3viewer::plot
 ResourcesPlot::ResourcesPlot() : Plot()
 {
     settings = {
-        CheckBoxSetting{"Show as Percentage Stacked Area Chart##ResourcesPlot"},
-        CheckBoxSetting{"Show Vanquish Lines##ResourcesPlot"},
+        CheckBoxSetting{{.text="Show as Percentage Stacked Area Chart##ResourcesPlot"}},
+        CheckBoxSetting{{.text="Show Vanquish Lines##ResourcesPlot"}},
         SettingSeparator{},
         RadioButtonSetting{
             {.text="Customize##ResourcesPlot"},
-            .settings = {
-                {"All##ResourcesPlot", .newline=true},
-                {"Wood/Ore##ResourcesPlot"},
-                {"Magic##ResourcesPlot", .newline=true},
-                {"Custom##ResourcesPlot", .newline=true}
+            {
+                {.text="All##ResourcesPlot", .newline=true},
+                {.text="Wood/Ore##ResourcesPlot"},
+                {.text="Magic##ResourcesPlot", .newline=true},
+                {.text="Custom##ResourcesPlot", .newline=true}
             }
         },
         SettingSeparator{},
-        CheckBoxSetting{{"Wood##ResourcesPlot"}, .checked=true},
-        CheckBoxSetting{{"Ore##ResourcesPlot"}, .checked=true},
-        CheckBoxSetting{{"Mercury##ResourcesPlot"}, .checked=true},
-        CheckBoxSetting{{"Sulfur##ResourcesPlot"}, .checked=true},
-        CheckBoxSetting{{"Crystal##ResourcesPlot"}, .checked=true},
-        CheckBoxSetting{{"Gems##ResourcesPlot"}, .checked=true},
+        CheckBoxSetting{{"Wood##ResourcesPlot"}, true},
+        CheckBoxSetting{{"Ore##ResourcesPlot"}, true},
+        CheckBoxSetting{{"Mercury##ResourcesPlot"}, true},
+        CheckBoxSetting{{"Sulfur##ResourcesPlot"}, true},
+        CheckBoxSetting{{"Crystal##ResourcesPlot"}, true},
+        CheckBoxSetting{{"Gems##ResourcesPlot"}, true},
     };
 
     axisTexts = {
