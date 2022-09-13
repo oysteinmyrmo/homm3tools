@@ -89,6 +89,7 @@ target_include_directories(h3viewer PRIVATE
 target_link_libraries(h3viewer PRIVATE
     glfw
     homm3tools
+    images-creature-portraits
 )
 
 if(WIN32)
