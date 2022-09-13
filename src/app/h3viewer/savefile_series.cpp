@@ -13,6 +13,10 @@
 #include <string>
 #include <utility>
 
+#include <cmrc/cmrc.hpp>
+
+CMRC_DECLARE(images::creatures::portraits);
+
 namespace
 {
 h3viewer::SaveFileSeries gSaveFileSeries;
@@ -20,6 +24,9 @@ h3viewer::SaveFileSeries gSaveFileSeries;
 // Stolen from imgui_demo.cpp.
 void HelpMarker(const char* desc)
 {
+    auto fs = cmrc::images::creatures::portraits::get_filesystem();
+    auto bytes = fs.open("Cyclops_King_portrait.gif");
+
     ImGui::TextDisabled("(?)");
     if (ImGui::IsItemHovered())
     {
