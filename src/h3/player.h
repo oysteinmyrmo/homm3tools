@@ -90,6 +90,7 @@ public:
     void setPlayerData(const PlayerData &playerData);
 
     uint64_t kingdomArmyStrength() const;
+    uint32_t bestCreatureAIValue() const;
 
     uint32_t wood()    const { return playerData_.wood;    }
     uint32_t mercury() const { return playerData_.mercury; }

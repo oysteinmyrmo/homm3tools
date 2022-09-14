@@ -44,6 +44,8 @@ set(H3VIEWER_SOURCES
     player.h
     plots/artifacts.cpp
     plots/artifacts.h
+    plots/best_creature.cpp
+    plots/best_creature.h
     plots/experience.cpp
     plots/experience.h
     plots/gold.cpp

@@ -7,6 +7,23 @@ namespace h3::town
 {
 static_assert(Town::offsetFromNameToStart() == 71, "Offset to Town::name must be 71.");
 
+Creature Town::bestCreature() const
+{
+    Creature bestCreature = Creature::Empty;
+    uint32_t bestAIValue = 0;
+    for (uint8_t i = 0; i < creatures::maxStacks; ++i)
+    {
+        const Creature creature = creatures[i];
+        const uint32_t aiValue = creatures::AIValues.at(creature);
+        if (aiValue > bestAIValue)
+        {
+            bestAIValue = aiValue;
+            bestCreature = creature;
+        }
+    }
+    return bestCreature;
+}
+
 void readTown(const std::span<const char> data, size_t idx, Town &town)
 {
     values::readVal(data, idx, town.owner);

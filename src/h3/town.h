@@ -26,6 +26,7 @@ struct Town
 
     size_t sizeOfWithName() const { return sizeOfWithoutName() + name.size(); }
     uint64_t armyStrength() const { return stats::army_strength(*this); }
+    Creature bestCreature() const;
 
     uint8_t owner;                          // -71
     uint8_t _unused0[3];
