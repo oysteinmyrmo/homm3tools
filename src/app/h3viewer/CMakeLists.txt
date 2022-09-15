@@ -1,4 +1,8 @@
-project(h3viewer)
+if(WIN32)
+    project(h3viewer CXX)
+elseif(APPLE)
+    project(h3viewer CXX OBJCXX OBJC)
+endif()
 
 include(FetchContent)
 
