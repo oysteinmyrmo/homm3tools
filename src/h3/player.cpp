@@ -1,7 +1,11 @@
 #include "player.h"
+
+#include "creatures.h"
 #include "savefile.h"
 #include "stats.h"
 #include "value_reader.h"
+
+#include <algorithm>
 
 namespace h3::player
 {
@@ -49,6 +53,24 @@ uint64_t Player::kingdomArmyStrength() const
         kas += town.armyStrength();
     }
     return kas;
+}
+
+uint32_t Player::bestCreatureAIValue() const
+{
+    uint32_t bestCreature = 0;
+    for (const auto &hero : heroes_)
+    {
+        const auto creature = hero.bestCreature();
+        const uint32_t aiValue = creatures::AIValues.at(creature);
+        bestCreature = std::max(bestCreature, aiValue);
+    }
+    for (const auto &town : towns_)
+    {
+        const auto creature = town.bestCreature();
+        const uint32_t aiValue = creatures::AIValues.at(creature);
+        bestCreature = std::max(bestCreature, aiValue);
+    }
+    return bestCreature;
 }
 
 std::array<Player, maxPlayers> players(const SaveFile &save)

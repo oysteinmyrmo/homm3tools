@@ -1,6 +1,7 @@
 #include "thieves_guild.h"
 
 #include "plots/artifacts.h"
+#include "plots/best_creature.h"
 #include "plots/experience.h"
 #include "plots/gold.h"
 #include "plots/hero_count.h"
@@ -13,6 +14,7 @@ namespace
 {
 bool gInitialized = false;
 h3viewer::plot::ArtifactsPlot artifactsPlot;
+h3viewer::plot::BestCreaturePlot bestCreaturePlot;
 h3viewer::plot::ExperiencePlot experiencePlot;
 h3viewer::plot::GoldPlot goldPlot;
 h3viewer::plot::HeroesPlot heroesPlot;
@@ -34,6 +36,7 @@ namespace h3viewer::thieves_guild
 void reset(const SaveFileSeries &series)
 {
     artifactsPlot.invalidate(series);
+    bestCreaturePlot.invalidate(series);
     experiencePlot.invalidate(series);
     goldPlot.invalidate(series);
     heroesPlot.invalidate(series);
@@ -47,6 +50,7 @@ void reset(const SaveFileSeries &series)
 void update(const SaveFileSeries &series)
 {
     artifactsPlot.update(series);
+    bestCreaturePlot.invalidate(series);
     experiencePlot.update(series);
     goldPlot.update(series);
     heroesPlot.update(series);
@@ -87,6 +91,12 @@ void draw()
             kasPlot.drawSettings();
             ImGui::TableNextColumn();
             kasPlot.drawPlot();
+
+            ImGui::TableNextRow();
+            ImGui::TableNextColumn();
+            bestCreaturePlot.drawSettings();
+            ImGui::TableNextColumn();
+            bestCreaturePlot.drawPlot();
         }
         else if (current_plot_idx == plot_idx_heroes)
         {

@@ -8,6 +8,23 @@ namespace h3::hero
 static_assert(sizeof(Hero) == 1147, "sizeof(Hero) must be 1147.");
 static_assert(Hero::offsetFromNameToStart() == 195, "Offset to Hero::name must be 195.");
 
+Creature Hero::bestCreature() const
+{
+    Creature bestCreature = Creature::Empty;
+    uint32_t bestAIValue = 0;
+    for (uint8_t i = 0; i < creatures::maxStacks; ++i)
+    {
+        const Creature creature = creatures[i];
+        const uint32_t aiValue = creatures::AIValues.at(creature);
+        if (aiValue > bestAIValue)
+        {
+            bestAIValue = aiValue;
+            bestCreature = creature;
+        }
+    }
+    return bestCreature;
+}
+
 SkillSlots Hero::skills() const
 {
     SkillSlots skills;

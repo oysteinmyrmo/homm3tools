@@ -42,6 +42,8 @@ struct Hero
     static constexpr uint8_t maxPrimarySkillValue = 99;
 
     uint64_t armyStrength() const { return stats::army_strength(*this); }
+    Creature bestCreature() const;
+
     bool garrison() const { return (on_map == 0) && (player < 8); } // TODO: Read h3::player::maxPlayers instead.
     bool prison() const { return (on_map == 0) && (player == 0xFF); } // TODO: Read h3::player::maxPlayers instead.
 
