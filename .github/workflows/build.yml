@@ -10,7 +10,7 @@ jobs:
       matrix:
         config:
         - {
-          name: "Windows Latest (MSVC)",
+          name: "Windows (MSVC)",
           os: windows-latest,
           build_type: "Release",
           cc: "cl",
@@ -18,12 +18,36 @@ jobs:
           generator: "Visual Studio 17 2022"
         }
         - {
-          name: "MacOS Latest (Clang)",
+          name: "MacOS Clang/Xcode",
           os: macos-latest,
           build_type: "Release",
           cc: "clang",
           cxx: "clang++",
           generator: "Xcode"
+        }
+        - {
+          name: "MacOS GCC/Xcode",
+          os: macos-latest,
+          build_type: "Release",
+          cc: "gcc",
+          cxx: "g++",
+          generator: "Xcode"
+        }
+        - {
+          name: "MacOS Clang/Makefile",
+          os: macos-latest,
+          build_type: "Release",
+          cc: "clang",
+          cxx: "clang++",
+          generator: "Unix Makefiles"
+        }
+        - {
+          name: "MacOS GCC/Makefile",
+          os: macos-latest,
+          build_type: "Release",
+          cc: "gcc",
+          cxx: "g++",
+          generator: "Unix Makefiles"
         }
     steps:
       - uses: actions/checkout@v3
