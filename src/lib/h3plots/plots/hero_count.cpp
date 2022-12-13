@@ -2,16 +2,14 @@
 
 #include <h3/player.h>
 
-#include <implot.h>
-
-namespace h3viewer::plot
+namespace h3plots::plot
 {
 HeroesPlot::HeroesPlot() : Plot()
 {
     settings = {
-        CheckBoxSetting{"Show as Percentage Stacked Area Chart##HeroesPlot"},
-        CheckBoxSetting{"Show Vanquish Lines##HeroesPlot"},
-        CheckBoxSetting{"Include heroes in garrison##HeroesPot"}
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart"},
+        CheckBoxSetting{"Show Vanquish Lines"},
+        CheckBoxSetting{"Include heroes in garrison"}
     };
 
     axisTexts = {
@@ -59,25 +57,6 @@ void HeroesPlot::invalidate(const SaveFileSeries &series)
     }
 }
 
-void HeroesPlot::drawPlotSpecifics()
-{
-    if (showVanquishLines())
-    {
-        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
-        {
-            const auto &player = players[i];
-            if (player.active)
-            {
-                const auto &name = player.name;
-                const auto &color = player.color;
-
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
-            }
-        }
-    }
-}
-
 bool HeroesPlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
@@ -92,5 +71,5 @@ bool HeroesPlot::includeHeroesInGarrison() const
 {
     return std::get<CheckBoxSetting>(settings[2]).checked;
 }
-} // namespace h3viewer::plot
+} // namespace h3plots::plot
 

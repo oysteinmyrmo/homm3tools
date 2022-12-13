@@ -1,6 +1,6 @@
 #include "player.h"
 
-namespace h3viewer
+namespace h3plots
 {
 Players defaultPlayers()
 {
@@ -11,10 +11,12 @@ Players defaultPlayers()
     for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
     {
         players[i].name = names[i];
-        players[i].color = ImVec4{colors[i].r / 255.0f, colors[i].g / 255.0f, colors[i].b / 255.0f, 1.0f};
+        players[i].color[0] = colors[i].r;
+        players[i].color[1] = colors[i].g;
+        players[i].color[2] = colors[i].b;
         players[i].active = false;
     }
 
     return players;
 };
-} // namespace h3viewer
+} // namespace h3plots

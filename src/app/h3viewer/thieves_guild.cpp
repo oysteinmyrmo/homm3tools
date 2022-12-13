@@ -1,26 +1,21 @@
 #include "thieves_guild.h"
+#include "draw_plots.h"
 
-#include "plots/artifacts.h"
-#include "plots/best_creature.h"
-#include "plots/experience.h"
-#include "plots/gold.h"
-#include "plots/hero_count.h"
-#include "plots/kingdom_army_strength.h"
-#include "plots/resources.h"
-#include "plots/town_count.h"
-#include "savefile_series.h"
+#include <h3plots/plots.h>
+
+#include <imgui.h>
+
+#include <memory>
 
 namespace
 {
 bool gInitialized = false;
-h3viewer::plot::ArtifactsPlot artifactsPlot;
-h3viewer::plot::BestCreaturePlot bestCreaturePlot;
-h3viewer::plot::ExperiencePlot experiencePlot;
-h3viewer::plot::GoldPlot goldPlot;
-h3viewer::plot::HeroesPlot heroesPlot;
-h3viewer::plot::KingdomArmyStrengthPlot kasPlot;
-h3viewer::plot::ResourcesPlot resourcesPlot;
-h3viewer::plot::TownsPlot townsPlot;
+h3plots::Plots allPlots;
+
+std::unique_ptr<h3plots::plot::Plot>& getPlot(const h3plots::PlotType plotType)
+{
+    return allPlots.getPlot(plotType);
+}
 
 constexpr const char *plot_categories[] = {"Army", "Heroes", "Kingdom", "Economy"};
 constexpr int plot_idx_army    = 0;
@@ -33,30 +28,15 @@ int current_plot_idx = 0;
 
 namespace h3viewer::thieves_guild
 {
-void reset(const SaveFileSeries &series)
+void reset(const h3plots::SaveFileSeries &series)
 {
-    artifactsPlot.invalidate(series);
-    bestCreaturePlot.invalidate(series);
-    experiencePlot.invalidate(series);
-    goldPlot.invalidate(series);
-    heroesPlot.invalidate(series);
-    kasPlot.invalidate(series);
-    resourcesPlot.invalidate(series);
-    townsPlot.invalidate(series);
-
+    allPlots.invalidate(series);
     gInitialized = true;
 }
 
-void update(const SaveFileSeries &series)
+void update(const h3plots::SaveFileSeries &series)
 {
-    artifactsPlot.update(series);
-    bestCreaturePlot.invalidate(series);
-    experiencePlot.update(series);
-    goldPlot.update(series);
-    heroesPlot.update(series);
-    kasPlot.update(series);
-    resourcesPlot.update(series);
-    townsPlot.update(series);
+    allPlots.update(series);
 }
 
 void draw()
@@ -86,59 +66,23 @@ void draw()
 
         if (current_plot_idx == plot_idx_army)
         {
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            kasPlot.drawSettings();
-            ImGui::TableNextColumn();
-            kasPlot.drawPlot();
-
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            bestCreaturePlot.drawSettings();
-            ImGui::TableNextColumn();
-            bestCreaturePlot.drawPlot();
+            draw::plotAndSettings(getPlot(h3plots::PlotType::KingdomArmyStrength));
+            draw::plotAndSettings(getPlot(h3plots::PlotType::BestCreature));
         }
         else if (current_plot_idx == plot_idx_heroes)
         {
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            heroesPlot.drawSettings();
-            ImGui::TableNextColumn();
-            heroesPlot.drawPlot();
-
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            artifactsPlot.drawSettings();
-            ImGui::TableNextColumn();
-            artifactsPlot.drawPlot();
-
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            experiencePlot.drawSettings();
-            ImGui::TableNextColumn();
-            experiencePlot.drawPlot();
+            draw::plotAndSettings(getPlot(h3plots::PlotType::Heroes));
+            draw::plotAndSettings(getPlot(h3plots::PlotType::Artifacts));
+            draw::plotAndSettings(getPlot(h3plots::PlotType::Experience));
         }
         else if (current_plot_idx == plot_idx_kingdom)
         {
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            townsPlot.drawSettings();
-            ImGui::TableNextColumn();
-            townsPlot.drawPlot();
+            draw::plotAndSettings(getPlot(h3plots::PlotType::Towns));
         }
         else if (current_plot_idx == plot_idx_economy)
         {
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            goldPlot.drawSettings();
-            ImGui::TableNextColumn();
-            goldPlot.drawPlot();
-
-            ImGui::TableNextRow();
-            ImGui::TableNextColumn();
-            resourcesPlot.drawSettings();
-            ImGui::TableNextColumn();
-            resourcesPlot.drawPlot();
+            draw::plotAndSettings(getPlot(h3plots::PlotType::Gold));
+            draw::plotAndSettings(getPlot(h3plots::PlotType::Resources));
         }
 
         ImGui::EndTable();

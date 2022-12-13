@@ -2,18 +2,16 @@
 
 #include <h3/player.h>
 
-#include <implot.h>
-
 #include <cmath>
 #include <numeric>
 
-namespace h3viewer::plot
+namespace h3plots::plot
 {
 KingdomArmyStrengthPlot::KingdomArmyStrengthPlot() : Plot()
 {
     settings = {
-        CheckBoxSetting{"Show as Percentage Stacked Area Chart##KingdomArmyStrengthPlot"},
-        CheckBoxSetting{"Show Vanquish Lines##KingdomArmyStrengthPlot"}
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart"},
+        CheckBoxSetting{"Show Vanquish Lines"}
     };
 
     axisTexts = {
@@ -47,25 +45,6 @@ void KingdomArmyStrengthPlot::invalidate(const SaveFileSeries &series)
     }
 }
 
-void KingdomArmyStrengthPlot::drawPlotSpecifics()
-{
-    if (showVanquishLines())
-    {
-        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
-        {
-            const auto &player = players[i];
-            if (player.active)
-            {
-                const auto &name = player.name;
-                const auto &color = player.color;
-
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
-            }
-        }
-    }
-}
-
 bool KingdomArmyStrengthPlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
@@ -75,4 +54,4 @@ bool KingdomArmyStrengthPlot::showVanquishLines() const
 {
     return std::get<CheckBoxSetting>(settings[1]).checked;
 }
-} // namespace h3viewer::plot
+} // namespace h3plots::plot
