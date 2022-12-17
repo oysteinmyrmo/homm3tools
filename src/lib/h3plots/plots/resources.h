@@ -1,20 +1,18 @@
 #pragma once
 #include "plot.h"
 
-#include <h3viewer/savefile_series.h>
-
-namespace h3viewer::plot
+namespace h3plots::plot
 {
 class ResourcesPlot : public Plot
 {
 public:
     ResourcesPlot();
 
-    void invalidate(const SaveFileSeries &series) override;
-    void drawPlotSpecifics() override;
-    bool showAsPercentageStackedAreaChart() const override;
+    std::string uniqueString() const override { return typeid(this).name(); };
 
-    bool showVanquishLines() const;
+    void invalidate(const SaveFileSeries &series) override;
+    bool showAsPercentageStackedAreaChart() const override;
+    bool showVanquishLines() const override;
 
     bool showAll() const;
     bool showWoodOre() const;
@@ -33,4 +31,4 @@ public:
     bool includeCrystal() const;
     bool includeGems() const;
 };
-} // namespace h3viewer::plot
+} // namespace h3plots::plot

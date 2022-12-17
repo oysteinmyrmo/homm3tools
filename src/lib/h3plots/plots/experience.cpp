@@ -2,16 +2,14 @@
 
 #include <h3/player.h>
 
-#include <implot.h>
-
-namespace h3viewer::plot
+namespace h3plots::plot
 {
 ExperiencePlot::ExperiencePlot() : Plot()
 {
     settings = {
-        CheckBoxSetting{"Show as Percentage Stacked Area Chart##ExperiencePlot"},
-        CheckBoxSetting{"Show Vanquish Lines##ExperiencePlot"},
-        CheckBoxSetting{"Include heroes in garrison##ExperiencePlot"}
+        CheckBoxSetting{"Show as Percentage Stacked Area Chart"},
+        CheckBoxSetting{"Show Vanquish Lines"},
+        CheckBoxSetting{"Include heroes in garrison"}
     };
 
     axisTexts = {
@@ -50,25 +48,6 @@ void ExperiencePlot::invalidate(const SaveFileSeries &series)
     alterDataToChartType();
 }
 
-void ExperiencePlot::drawPlotSpecifics()
-{
-    if (showVanquishLines())
-    {
-        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
-        {
-            const auto &player = players[i];
-            if (player.active)
-            {
-                const auto &name = player.name;
-                const auto &color = player.color;
-
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
-            }
-        }
-    }
-}
-
 bool ExperiencePlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
@@ -83,4 +62,4 @@ bool ExperiencePlot::includeHeroesInGarrison() const
 {
     return std::get<CheckBoxSetting>(settings[2]).checked;
 }
-} // namespace h3viewer::plot
+} // namespace h3plots::plot

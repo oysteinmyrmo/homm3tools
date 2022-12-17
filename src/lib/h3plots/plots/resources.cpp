@@ -2,32 +2,28 @@
 
 #include <h3/player.h>
 
-#include <implot.h>
-
-namespace h3viewer::plot
+namespace h3plots::plot
 {
 ResourcesPlot::ResourcesPlot() : Plot()
 {
     settings = {
-        CheckBoxSetting{{.text="Show as Percentage Stacked Area Chart##ResourcesPlot"}},
-        CheckBoxSetting{{.text="Show Vanquish Lines##ResourcesPlot"}},
-        SettingSeparator{},
+        CheckBoxSetting{{.text="Show as Percentage Stacked Area Chart"}},
+        CheckBoxSetting{{.text="Show Vanquish Lines"}},
         RadioButtonSetting{
-            {.text="Customize##ResourcesPlot"},
+            {.text="Customize"},
             {
-                {.text="All##ResourcesPlot", .newline=true},
-                {.text="Wood/Ore##ResourcesPlot"},
-                {.text="Magic##ResourcesPlot", .newline=true},
-                {.text="Custom##ResourcesPlot", .newline=true}
+                {.text="All"},
+                {.text="Wood/Ore"},
+                {.text="Magic"},
+                {.text="Custom"}
             }
         },
-        SettingSeparator{},
-        CheckBoxSetting{{"Wood##ResourcesPlot"}, true},
-        CheckBoxSetting{{"Ore##ResourcesPlot"}, true},
-        CheckBoxSetting{{"Mercury##ResourcesPlot"}, true},
-        CheckBoxSetting{{"Sulfur##ResourcesPlot"}, true},
-        CheckBoxSetting{{"Crystal##ResourcesPlot"}, true},
-        CheckBoxSetting{{"Gems##ResourcesPlot"}, true},
+        CheckBoxSetting{{"Wood"}, true},
+        CheckBoxSetting{{"Ore"}, true},
+        CheckBoxSetting{{"Mercury"}, true},
+        CheckBoxSetting{{"Sulfur"}, true},
+        CheckBoxSetting{{"Crystal"}, true},
+        CheckBoxSetting{{"Gems"}, true},
     };
 
     axisTexts = {
@@ -83,25 +79,6 @@ void ResourcesPlot::invalidate(const SaveFileSeries &series)
     alterDataToChartType();
 }
 
-void ResourcesPlot::drawPlotSpecifics()
-{
-    if (showVanquishLines())
-    {
-        for (uint8_t i = 0; i < h3::player::maxPlayers; ++i)
-        {
-            const auto &player = players[i];
-            if (player.active)
-            {
-                const auto &name = player.name;
-                const auto &color = player.color;
-
-                ImPlot::SetNextLineStyle(color);
-                ImPlot::PlotVLines("", &player.vanquishedDay, 1);
-            }
-        }
-    }
-}
-
 bool ResourcesPlot::showAsPercentageStackedAreaChart() const
 {
     return std::get<CheckBoxSetting>(settings[0]).checked;
@@ -114,85 +91,85 @@ bool ResourcesPlot::showVanquishLines() const
 
 bool ResourcesPlot::showAll() const
 {
-    return std::get<RadioButtonSetting>(settings[3]).selected == 0;
+    return std::get<RadioButtonSetting>(settings[2]).selected == 0;
 }
 
 bool ResourcesPlot::showWoodOre() const
 {
-    return std::get<RadioButtonSetting>(settings[3]).selected == 1;
+    return std::get<RadioButtonSetting>(settings[2]).selected == 1;
 }
 
 bool ResourcesPlot::showMagical() const
 {
-    return std::get<RadioButtonSetting>(settings[3]).selected == 2;
+    return std::get<RadioButtonSetting>(settings[2]).selected == 2;
 }
 
 bool ResourcesPlot::showCustom() const
 {
-    return std::get<RadioButtonSetting>(settings[3]).selected == 3;
+    return std::get<RadioButtonSetting>(settings[2]).selected == 3;
 }
 
 void ResourcesPlot::checkNone()
 {
+    std::get<CheckBoxSetting>(settings[3]).checked = false;
+    std::get<CheckBoxSetting>(settings[4]).checked = false;
     std::get<CheckBoxSetting>(settings[5]).checked = false;
     std::get<CheckBoxSetting>(settings[6]).checked = false;
     std::get<CheckBoxSetting>(settings[7]).checked = false;
     std::get<CheckBoxSetting>(settings[8]).checked = false;
-    std::get<CheckBoxSetting>(settings[9]).checked = false;
-    std::get<CheckBoxSetting>(settings[10]).checked = false;
 }
 
 void ResourcesPlot::checkAll()
 {
+    std::get<CheckBoxSetting>(settings[3]).checked = true;
+    std::get<CheckBoxSetting>(settings[4]).checked = true;
     std::get<CheckBoxSetting>(settings[5]).checked = true;
     std::get<CheckBoxSetting>(settings[6]).checked = true;
     std::get<CheckBoxSetting>(settings[7]).checked = true;
     std::get<CheckBoxSetting>(settings[8]).checked = true;
-    std::get<CheckBoxSetting>(settings[9]).checked = true;
-    std::get<CheckBoxSetting>(settings[10]).checked = true;
 }
 
 void ResourcesPlot::checkWoodOre()
 {
-    std::get<CheckBoxSetting>(settings[5]).checked = true;
-    std::get<CheckBoxSetting>(settings[6]).checked = true;
+    std::get<CheckBoxSetting>(settings[3]).checked = true;
+    std::get<CheckBoxSetting>(settings[4]).checked = true;
 }
 
 void ResourcesPlot::checkMagical()
 {
+    std::get<CheckBoxSetting>(settings[5]).checked = true;
+    std::get<CheckBoxSetting>(settings[6]).checked = true;
     std::get<CheckBoxSetting>(settings[7]).checked = true;
     std::get<CheckBoxSetting>(settings[8]).checked = true;
-    std::get<CheckBoxSetting>(settings[9]).checked = true;
-    std::get<CheckBoxSetting>(settings[10]).checked = true;
 }
 
 bool ResourcesPlot::includeWood() const
 {
-    return std::get<CheckBoxSetting>(settings[5]).checked;
+    return std::get<CheckBoxSetting>(settings[3]).checked;
 }
 
 bool ResourcesPlot::includeOre() const
 {
-    return std::get<CheckBoxSetting>(settings[6]).checked;
+    return std::get<CheckBoxSetting>(settings[4]).checked;
 }
 
 bool ResourcesPlot::includeMercury() const
 {
-    return std::get<CheckBoxSetting>(settings[7]).checked;
+    return std::get<CheckBoxSetting>(settings[5]).checked;
 }
 
 bool ResourcesPlot::includeSulfur() const
 {
-    return std::get<CheckBoxSetting>(settings[8]).checked;
+    return std::get<CheckBoxSetting>(settings[6]).checked;
 }
 
 bool ResourcesPlot::includeCrystal() const
 {
-    return std::get<CheckBoxSetting>(settings[9]).checked;
+    return std::get<CheckBoxSetting>(settings[7]).checked;
 }
 
 bool ResourcesPlot::includeGems() const
 {
-    return std::get<CheckBoxSetting>(settings[10]).checked;
+    return std::get<CheckBoxSetting>(settings[8]).checked;
 }
-} // namespace h3viewer::plot
+} // namespace h1viewer::plot

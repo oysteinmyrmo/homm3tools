@@ -44,26 +44,8 @@ set(IMPLOT_SOURCES
 )
 
 set(H3VIEWER_SOURCES
-    player.cpp
-    player.h
-    plots/artifacts.cpp
-    plots/artifacts.h
-    plots/best_creature.cpp
-    plots/best_creature.h
-    plots/experience.cpp
-    plots/experience.h
-    plots/gold.cpp
-    plots/gold.h
-    plots/hero_count.cpp
-    plots/hero_count.h
-    plots/kingdom_army_strength.cpp
-    plots/kingdom_army_strength.h
-    plots/plot.cpp
-    plots/plot.h
-    plots/resources.cpp
-    plots/resources.h
-    plots/town_count.cpp
-    plots/town_count.h
+    draw_plots.cpp
+    draw_plots.h
     savefile_series.cpp
     savefile_series.h
     thieves_guild.cpp
@@ -92,9 +74,9 @@ target_include_directories(h3viewer PRIVATE
     ${GLFW_DIR}/include
 )
 
-target_link_libraries(h3viewer PRIVATE
+target_link_libraries(h3viewer PUBLIC
     glfw
-    homm3tools
+    homm3plots
 )
 
 if(WIN32)
