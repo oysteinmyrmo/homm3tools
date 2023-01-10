@@ -24,23 +24,19 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(imgui implot glfw)
 
-set(IMGUI_DIR "${imgui_SOURCE_DIR}")
-set(GLFW_DIR "${glfw_SOURCE_DIR}")
-set(IMPLOT_DIR "${implot_SOURCE_DIR}")
-
 set(IMGUI_SOURCES
-    ${IMGUI_DIR}/imgui.cpp
-    ${IMGUI_DIR}/imgui_demo.cpp
-    ${IMGUI_DIR}/imgui_draw.cpp
-    ${IMGUI_DIR}/imgui_tables.cpp
-    ${IMGUI_DIR}/imgui_widgets.cpp
-    ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
+    ${imgui_SOURCE_DIR}/imgui.cpp
+    ${imgui_SOURCE_DIR}/imgui_demo.cpp
+    ${imgui_SOURCE_DIR}/imgui_draw.cpp
+    ${imgui_SOURCE_DIR}/imgui_tables.cpp
+    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
 )
 
 set(IMPLOT_SOURCES
-    ${IMPLOT_DIR}/implot.cpp
-    ${IMPLOT_DIR}/implot_demo.cpp
-    ${IMPLOT_DIR}/implot_items.cpp
+    ${implot_SOURCE_DIR}/implot.cpp
+    ${implot_SOURCE_DIR}/implot_demo.cpp
+    ${implot_SOURCE_DIR}/implot_items.cpp
 )
 
 set(H3VIEWER_SOURCES
@@ -53,11 +49,11 @@ set(H3VIEWER_SOURCES
 )
 
 if(WIN32)
-    list(APPEND IMGUI_SOURCES ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp)
+    list(APPEND IMGUI_SOURCES ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp)
     list(APPEND H3VIEWER_SOURCES main_opengl3.cpp)
 elseif(APPLE)
     enable_language(OBJCXX)
-    list(APPEND IMGUI_SOURCES ${IMGUI_DIR}/backends/imgui_impl_metal.mm)
+    list(APPEND IMGUI_SOURCES ${imgui_SOURCE_DIR}/backends/imgui_impl_metal.mm)
     list(APPEND H3VIEWER_SOURCES main_metal.mm)
     set(CMAKE_OBJCXX_FLAGS "${CMAKE_OBJCXX_FLAGS} -ObjC++ -fobjc-weak -fobjc-arc")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fobjc-weak")
@@ -68,10 +64,10 @@ add_executable(h3viewer ${H3VIEWER_SOURCES})
 
 target_include_directories(h3viewer PRIVATE
     ${HOMM3TOOLS_APP_DIR}
-    ${IMGUI_DIR}
-    ${IMGUI_DIR}/backends
-    ${IMPLOT_DIR}
-    ${GLFW_DIR}/include
+    ${imgui_SOURCE_DIR}
+    ${imgui_SOURCE_DIR}/backends
+    ${implot_SOURCE_DIR}
+    ${glfw_SOURCE_DIR}/include
 )
 
 target_link_libraries(h3viewer PUBLIC
