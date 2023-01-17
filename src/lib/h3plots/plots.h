@@ -28,10 +28,10 @@ public:
     void invalidate(const SaveFileSeries &series);
     void update(const SaveFileSeries &series);
 
-    std::unique_ptr<plot::Plot>& getPlot(PlotType plotType);
+    std::shared_ptr<plot::Plot>& getPlot(PlotType plotType);
 
 private:
-    std::array<std::unique_ptr<plot::Plot>, static_cast<int>(PlotType::COUNT)> plots;
+    std::array<std::shared_ptr<plot::Plot>, static_cast<int>(PlotType::COUNT)> plots;
     SaveFileSeries saveFileSeries;
 };
 } // namespace h3plots

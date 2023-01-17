@@ -14,15 +14,17 @@ namespace h3plots::plot
 {
     struct AxisText
     {
+        bool operator==(const AxisText&) const = default;
+
         std::string header;
         std::string xText;
         std::string yText;
     };
 
-    class Plot
+    struct Plot
     {
-    public:
         Plot() = default;
+        Plot(const Plot&) = default;
         virtual ~Plot() = default;
 
         // This is needed for some plot libraries, e.g. ImGui/ImPlot.
@@ -55,16 +57,17 @@ namespace h3plots::plot
         const std::vector<uint64_t> &getXValues() const;
         const std::vector<uint64_t> &getYValues(uint8_t idx) const;
 
-    protected:
         void alterDataToChartType();
         void setupPercentageStackedAreaChart();
 
+        // Note: Public because the JSON interface needs them to be.
         Players players;
         SettingsVector settings;
         AxisText axisTexts;
         std::vector<uint64_t> xVals; // Days from 1 through N.
         std::array<std::vector<uint64_t>, h3::player::maxPlayers> yVals;
 
+    protected:
         bool dataInvalidated = true;
         bool axesInvalidated = true;
     };

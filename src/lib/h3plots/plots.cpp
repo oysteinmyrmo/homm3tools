@@ -16,20 +16,20 @@ namespace h3plots
 Plots::Plots()
 {
     // Army
-    plots[static_cast<int>(PlotType::KingdomArmyStrength)] = std::make_unique<plot::KingdomArmyStrengthPlot>();
-    plots[static_cast<int>(PlotType::BestCreature)] = std::make_unique<plot::BestCreaturePlot>();
+    plots[static_cast<int>(PlotType::KingdomArmyStrength)] = std::make_shared<plot::KingdomArmyStrengthPlot>();
+    plots[static_cast<int>(PlotType::BestCreature)] = std::make_shared<plot::BestCreaturePlot>();
 
     // Heroes
-    plots[static_cast<int>(PlotType::Heroes)] = std::make_unique<plot::HeroesPlot>();
-    plots[static_cast<int>(PlotType::Artifacts)] = std::make_unique<plot::ArtifactsPlot>();
-    plots[static_cast<int>(PlotType::Experience)] = std::make_unique<plot::ExperiencePlot>();
+    plots[static_cast<int>(PlotType::Heroes)] = std::make_shared<plot::HeroesPlot>();
+    plots[static_cast<int>(PlotType::Artifacts)] = std::make_shared<plot::ArtifactsPlot>();
+    plots[static_cast<int>(PlotType::Experience)] = std::make_shared<plot::ExperiencePlot>();
 
     // Economy
-    plots[static_cast<int>(PlotType::Gold)] = std::make_unique<plot::GoldPlot>();
-    plots[static_cast<int>(PlotType::Resources)] = std::make_unique<plot::ResourcesPlot>();
+    plots[static_cast<int>(PlotType::Gold)] = std::make_shared<plot::GoldPlot>();
+    plots[static_cast<int>(PlotType::Resources)] = std::make_shared<plot::ResourcesPlot>();
 
     // Kingdom
-    plots[static_cast<int>(PlotType::Towns)] = std::make_unique<plot::TownsPlot>();
+    plots[static_cast<int>(PlotType::Towns)] = std::make_shared<plot::TownsPlot>();
 }
 
 void Plots::invalidate(const SaveFileSeries &series)
@@ -48,7 +48,7 @@ void Plots::update(const SaveFileSeries &series)
     }
 }
 
-std::unique_ptr<plot::Plot>& Plots::getPlot(const PlotType plotType)
+std::shared_ptr<plot::Plot>& Plots::getPlot(const PlotType plotType)
 {
     return plots[static_cast<int>(plotType)];
 }

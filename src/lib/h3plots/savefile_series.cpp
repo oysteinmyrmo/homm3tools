@@ -81,4 +81,11 @@ SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players)
 
     return series;
 }
+
+SaveFileSeries read_savefiles(h3::SaveFile::Input input)
+{
+    const Players players = defaultPlayers();
+    return read_savefiles(input, players);
+}
+
 } // namespace h3plots::savefile_series

@@ -243,5 +243,6 @@ const std::unordered_map<Artifact, ArtifactDetails> artifactDetails = {
     {Artifact::FirstAidTent,                {ArtifactClass::Other,       ArtifactSlotType::FirstAidTent,    0}},
     {Artifact::AmmoCart,                    {ArtifactClass::Other,       ArtifactSlotType::AmmoCart,        0}},
     {Artifact::SpellBook,                   {ArtifactClass::Other,       ArtifactSlotType::SpellBook,       0}},
+    {Artifact::Grail,                       {ArtifactClass::Other,       ArtifactSlotType::Misc,            0}},
 };
 } // namespace h3::artifacts

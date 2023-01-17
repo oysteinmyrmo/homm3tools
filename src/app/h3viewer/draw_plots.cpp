@@ -14,7 +14,7 @@ ImVec4 toImGuiColor(const std::array<uint8_t, 3> &color)
 }
 } // namespace
 
-void h3viewer::draw::settings(std::unique_ptr<h3plots::plot::Plot> &plot)
+void h3viewer::draw::settings(std::shared_ptr<h3plots::plot::Plot> &plot)
 {
     for (auto &setting : plot->getSettings())
     {
@@ -48,7 +48,7 @@ void h3viewer::draw::settings(std::unique_ptr<h3plots::plot::Plot> &plot)
     }
 }
 
-void h3viewer::draw::plot(std::unique_ptr<h3plots::plot::Plot> &plot)
+void h3viewer::draw::plot(std::shared_ptr<h3plots::plot::Plot> &plot)
 {
     const auto &axisTexts = plot->getAxisTexts();
 
@@ -124,7 +124,7 @@ void h3viewer::draw::plot(std::unique_ptr<h3plots::plot::Plot> &plot)
     }
 }
 
-void h3viewer::draw::plotAndSettings(std::unique_ptr<h3plots::plot::Plot> &plot)
+void h3viewer::draw::plotAndSettings(std::shared_ptr<h3plots::plot::Plot> &plot)
 {
     ImGui::TableNextRow();
     ImGui::TableNextColumn();

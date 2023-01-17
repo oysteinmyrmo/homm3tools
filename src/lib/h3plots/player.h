@@ -9,6 +9,8 @@ namespace h3plots
 {
 struct Player
 {
+    bool operator==(const Player&) const = default;
+
     std::string name;
     std::array<uint8_t, 3> color{0, 0, 0};
     uint64_t vanquishedDay = 0;

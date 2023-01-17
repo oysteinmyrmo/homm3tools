@@ -12,7 +12,7 @@ namespace
 bool gInitialized = false;
 h3plots::Plots allPlots;
 
-std::unique_ptr<h3plots::plot::Plot>& getPlot(const h3plots::PlotType plotType)
+std::shared_ptr<h3plots::plot::Plot>& getPlot(const h3plots::PlotType plotType)
 {
     return allPlots.getPlot(plotType);
 }

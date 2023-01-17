@@ -24,5 +24,6 @@ struct SaveFileSeries
 };
 
 SaveFileSeries read_savefiles(h3::SaveFile::Input input, const Players &players);
+SaveFileSeries read_savefiles(h3::SaveFile::Input input);
 void draw();
 } // namespace h3plots
