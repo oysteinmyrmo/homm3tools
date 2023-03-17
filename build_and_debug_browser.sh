@@ -6,4 +6,6 @@ cd build_emscripten
 
 emcmake cmake ..
 cmake --build . --config Debug --target homm3tests h3plotstests
-ctest -C Release --verbose --output-on-failure .
+cp ../test.html tests/h3
+cd tests/h3
+emrun test.html
