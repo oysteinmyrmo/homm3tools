@@ -9,8 +9,6 @@
 
 namespace h3::player
 {
-static_assert(sizeof(PlayerData) == 149, "sizeof(PlayerData) must be 149.");
-
 Player::Player()
 {
     heroes_.reserve(16);

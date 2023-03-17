@@ -40,7 +40,7 @@ int decompressBytes(std::span<unsigned char> compressed, std::span<unsigned char
 MapProperties readMapProperties(std::span<unsigned char> compressed)
 {
     // We read data up to and including hasUnderground.
-    constexpr size_t propsSize = offsetof(SaveFile, hasUnderground) + sizeof(SaveFile::hasUnderground);
+    constexpr size_t propsSize = SaveFile::offsetofMapNameSizeInSaveFile();
     std::array<unsigned char, propsSize> decompressed;
 
     const int err = decompressBytes(compressed, decompressed);
@@ -48,8 +48,8 @@ MapProperties readMapProperties(std::span<unsigned char> compressed)
     // When Z_FINISH is used, Z_BUF_ERROR is returned instead of Z_OK (by design).
     if (err == Z_BUF_ERROR)
     {
-        constexpr size_t mapSizeIdx = offsetof(SaveFile, mapSize);
-        constexpr size_t undergroundIdx = offsetof(SaveFile, hasUnderground);
+        constexpr size_t mapSizeIdx = SaveFile::offsetofMapSize();
+        constexpr size_t undergroundIdx = SaveFile::offsetofHasUnderground();
         return MapProperties{ MapSize(decompressed[mapSizeIdx]), bool(decompressed[undergroundIdx]) };
     }
 
@@ -59,7 +59,7 @@ MapProperties readMapProperties(std::span<unsigned char> compressed)
 std::string readFileHeader(std::span<unsigned char> compressed)
 {
     // We read data up to and including hasUnderground.
-    constexpr size_t headerSize = offsetof(SaveFile, header) + sizeof(SaveFile::header);
+    constexpr size_t headerSize = sizeof(SaveFile::header);
     std::array<unsigned char, headerSize> decompressed;
 
     const int err = decompressBytes(compressed, decompressed);
@@ -213,7 +213,7 @@ void read_write_decompressed(const fs::path &path, const fs::path &outPath)
 // Note: firstTownIdx is identical to firstHeroIdx if the map has no towns.
 size_t firstPlayerIndex(const size_t firstTownIdx)
 {
-    return firstTownIdx - (player::maxPlayers * sizeof(player::PlayerData));
+    return firstTownIdx - (player::maxPlayers * player::PlayerData::sizeofInSaveFile());
 }
 
 // Returns index of first town and town count.

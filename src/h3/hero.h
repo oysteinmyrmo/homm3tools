@@ -2,7 +2,6 @@
 
 #include "artifacts.h"
 #include "creatures.h"
-#include "packed_structs.h"
 #include "secondary_skills.h"
 #include "spells.h"
 #include "stats.h"
@@ -35,10 +34,10 @@ enum class Orientation : uint8_t
 };
 
 // See also http://heroescommunity.com/viewthread.php3?TID=18817&PID=1366926#focus
-PACKED_STRUCT(
 struct Hero
 {
-    static constexpr size_t offsetFromNameToStart() { return offsetof(Hero, name); }
+    static constexpr size_t offsetFromNameToStart() { return 195; }
+    static constexpr size_t sizeofInSaveFile() { return 1147; }
     static constexpr uint8_t maxPrimarySkillValue = 99;
 
     uint64_t armyStrength() const { return stats::army_strength(*this); }
@@ -93,7 +92,7 @@ struct Hero
     ArtifactEntry artifacts[ArtifactSlotCount]; // +213
     uint8_t _unused8[46];                   // +877
     uint8_t skillSlots[SkillCount];         // +923
-});
+};
 
 template <class Callback>
 void forEachArtifact(const Hero &hero, const Callback callback)

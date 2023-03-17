@@ -1,7 +1,6 @@
 #pragma once
 
 #include "hero.h"
-#include "packed_structs.h"
 #include "town.h"
 
 #include <array>
@@ -60,9 +59,10 @@ static constexpr std::array<const char*, maxPlayers> playerColorsStr = {
     "Pink",
 };
 
-PACKED_STRUCT(
 struct PlayerData
 {
+    static constexpr size_t sizeofInSaveFile() { return 149; }
+
     uint8_t _unused01[96];
     uint32_t wood = 0;
     uint32_t mercury = 0;
@@ -72,7 +72,7 @@ struct PlayerData
     uint32_t gems = 0;
     uint32_t gold = 0;
     uint8_t _unused02[25];
-});
+};
 
 class Player
 {

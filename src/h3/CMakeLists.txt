@@ -5,7 +5,6 @@ set(homm3tools_files
     creatures.h
     hero.cpp
     hero.h
-    packed_structs.h
     player.cpp
     player.h
     savefile.cpp

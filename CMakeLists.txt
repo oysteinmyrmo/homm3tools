@@ -7,7 +7,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules/")
 
 add_subdirectory(src/h3)
 add_subdirectory(src/lib)
-add_subdirectory(src/app)
+
+if(NOT EMSCRIPTEN)
+    add_subdirectory(src/app)
+endif()
 
 enable_testing()
 add_subdirectory(tests)

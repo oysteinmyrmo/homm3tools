@@ -5,8 +5,6 @@
 
 namespace h3::town
 {
-static_assert(Town::offsetFromNameToStart() == 71, "Offset to Town::name must be 71.");
-
 Creature Town::bestCreature() const
 {
     Creature bestCreature = Creature::Empty;

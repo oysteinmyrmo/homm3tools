@@ -43,7 +43,6 @@ enum class MapSize : uint8_t
     G   =  252
 };
 
-PACKED_STRUCT_BEGIN
 struct SaveFile
 {
     struct Input
@@ -71,6 +70,11 @@ struct SaveFile
         // used to read all the heroes when opening the save file.
         std::string firstHeroName = defaultFirstHeroName;
     };
+
+    static constexpr size_t offsetofHeader() { return 0; }
+    static constexpr size_t offsetofMapSize() { return 63; }
+    static constexpr size_t offsetofHasUnderground() { return 67; }
+    static constexpr size_t offsetofMapNameSizeInSaveFile() { return 68; }
 
     explicit SaveFile(const Input &input);
 
@@ -100,8 +104,7 @@ struct SaveFile
     std::array<player::PlayerData, player::maxPlayers> players;
     std::vector<Town> towns;
     std::array<Hero, hero::heroCount> heroes;
-}
-PACKED_STRUCT_END;
+};
 } // namespace h3::savefile
 
 namespace h3

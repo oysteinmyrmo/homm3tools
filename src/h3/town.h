@@ -1,7 +1,6 @@
 #pragma once
 
 #include "creatures.h"
-#include "packed_structs.h"
 #include "stats.h"
 
 #include <array>
@@ -17,10 +16,9 @@ using creatures::maxStacks;
 
 // Note: The size of the Town struct in the save file is variable due to the size
 // of the name being variable. sizeof(Town) is therefore 545 + name.size().
-PACKED_STRUCT(
 struct Town
 {
-    static constexpr size_t offsetFromNameToStart() { return offsetof(Town, name); }
+    static constexpr size_t offsetFromNameToStart() { return 71; }
     static constexpr size_t sizeOfWithoutName() { return 546; }
     static constexpr uint8_t noOwner = 0xFF;
 
@@ -40,7 +38,7 @@ struct Town
     uint16_t nameSize;                      // -2  <-- Note: The town name is of variable size.
     std::string name;                       // 0
     // Remaining bytes intentionally left out.
-});
+};
 
 // Taken from http://heroes.thelazy.net/index.php/List_of_all_town_names
 constexpr std::array townNames{
