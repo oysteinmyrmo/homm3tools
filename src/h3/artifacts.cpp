@@ -66,7 +66,7 @@ const std::unordered_map<Artifact, ArtifactDetails> artifactDetails = {
     {Artifact::RecantersCloak,              {ArtifactClass::Major,       ArtifactSlotType::Cloak,        8000}},
     {Artifact::CapeOfVelocity,              {ArtifactClass::Major,       ArtifactSlotType::Cloak,       10000}},
     {Artifact::AngelWings,                  {ArtifactClass::Relic,       ArtifactSlotType::Cloak,       20000}},
-    {Artifact::CapeOfSilence,               {ArtifactClass::Relic,       ArtifactSlotType::Cloak,        7500}},
+    {Artifact::CapeOfSilence,               {ArtifactClass::Major,       ArtifactSlotType::Cloak,        7500}},
 
     // Boots
     {Artifact::DragonboneGreaves,           {ArtifactClass::Treasure,    ArtifactSlotType::Boots,        2000}},
