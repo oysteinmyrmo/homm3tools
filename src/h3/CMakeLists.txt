@@ -3,6 +3,8 @@ set(homm3tools_files
     artifacts.h
     creatures.cpp
     creatures.h
+    difficulty.cpp
+    difficulty.h
     hero.cpp
     hero.h
     packed_structs.h

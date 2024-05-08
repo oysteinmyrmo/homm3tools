@@ -16,6 +16,7 @@ add_executable(homm3tests
     ${CATCH2_DIR}/src/catch_with_main.cpp
     test-artifacts.cpp
     test-creatures.cpp
+    test-handicap.cpp
     test-hero-experience.cpp
     test-hero-movement.cpp
     test-hero-movement-gigantic.cpp
@@ -33,6 +34,6 @@ add_executable(homm3tests
     test-town-names.cpp
 )
 
-target_link_libraries(homm3tests PRIVATE homm3tools)
+target_link_libraries(homm3tests PRIVATE homm3tools h3handicap)
 target_include_directories(homm3tests PRIVATE ${CATCH2_DIR}/single_include)
 add_test(NAME homm3tests COMMAND homm3tests)
