@@ -21,7 +21,7 @@ PACKED_STRUCT(
 struct Town
 {
     static constexpr size_t offsetFromNameToStart() { return offsetof(Town, name); }
-    static constexpr size_t sizeOfWithoutName() { return 546; }
+    static constexpr size_t sizeOfWithoutName() { return 567; }
     static constexpr uint8_t noOwner = 0xFF;
 
     size_t sizeOfWithName() const { return sizeOfWithoutName() + name.size(); }

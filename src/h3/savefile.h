@@ -86,16 +86,16 @@ struct SaveFile
     Hero findHero(const std::string &name) const;
 
     uint8_t header[8];
-    uint8_t _unused1[48];
-    uint16_t heroCount;       // byte 56 <-- Has correct value, not sure if this is what it means.
-    uint8_t _unused2[5];
-    MapSize mapSize;          // byte 63
+    uint8_t _unused1[72];
+    uint16_t heroCount;       // byte 80 (HotA 1.8: number of hero records)
+    uint8_t _unused2[8];
+    MapSize mapSize;          // byte 90
     uint8_t _unused3[3];
-    uint8_t hasUnderground;   // byte 67
-    uint16_t mapNameSize;     // byte 68
-    std::string mapName;      // byte 70
-    uint16_t descriptionSize; // byte 70 + mapNameSize
-    std::string description;  // byte 72 + mapNameSize
+    uint8_t hasUnderground;   // byte 94
+    uint16_t mapNameSize;     // byte 95
+    std::string mapName;      // byte 97
+    uint16_t descriptionSize; // byte 97 + mapNameSize
+    std::string description;  // byte 99 + mapNameSize
 
     std::array<player::PlayerData, player::maxPlayers> players;
     std::vector<Town> towns;

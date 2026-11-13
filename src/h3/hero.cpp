@@ -5,7 +5,7 @@
 
 namespace h3::hero
 {
-static_assert(sizeof(Hero) == 1147, "sizeof(Hero) must be 1147.");
+static_assert(sizeof(Hero) == 1160, "sizeof(Hero) must be 1160.");
 static_assert(Hero::offsetFromNameToStart() == 195, "Offset to Hero::name must be 195.");
 
 Creature Hero::bestCreature() const
