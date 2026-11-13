@@ -59,9 +59,8 @@ void readHero(const std::span<const char> data, size_t idx, Hero &hero)
     values::readVal(data, idx, hero.dest_x);
     values::readVal(data, idx, hero.dest_y);
     values::readVal(data, idx, hero.dest_z);
-    values::skipVal(idx, hero._unused4);
+    values::readVal(data, idx, hero.movement_total);
     values::readVal(data, idx, hero.movement_remaining);
-    values::skipVal(idx, hero._unused5);
     values::readVal(data, idx, hero.experience);
     values::readVal(data, idx, hero.skill_count);
     values::readVal(data, idx, hero.spell_points);

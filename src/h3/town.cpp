@@ -28,6 +28,7 @@ void readTown(const std::span<const char> data, size_t idx, Town &town)
 {
     values::readVal(data, idx, town.owner);
     values::skipVal(idx, town._unused0);
+    values::readEnum(data, idx, town.type);
     values::readVal(data, idx, town.x);
     values::readVal(data, idx, town.y);
     values::readVal(data, idx, town.z);

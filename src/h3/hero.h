@@ -68,12 +68,11 @@ struct Hero
     uint8_t _unused2[14];
     Orientation orientation;                // -154
     uint8_t _unused3[3];
-    uint32_t dest_x = 0xFFFFFFFF;           // -151
-    uint32_t dest_y = 0xFFFFFFFF;           // -147
-    uint32_t dest_z = 0xFFFFFFFF;           // -143
-    uint8_t _unused4[4];
-    uint16_t movement_remaining = 0xFFFF;   // -134
-    uint8_t _unused5[2];
+    uint32_t dest_x = 0xFFFFFFFF;           // -150
+    uint32_t dest_y = 0xFFFFFFFF;           // -146
+    uint32_t dest_z = 0xFFFFFFFF;           // -142
+    uint32_t movement_total = 0;            // -138 (Movement points at the start of the day.)
+    uint32_t movement_remaining = 0;        // -134
     uint32_t experience = 0;                // -130
     uint32_t skill_count = 0;               // -126 (Number of secondary skills)
     uint16_t spell_points = 0;              // -122
@@ -82,8 +81,8 @@ struct Hero
     Creature creatures[maxStacks];          // -56
     uint32_t creature_count[maxStacks];     // -28
     uint8_t name[13];                       // 0
-    SkillLevel skillLevels[SkillCount];     // +13
-    uint8_t _unused7[27];                   // +42
+    SkillLevel skillLevels[SkillCount];     // +13 (One per skill, Runes last.)
+    uint8_t _unused7[26];                   // +43 (Legacy skill slots, unused.)
     uint8_t attack = 0;                     // +69
     uint8_t defense = 0;                    // +70
     uint8_t power = 0;                      // +71
@@ -92,8 +91,8 @@ struct Hero
     uint8_t spells[SpellCount];             // +143 (All available spells, spell book and artifacts. 1 means spell is available, otherwise 0.)
     ArtifactEntry artifacts[ArtifactSlotCount]; // +213
     uint8_t _unused8[46];                   // +877
-    uint8_t skillSlots[SkillCount];         // +923
-    uint8_t _unused9[13];                   // +952 (new in HotA 1.8)
+    uint8_t skillSlots[SkillCount];         // +923 (Slot 1-8 of each skill, 0 if not learned.)
+    uint8_t _unused9[12];                   // +953 (New in HotA 1.8.)
 });
 
 template <class Callback>
