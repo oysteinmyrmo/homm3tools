@@ -36,8 +36,9 @@ enum class Skill : uint8_t
     Resistance   = 26, // Not used in HotA. (Not tested.)
     FirstAid     = 27,
     Interference = 28,
-    COUNT        = 29, // Helper for Hero class.
-    NONE         = 30, // Helper for Hero class.
+    Runes        = 29, // New in HotA 1.8. (Not tested.)
+    COUNT        = 30, // Helper for Hero class.
+    NONE         = 31, // Helper for Hero class.
 };
 
 constexpr uint8_t SkillCount = static_cast<uint8_t>(Skill::COUNT);

@@ -87,8 +87,8 @@ struct SaveFile
 
     uint8_t header[8];
     uint8_t _unused1[72];
-    uint16_t heroCount;       // byte 80 (HotA 1.8: number of hero records)
-    uint8_t _unused2[8];
+    uint32_t heroCount;       // byte 80 (HotA 1.8: number of hero records)
+    uint8_t _unused2[6];
     MapSize mapSize;          // byte 90
     uint8_t _unused3[3];
     uint8_t hasUnderground;   // byte 94

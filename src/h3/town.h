@@ -15,8 +15,24 @@ namespace h3::town
 {
 using creatures::maxStacks;
 
+enum class TownType : uint8_t
+{
+    Castle     =  0,
+    Rampart    =  1,
+    Tower      =  2,
+    Inferno    =  3,
+    Necropolis =  4,
+    Dungeon    =  5,
+    Stronghold =  6,
+    Fortress   =  7,
+    Conflux    =  8,
+    Cove       =  9,
+    Factory    = 10,
+    Bulwark    = 11,
+};
+
 // Note: The size of the Town struct in the save file is variable due to the size
-// of the name being variable. sizeof(Town) is therefore 545 + name.size().
+// of the name being variable. The record is therefore 567 + name.size() bytes.
 PACKED_STRUCT(
 struct Town
 {
@@ -29,7 +45,8 @@ struct Town
     Creature bestCreature() const;
 
     uint8_t owner;                          // -71
-    uint8_t _unused0[3];
+    uint8_t _unused0[2];
+    TownType type;                          // -68
     uint8_t x;                              // -67
     uint8_t y;                              // -66
     uint8_t z;                              // -65
