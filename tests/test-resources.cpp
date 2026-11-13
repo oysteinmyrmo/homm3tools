@@ -379,7 +379,7 @@ TEST_CASE("resources-day2", "[player][resources]")
 
 TEST_CASE("resources-day3", "[player][resources]")
 {
-    SaveFile save({testDataDir / "[hotseat] 113.GM8"});
+    SaveFile save({testDataDir / "[hotseat] 113.GM5"});
     const auto players = h3::player::players(save);
 
     {

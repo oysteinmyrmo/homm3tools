@@ -36,9 +36,11 @@ else()
     FetchContent_Declare(
         zlib
         GIT_REPOSITORY https://github.com/madler/zlib.git
-        GIT_TAG        cacf7f1d4e3d44d871b605da3b647f07d718623f # v1.2.11
+        GIT_TAG        99623ef7097352da7993ba614161fd6a311e046e # v1.4
     )
 
+    # Only build the zlib library, not its own tests.
+    set(ZLIB_BUILD_TESTING OFF CACHE BOOL "" FORCE)
     FetchContent_MakeAvailable(zlib)
 
     # zlib renames zconf.h to zconf.h.included for us, which makes the zconf.h file missing

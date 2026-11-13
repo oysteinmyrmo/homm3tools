@@ -16,7 +16,7 @@ namespace h3::hero
 {
 // Total hero count as per https://heroes.thelazy.net/index.php/List_of_heroes_(HotA)
 // A save file always contains all heroes.
-static constexpr size_t heroCount = 179;
+static constexpr size_t heroCount = 215;
 
 using creatures::maxStacks;
 using artifacts::ArtifactEntry;
@@ -93,6 +93,7 @@ struct Hero
     ArtifactEntry artifacts[ArtifactSlotCount]; // +213
     uint8_t _unused8[46];                   // +877
     uint8_t skillSlots[SkillCount];         // +923
+    uint8_t _unused9[13];                   // +952 (new in HotA 1.8)
 });
 
 template <class Callback>
